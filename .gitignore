@@ -12,3 +12,9 @@ __pycache__/
 
 .DS_Store
 Thumbs.db
+
+.tmp_*
+.obsidian/
+.ipynb_checkpoints/
+.conda/
+learning/
