@@ -1,0 +1,239 @@
+{
+    "id": "case_021",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "自己在主要阶段召唤一只持有起动效果的怪兽。该怪兽召唤成功的时点，对方可以发动「激流葬」。我方试图在对方发动「激流葬」之前，先发动刚召唤成功怪兽的起动效果。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "on_monster_summon_success_before_open_game_state",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "任意持有起动效果的怪兽",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "effect",
+                            "position": "attack"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "激流葬"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "任意持有起动效果的怪兽",
+        "effect_id": "ignition_effect",
+        "effect_label": "起动效果",
+        "activation_location": "monster_zone",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "在召唤成功时点优先发动起动效果"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作不合法。怪兽召唤、反转召唤或特殊召唤成功时，不能立刻先发动该怪兽的起动效果；若此时有「激流葬」等可发动卡，必须先处理这个召唤成功时的发动窗口。双方都不发动后，才进入回合玩家可行动的通常时点。",
+        "failed_check": "activation_window",
+        "reasoning_steps": [
+            "当前处于怪兽召唤成功的专门发动窗口，而不是开放游戏状态。",
+            "官方Q&A说明，怪兽召唤、反转召唤、特殊召唤成功时，不能立即发动怪兽的起动效果。",
+            "如果此时存在「激流葬」等可在召唤成功时发动的卡，不能用起动效果抢在这些卡之前发动。",
+            "双方都不在该召唤成功窗口发动卡或效果后，下一次可行动的是回合玩家；那时可以发动起动效果。",
+            "但那已经不再是“召唤成功时”，因此也不能再把「激流葬」连锁到该起动效果上。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_021_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「激流葬」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5114&request_locale=ja",
+                "official_id": "cid:5114",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    5
+                ],
+                "lookup_query": "激流葬"
+            },
+            {
+                "id": "src_case_021_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「激流葬」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5114&request_locale=cn",
+                "official_id": "cid:5114",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    5
+                ],
+                "lookup_query": "激流葬"
+            },
+            {
+                "id": "src_case_021_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "モンスターが召喚・反転召喚・特殊召喚に成功した時に、モンスターの起動効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=10040&request_locale=ja",
+                "official_id": "fid:10040",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            }
+        ]
+    },
+    "case_notes": "用于测试召唤成功时的专门发动窗口与起动效果优先权。当前判断点前没有已经处理完成的连锁块，因此 resolution_history 为空数组。"
+}

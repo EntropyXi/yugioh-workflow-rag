@@ -1,0 +1,284 @@
+{
+    "id": "case_001",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方发动把卡从卡组加入手牌的效果，我连锁发动灰流丽。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "闪刀启动：交闪",
+                    "operation_type": "activate_card",
+                    "effect_id": "main_effect",
+                    "effect_summary": "从卡组把一张「闪刀」卡加入手卡",
+                    "effect_features": [
+                        "add_from_deck_to_hand"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "self_state": {
+            "hand": [
+                "灰流丽"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "闪刀启动：交闪",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "normal_spell",
+                            "controller": "opponent",
+                            "current_chain_id": "C1"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "灰流丽",
+        "effect_id": "main_effect",
+        "activation_location": "hand",
+        "chain_response_to": "C1",
+        "declared_cost": [
+            {
+                "type": "discard",
+                "card": "灰流丽"
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "negate_the_effect"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作在规则内合法。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "当前对方发动了一个效果，正在建立连锁，存在连锁发动窗口。",
+            "该效果包含从卡组加入手牌的处理。",
+            "灰流丽的发动条件包含对应这种效果的情况。",
+            "灰流丽在手牌，可以通过丢弃自身支付 cost。",
+            "已知本回合没有发动过灰流丽。",
+            "因此该操作在规则内合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_001_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「灰流丽」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12950&request_locale=ja",
+                "official_id": "cid:12950",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "灰流丽"
+            },
+            {
+                "id": "src_case_001_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「闪刀启动：交闪」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13671&request_locale=ja",
+                "official_id": "cid:13671",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "闪刀启动：交闪"
+            },
+            {
+                "id": "src_case_001_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "相手が「名推理」を発動した時、チェーンして手札の「灰流うらら」のモンスター効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=20544&request_locale=ja",
+                "official_id": "fid:20544",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    6
+                ]
+            },
+            {
+                "id": "src_case_001_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「灰流丽」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12950&request_locale=cn",
+                "official_id": "cid:12950",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_001_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「闪刀起动－交闪」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13671&request_locale=cn",
+                "official_id": "cid:13671",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试手坑连锁发动合法性。"
+}

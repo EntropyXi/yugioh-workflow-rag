@@ -1,0 +1,239 @@
+{
+    "id": "case_037",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "本回合我方已经发动过「音服和弦・和音」的效果，并选择过其中一个“●”项目；那次发动或发动后的效果被无效。现在同一回合我方再次发动「音服和弦・和音」，仍想选择刚才同一个“●”项目。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "open_game_state_after_same_bullet_choice_negated",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": {
+                    "card": {
+                        "name": "音服和弦・和音",
+                        "status": "face_up",
+                        "card_type": "spell",
+                        "controller": "self",
+                        "spell_type": "field_spell"
+                    }
+                },
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": [
+                {
+                    "card": "音服和弦・和音",
+                    "effect_id": "effect_option_same_bullet",
+                    "effect_label": "已选择过同一●项目"
+                }
+            ]
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "音服和弦・和音",
+        "effect_id": "effect_option_same_bullet",
+        "effect_label": "同一●项目",
+        "activation_location": "field_spell_zone",
+        "activation_zone": "field_spell_zone",
+        "declared_effect_purpose": "本回合再次选择已经选择过的同一●项目。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。文本为“以下效果各1回合只能选择1次”的项目，即使发动或效果被无效，也视为已经选择过该项目。",
+        "failed_check": "once_per_turn",
+        "reasoning_steps": [
+            "「音服和弦・和音」属于 fid:23977 官方 Q&A 中列明同样适用的效果。",
+            "官方 Q&A 明确，若文本规定“以下效果各1回合只能选择1次”，即使发动或效果被无效，也已经进行了该“●”项目的选择。",
+            "当前本回合已经选择过同一“●”项目。",
+            "因此再次选择同一项目不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_037_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ドレミコード・ハルモニア」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16094&request_locale=ja",
+                "official_id": "cid:16094",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_037_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「音服和弦・和音」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16094&request_locale=cn",
+                "official_id": "cid:16094",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_037_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ヴォルカニック・リムファイア」の効果の発動や、発動した効果が無効になったターン、同じ『●』の効果を選択してこれらの効果を再度発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23977&cid=16094&request_locale=ja",
+                "official_id": "fid:23977",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2026-05-31",
+                "lookup_query": "fid:23977 同样适用列表中的「ドレミコード・ハルモニア」"
+            }
+        ]
+    },
+    "case_notes": "覆盖一次限制 / 项目选择计数。原候选「ヴォルカニック・リムファイア」缺有效简中正文，按官方同样适用列表改用 cid:16094。"
+}

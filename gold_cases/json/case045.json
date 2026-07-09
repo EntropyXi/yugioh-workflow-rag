@@ -1,0 +1,260 @@
+{
+    "id": "case_045",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前「光之护封剑」是否会被破坏？",
+    "natural_language_context": "己方场上有「白龙忍者」（只要这张卡在场上存在，自己的魔法·陷阱卡不会被效果破坏），以及发动后经过的「光之护封剑」。现在到达「光之护封剑」自毁的时点——根据卡的文本，它在对方回合数经过3回合后破坏。白龙忍者的保护效果能否阻止这次破坏？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "end_phase",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "光之护封剑",
+                    "operation_type": "resolve_effect",
+                    "effect_id": "maintenance_rule",
+                    "effect_summary": "光之护封剑的3回合后自毁维持规则正在处理",
+                    "effect_features": [],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "白龙忍者",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "光之护封剑",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "normal_spell",
+                            "controller": "self"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "光之护封剑",
+        "effect_id": "maintenance_rule",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "self_destruct_by_maintenance",
+        "declared_effect_purpose": "apply_swords_of_revealing_light_3turn_destruction"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "光之护封剑会被破坏。其3回合后的自毁是卡自身的维持规则而不是卡片效果破坏，白龙忍者的'魔法·陷阱卡不会被效果破坏'不能保护它。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "光之护封剑的效果：「这张卡发动后，用对方回合计算的3回合后的对方结束阶段破坏」。",
+            "白龙忍者的效果：「只要这张卡在场上表侧表示存在，自己的魔法·陷阱卡不会被效果破坏」。",
+            "光之护封剑的'3回合后自毁'是卡自身文本规定的维持规则/处理程序，不是一般意义上的卡片效果破坏。",
+            "同理的例子还包括暗之护封剑的'2回合后自毁'。",
+            "根据官方裁定：即使白龙忍者存在，光之护封剑仍会在3回合后按自身规则破坏。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_045_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「白竜の忍者」が自分フィールド上に存在する場合、「光の護封剣」は相手のターンで数えて3ターン後に破壊されますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=12583&request_locale=ja",
+                "official_id": "fid:12583",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_045_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "光の護封剣",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4354&request_locale=ja",
+                "official_id": "cid:4354",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_045_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "白竜の忍者",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10015&request_locale=ja",
+                "official_id": "cid:10015",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_045_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「光之护封剑」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4354&request_locale=cn",
+                "official_id": "cid:4354",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:12583。截至 2017-03-24 的裁定。注意本案中使用 resolve_effect 而非 activate_effect，因为被判断的是维持规则触发的破坏是否合法，而不是某个效果的发动。"
+}

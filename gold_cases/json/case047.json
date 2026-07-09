@@ -1,0 +1,321 @@
+{
+    "id": "case_047",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个效果是否可以发动？",
+    "natural_language_context": "己方场上有「二进制女巫」和与其互相连接的「三闸极男巫」。对方「拓扑逻辑轰炸龙」对三闸极男巫宣言攻击，己方连锁发动「次元壁」将这次战斗的伤害转嫁给对方。次元壁处理后对方实际受到战斗伤害。现在战斗伤害发生后，己方试图发动二进制女巫的「●1体以上」效果（互相连接的怪兽因战斗给予对方战斗伤害时发动，恢复该伤害数值的LP）。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "damage_step",
+        "damage_step_timing": "after_damage_calculation",
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "次元壁",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "redirect_battle_damage"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "二进制女巫",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 2,
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "次元壁"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "二进制女巫",
+        "effect_id": "effect_1plus",
+        "effect_label": "●1体以上",
+        "activation_location": "monster_zone",
+        "activation_zone": "m3",
+        "activation_column_index": 3
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不能发动。对方虽然最终受到了战斗伤害，但这是因为次元壁的效果将伤害转嫁，不是三栅极男巫在战斗中'给予'对方的战斗伤害。二进制女巫的恢复LP效果条件不满足。",
+        "failed_check": "activation_condition",
+        "reasoning_steps": [
+            "二进制女巫的●1体以上效果条件是「互相连接的怪兽因战斗给予对方战斗伤害」。",
+            "本战斗中，三栅极男巫攻击力2200，拓扑逻辑轰炸龙攻击力3000，差值800的伤害本来应由己方承受。",
+            "己方发动了次元壁，使该战斗伤害改为由对方承受。",
+            "关键判定：对方此时受到的伤害不是三栅极男巫'给予'的战斗伤害，而是次元壁的效果伤害转嫁。",
+            "因此二进制女巫的发动条件不满足，不能发动。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_047_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「バイナル・ソーサレス」と相互リンクしているモンスターが相手モンスターと戦闘を行う際に、「ディメンション・ウォール」を発動した場合、『●１体以上：』のモンスター効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=21113&request_locale=ja",
+                "official_id": "fid:21113",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-07-28"
+            },
+            {
+                "id": "src_case_047_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "バイナル・ソーサレス",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13204&request_locale=ja",
+                "official_id": "cid:13204",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_047_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "ディメンション・ウォール",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6448&request_locale=ja",
+                "official_id": "cid:6448",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    3
+                ]
+            },
+            {
+                "id": "src_case_047_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「トポロジック・ボマー・ドラゴン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13085&request_locale=ja",
+                "official_id": "cid:13085",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_047_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「拓扑逻辑轰炸龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13085&request_locale=cn",
+                "official_id": "cid:13085",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_047_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「トライゲート・ウィザード」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13203&request_locale=ja",
+                "official_id": "cid:13203",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_047_07",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「三闸极男巫」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13203&request_locale=cn",
+                "official_id": "cid:13203",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_047_08",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "二进制女巫（バイナル・ソーサレス）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/79016563",
+                "official_id": "id:79016563",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_047_09",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "次元壁（ディメンション・ウォール）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/67095270",
+                "official_id": "id:67095270",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:21113。截至 2017-07-28 的裁定。中文卡名「二进制女巫」「次元壁」来自本地 cards.cdb，非 KONAMI 官方简中来源。"
+}

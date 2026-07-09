@@ -1,0 +1,297 @@
+{
+    "id": "case_039",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方「破械焰魔天 阎魔」②效果要适用替代破坏：自己场上的卡将被战斗或效果破坏的场合，可以改为破坏自己场上或墓地的1只恶魔族怪兽。我方想选择场上不受怪兽效果影响的「始祖龙」作为要被替代破坏效果破坏的卡。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "applying_yama_replacement_destruction",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "破械焰魔天 阎魔",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "link",
+                            "link_rating": 2
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "始祖龙",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "fusion"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "破械焰魔天 阎魔",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "monster_zone",
+        "activation_zone": "m2",
+        "declared_effect_purpose": "适用替代破坏，选择不受怪兽效果影响的「始祖龙」作为要被破坏的卡。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。替代破坏效果不能选择不受该效果影响的卡，也不能选择不会被效果破坏的卡。",
+        "failed_check": "external_restriction",
+        "reasoning_steps": [
+            "「破械焰魔天 阎魔」②的替代破坏需要实际选择一张可被该效果破坏的卡。",
+            "官方 Q&A 明确，不能选择不受怪兽效果影响的怪兽，也不能选择不会被效果破坏的卡。",
+            "「始祖龙」不受怪兽效果影响，因此不会受到「破械焰魔天 阎魔」②替代破坏的影响。",
+            "所以不能把它选作替代破坏要破坏的卡。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_039_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「破械焔魔天ヤマ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23173&request_locale=ja",
+                "official_id": "cid:23173",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「破械焰魔天 阎魔」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23173&request_locale=cn",
+                "official_id": "cid:23173",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「始祖竜ワイアーム」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11382&request_locale=ja",
+                "official_id": "cid:11382",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「始祖龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11382&request_locale=cn",
+                "official_id": "cid:11382",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ブロックドラゴン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12433&request_locale=ja",
+                "official_id": "cid:12433",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「积木龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12433&request_locale=cn",
+                "official_id": "cid:12433",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_039_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「破械焔魔天ヤマ」の②の効果によって、モンスター効果を受けないモンスターや効果で破壊されないカードを選べますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=20948&request_locale=ja",
+                "official_id": "fid:20948",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2026-06-12"
+            }
+        ]
+    },
+    "case_notes": "覆盖替代破坏的可选对象范围。"
+}

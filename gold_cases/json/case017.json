@@ -1,0 +1,301 @@
+{
+    "id": "case_017",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个处理是否在规则内合法？",
+    "natural_language_context": "对方场上有2只表侧表示效果怪兽。我方上级召唤成功「堕天使 路西菲尔」并发动其效果。处理时，我方试图从牌组同时特殊召唤2只「堕天使 特斯卡特利波卡」。本回合此前我方没有特殊召唤过「堕天使 特斯卡特利波卡」。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "before_resolving_C1",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "堕天使 路西菲尔",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "这张卡上级召唤成功的场合可以发动，最多到对方场上的效果怪兽数量为止，从手牌・牌组把「堕天使」怪兽特殊召唤。",
+                    "effect_features": [
+                        "special_summon_from_deck"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "堕天使 路西菲尔",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": {
+                            "name": "任意表侧效果怪兽A",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "任意表侧效果怪兽B",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "堕天使 路西菲尔",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "special_summon_two_darklord_tezcatlipoca_simultaneously",
+        "declared_effect_purpose": "special_summon_two_same_name_once_per_turn_monsters"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该处理在规则内合法。由于本回合此前没有特殊召唤过「堕天使 特斯卡特利波卡」，且「堕天使 路西菲尔」的效果会同时特殊召唤所选怪兽，因此可以选择并同时特殊召唤2只「堕天使 特斯卡特利波卡」。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "对方场上有2只表侧表示效果怪兽，因此「堕天使 路西菲尔」的效果可以最多特殊召唤2只「堕天使」怪兽。",
+            "「堕天使 特斯卡特利波卡」具有一回合只能特殊召唤一次的限制。",
+            "已知本回合此前我方没有特殊召唤过「堕天使 特斯卡特利波卡」。",
+            "官方Q&A明确：由「堕天使 路西菲尔」效果特殊召唤2只以上怪兽时，那些怪兽视为同时特殊召唤；在此前没有特殊召唤过该卡的情况下，可以选择2只以上同名的「堕天使 特斯卡特利波卡」。",
+            "因此，声明同时特殊召唤2只「堕天使 特斯卡特利波卡」的处理合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_017_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「堕天使ルシフェル」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12723&request_locale=ja",
+                "official_id": "cid:12723",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "堕天使ルシフェル"
+            },
+            {
+                "id": "src_case_017_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「堕天使 路西菲尔」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12723&request_locale=cn",
+                "official_id": "cid:12723",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "堕天使 路西菲尔"
+            },
+            {
+                "id": "src_case_017_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「堕天使テスカトリポカ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12725&request_locale=ja",
+                "official_id": "cid:12725",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "堕天使テスカトリポカ"
+            },
+            {
+                "id": "src_case_017_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「堕天使 特斯卡特利波卡」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12725&request_locale=cn",
+                "official_id": "cid:12725",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "堕天使 特斯卡特利波卡"
+            },
+            {
+                "id": "src_case_017_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "アドバンス召喚に成功した「堕天使ルシフェル」のモンスター効果によって、2体以上のモンスターを特殊召喚する場合、同名の「堕天使」と名のついたモンスターを特殊召喚できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=6900&request_locale=ja",
+                "official_id": "fid:6900",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试一回合一次特殊召唤限制与同时特殊召唤的关系。官方依据为 Q&A fid:6900。"
+}

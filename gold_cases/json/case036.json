@@ -1,0 +1,349 @@
+{
+    "id": "case_036",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方墓地有从手牌直接送去墓地、从未按正规手续特殊召唤过的「神炎皇乌利亚」。我方正在处理「高亢焰波」的效果，想要“无视召唤条件”把这只「神炎皇乌利亚」从墓地特殊召唤。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "resolving_hyper_blaze_target_not_properly_summoned",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "高亢焰波",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_2",
+                    "effect_summary": "从墓地选三幻魔怪兽，召唤条件无视来特殊召唤或加入手牌。",
+                    "effect_features": [
+                        "target_1_monster_in_graveyard",
+                        "ignore_summoning_conditions"
+                    ],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3,
+                    "effect_label": "②",
+                    "declared_targets": [
+                        {
+                            "card": "神炎皇乌利亚",
+                            "controller": "self",
+                            "location": "graveyard",
+                            "zone": "graveyard",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "monster_type": "effect"
+                        }
+                    ]
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "高亢焰波",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "controller": "self",
+                            "trap_type": "continuous_trap"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [
+                "神炎皇乌利亚"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "高亢焰波",
+        "effect_id": "effect_2",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "无视召唤条件，从墓地特殊召唤从未正规特殊召唤过的「神炎皇乌利亚」。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。即使效果写有“无视召唤条件”，从墓地、除外或表侧额外卡组特殊召唤特殊召唤怪兽时，仍要求该怪兽曾经按正规方式特殊召唤过。",
+        "failed_check": "summon_condition",
+        "reasoning_steps": [
+            "「神炎皇乌利亚」属于需要特定手续特殊召唤的特殊召唤怪兽。",
+            "官方 Q&A 明确，“无视召唤条件”并不免除从墓地等公开区域再次特殊召唤时的正规出场履历要求。",
+            "当前这只「神炎皇乌利亚」从未正规特殊召唤过。",
+            "因此不能从墓地特殊召唤，只能按效果允许的其他合法处理处理。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_036_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神炎皇ウリア」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6563&request_locale=ja",
+                "official_id": "cid:6563",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神炎皇乌利亚」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6563&request_locale=cn",
+                "official_id": "cid:6563",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「降雷皇ハモン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6564&request_locale=ja",
+                "official_id": "cid:6564",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「降雷皇哈蒙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6564&request_locale=cn",
+                "official_id": "cid:6564",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「幻魔皇ラビエル」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6565&request_locale=ja",
+                "official_id": "cid:6565",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「幻魔皇拉比艾尔」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6565&request_locale=cn",
+                "official_id": "cid:6565",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_07",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ハイパーブレイズ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15142&request_locale=ja",
+                "official_id": "cid:15142",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_08",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「高亢焰波」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15142&request_locale=cn",
+                "official_id": "cid:15142",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_036_09",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "一度も正規の方法で特殊召喚していない特殊召喚モンスターを、『召喚条件を無視して特殊召喚する』効果によって特殊召喚できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23799&request_locale=ja",
+                "official_id": "fid:23799",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2020-03-20"
+            }
+        ]
+    },
+    "case_notes": "覆盖召唤限制：无视召唤条件不等于绕过正规出场履历。"
+}

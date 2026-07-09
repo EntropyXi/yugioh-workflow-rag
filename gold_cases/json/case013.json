@@ -1,0 +1,284 @@
+{
+    "id": "case_013",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "场上表侧表示存在永续陷阱「宏观宇宙」，其效果使被送往墓地的卡不去墓地而直接除外。我方手牌有「岚征龙－暴风」和1只风属性怪兽，试图发动「岚征龙－暴风」①效果，将这两张卡从手牌舍弃至墓地作为 cost，从牌组将1只龙族怪兽加入手牌。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "self_state": {
+            "hand": [
+                "岚征龙－暴风",
+                "任意风属性怪兽"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "宏观宇宙",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "宏观宇宙",
+                "restriction": "cards_sent_to_graveyard_are_banished_instead"
+            }
+        ],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "岚征龙－暴风",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "activation_location": "hand",
+        "declared_cost": [
+            {
+                "type": "send_to_graveyard",
+                "card": "岚征龙－暴风",
+                "from": "hand"
+            },
+            {
+                "type": "send_to_graveyard",
+                "card": "任意风属性怪兽",
+                "from": "hand"
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "discard_to_graveyard_to_add_dragon_from_deck"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作在规则内不合法。「岚征龙－暴风」①要求从手牌将自身和1只风属性怪兽舍弃至墓地作为发动条件/代价；在「宏观宇宙」适用中，这些卡会被除外而不能送至墓地，因此不能支付该 cost，不能发动该效果。",
+        "failed_check": "cost_payability",
+        "reasoning_steps": [
+            "「宏观宇宙」表侧存在，其持续效果使被送往墓地的卡不去墓地而直接除外。",
+            "「岚征龙－暴风」①效果要求从手牌将自身和1只风属性怪兽舍弃至墓地来发动。",
+            "该 cost 的文本明确要求卡被送至墓地，而不是单纯从手牌舍弃。",
+            "官方Q&A区分了『从手牌舍弃发动』与『舍弃至墓地发动』：前者在替代除外适用中可以发动，后者因为需要实际送至墓地而不能发动。",
+            "因此，在「宏观宇宙」适用中，试图发动「岚征龙－暴风」①效果不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_013_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「マクロコスモス」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6682&request_locale=ja",
+                "official_id": "cid:6682",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5
+                ],
+                "lookup_query": "マクロコスモス"
+            },
+            {
+                "id": "src_case_013_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「宏观宇宙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6682&request_locale=cn",
+                "official_id": "cid:6682",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5
+                ],
+                "lookup_query": "宏观宇宙"
+            },
+            {
+                "id": "src_case_013_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「嵐征竜－テンペスト」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10522&request_locale=ja",
+                "official_id": "cid:10522",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    5
+                ],
+                "lookup_query": "嵐征竜－テンペスト"
+            },
+            {
+                "id": "src_case_013_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「岚征龙－暴风」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10522&request_locale=cn",
+                "official_id": "cid:10522",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    5
+                ],
+                "lookup_query": "岚征龙－暴风"
+            },
+            {
+                "id": "src_case_013_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "『墓地へ送られるカードは墓地へは行かず除外される』効果の適用中に、コストとして手札を捨てる必要がある効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23815&request_locale=ja",
+                "official_id": "fid:23815",
+                "language": "ja",
+                "source_updated_at": "2026-06-26",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试替代除外效果适用中，单纯『舍弃』与『舍弃至墓地』作为 cost 的差异。官方Q&A fid:23815 明确列出「嵐征竜－テンペスト」属于不能发动的类型。"
+}

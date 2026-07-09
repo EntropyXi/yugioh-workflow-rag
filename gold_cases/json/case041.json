@@ -1,0 +1,274 @@
+{
+    "id": "case_041",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个效果是否可以发动？",
+    "natural_language_context": "己方场地区有「传说之都 亚特兰蒂斯」（规则上视为「海」）。己方魔法与陷阱区域有表侧表示的「潜海奇袭」；怪兽区域有因自身效果当作水属性怪兽的「金属反射史莱姆」（攻0/守3000，水族·水属性·等级10）。现在己方要发动潜海奇袭②效果的●第一个效果：「1回合1次，将自己场上1只表侧表示的水属性怪兽直到结束阶段除外才能发动。这个回合，自己场上的表侧表示的魔法·陷阱卡不会被对方的效果破坏」，把金属反射史莱姆除外作为cost。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "金属反射史莱姆",
+                            "status": "face_up",
+                            "position": "defense",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "潜海奇袭",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "self"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": {
+                    "card": {
+                        "name": "传说之都 亚特兰蒂斯",
+                        "status": "face_up",
+                        "card_type": "spell",
+                        "spell_type": "field_spell",
+                        "controller": "self"
+                    }
+                },
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "潜海奇袭",
+        "effect_id": "effect_2_option_1",
+        "effect_label": "②●上",
+        "activation_location": "spell_trap_zone",
+        "activation_zone": "s2",
+        "activation_column_index": 2,
+        "declared_cost": [
+            {
+                "type": "banish",
+                "card": "金属反射史莱姆",
+                "from": "monster_zone"
+            }
+        ]
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "可以发动。虽然金属反射史莱姆同时也是陷阱卡，但其因自身效果在水属性·水族怪兽状态下可被当作水属性怪兽除外作为cost；效果正常适用。注意结束阶段返回时它不再是怪兽卡，会立即送去墓地。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "潜海奇袭②●上要求'将自己场上1只表侧表示的水属性怪兽直到结束阶段除外'作为cost。",
+            "金属反射史莱姆因自身效果'变为效果怪兽（水族·水·星10·攻0/守3000）特殊召唤'，现在是水属性怪兽。",
+            "虽然它同时也视为陷阱卡，但在cost要求'除外水属性怪兽'的判定中，它作为水属性怪兽的状态满足条件。",
+            "官方裁定确认：可以除外当作水属性怪兽的金属反射史莱姆来发动，效果正常适用。",
+            "注意结束阶段返回时，史莱姆不再是怪兽卡的状态，返回后会立即送去墓地——这不影响发动合法性。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_041_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「潜海奇襲」の効果を発動する際に、モンスターカード扱いの「メタル・リフレクト・スライム」を除外できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=8194&request_locale=ja",
+                "official_id": "fid:8194",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-06-22"
+            },
+            {
+                "id": "src_case_041_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "潜海奇襲",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13179&request_locale=ja",
+                "official_id": "cid:13179",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_041_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "メタル・リフレクト・スライム",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5686&request_locale=ja",
+                "official_id": "cid:5686",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_041_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "金属反射史莱姆",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5686&request_locale=cn",
+                "official_id": "cid:5686",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_041_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "伝説の都 アトランティス",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5387&request_locale=ja",
+                "official_id": "cid:5387",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:8194。截至 2017-06-22 的裁定。"
+}

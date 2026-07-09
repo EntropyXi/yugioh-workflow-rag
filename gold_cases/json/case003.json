@@ -1,0 +1,306 @@
+{
+    "id": "case_003",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "现在我方在额外怪兽区域的小夜发动了一效果，即落地诱发的效果，取对象除外了对方的怪兽。现在，我进入战斗阶段，使用我的主要怪兽区域的电子界到临者@火灵天星进行直接攻击宣言，请问我方的操作是否正确？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "battle_step",
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "S:P小夜骑士",
+                "effect_id": "effect_1",
+                "effect_label": "①",
+                "result": [
+                    {
+                        "action": "banish",
+                        "card": "增殖的G",
+                        "from": "opponent.field.monster_zones.m3",
+                        "to": "opponent.banished"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "电子界到临者@火灵天星",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 6,
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "S:P小夜骑士",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 2,
+                            "controller": "self"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": [
+                {
+                    "card": "S:P小夜骑士",
+                    "effect_id": "effect_1",
+                    "effect_label": "①"
+                }
+            ]
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [
+                "增殖的G"
+            ],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "attack_restriction",
+                "restriction": "cannot_direct_attack",
+                "affected_player": "self",
+                "effect_scope": "monster",
+                "duration": "until_end_of_turn",
+                "source_card": "S:P小夜骑士",
+                "source_effect": "effect_1"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "declare_attack",
+        "attack_type": "direct_attack",
+        "card": "电子界到临者@火灵天星",
+        "card_location": "monster_zone",
+        "card_zone": "m3"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作在规则内合法。电子界到临者@火灵天星不受其他卡的效果影响，而S:P小夜骑士的'自己的怪兽不可直接攻击'属于影响怪兽的限制效果（非对玩家效果），因此电子界到临者@火灵天星不受此限制，可以进行直接攻击宣言。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "当前处于战斗阶段的战斗步骤，是进行攻击宣言的合法窗口。",
+            "对方场上没有怪兽存在（唯一怪兽已被S:P小夜骑士的效果除外），我方可以宣言直接攻击。",
+            "电子界到临者@火灵天星在主要怪兽区域表侧攻击表示存在，可以宣言攻击。",
+            "S:P小夜骑士的效果①在此回合已经发动，适用了'自己的怪兽不可直接攻击'的限制。",
+            "然而，根据裁定：记述为'（自己·对方）怪兽不能攻击'或'怪兽不能攻击宣言'的效果影响的是怪兽本身，而非对玩家效果。",
+            "电子界到临者@火灵天星的效果③使其不受其他卡的效果影响（全抗）。",
+            "因此，S:P小夜骑士的'自己的怪兽不可直接攻击'限制不能影响电子界到临者@火灵天星，它可以进行直接攻击宣言。",
+            "综上，该操作在规则内合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_003_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「S:P小夜骑士」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=19188&request_locale=ja",
+                "official_id": "cid:19188",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    4,
+                    5,
+                    7
+                ],
+                "lookup_query": "S:P小夜骑士"
+            },
+            {
+                "id": "src_case_003_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「电子界到临者@火灵天星」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15036&request_locale=ja",
+                "official_id": "cid:15036",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    6,
+                    7
+                ],
+                "lookup_query": "电子界到临者@火灵天星"
+            },
+            {
+                "id": "src_case_003_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「S：Pリトルナイト」官方Q&A・补充信息",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=4&cid=19188&request_locale=ja",
+                "official_id": "cid:19188#supplement",
+                "language": "ja",
+                "source_updated_at": "2023-07-22",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                ]
+            },
+            {
+                "id": "src_case_003_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「S：P小夜骑士」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=19188&request_locale=cn",
+                "official_id": "cid:19188",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_003_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「到临电子界＠伊格尼斯者」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15036&request_locale=cn",
+                "official_id": "cid:15036",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试全抗怪兽在受到'不可直接攻击'类限制时是否能进行直接攻击宣言。核心裁定依据：影响怪兽的攻击限制（非对玩家效果）可被全抗怪兽无视。"
+}

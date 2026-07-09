@@ -1,0 +1,345 @@
+{
+    "id": "case_009",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个处理是否在规则内合法？",
+    "natural_language_context": "我方场上存在魔法师族怪兽「白之圣女·艾克莉西娅」。对方场上存在3只「青眼白龙」。我方发动「龙引导呼笛」的①效果（C1），宣言从牌组特殊召唤1只等级5以上的龙族怪兽「黑衣龙·阿尔比昂」。因对方场上有2只以上怪兽，进而宣言再从牌组特殊召唤与特召怪兽同名的怪兽。由于黑衣龙的①效果使其在场上时卡名视为「阿尔白斯之落胤」，我方宣言第二只特召的怪兽为牌组中的「阿尔白斯之落胤」。请问该处理是否合法？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "before_resolving_C1",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "龙引导呼笛",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "从牌组将1只等级5以上的龙族怪兽特殊召唤。对手场上存在2只以上怪兽的情况下，进而可再从牌组将1只特殊召唤的怪兽的同名怪兽特殊召唤",
+                    "effect_features": [],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "白之圣女·艾克莉西娅",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "attribute": "light",
+                            "race": "spellcaster",
+                            "controller": "self"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "龙引导呼笛",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "normal_spell",
+                            "controller": "self",
+                            "current_chain_id": "C1"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": {
+                            "name": "青眼白龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "normal",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "青眼白龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "normal",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": {
+                            "name": "青眼白龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "normal",
+                            "controller": "opponent"
+                        }
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "龙引导呼笛",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "chain_id_to_resolve": "C1",
+        "activation_location_at_activation": "spell_trap_zone",
+        "activation_zone_at_activation": "s3",
+        "activation_column_index": 3,
+        "current_card_location": "spell_trap_zone",
+        "declared_resolution": "resolve_successfully",
+        "declared_effect_purpose": "special_summon_black_dragon_albion_then_special_summon_albaz_from_deck_as_same_name_monster"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该处理合法。改变怪兽卡名的永续效果在怪兽召唤・特殊召唤时，以改变后的状态直接出现在场上。黑衣龙·阿尔比昂特召到场上时，其卡名已视为「阿尔白斯之落胤」，因此龙引导呼笛的第二段效果可以从牌组将「阿尔白斯之落胤」作为同名的怪兽特殊召唤。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "龙引导呼笛的①效果首先从牌组特殊召唤了1只等级5以上的龙族怪兽「黑衣龙·阿尔比昂」。",
+            "黑衣龙的①效果是永续效果：只要存在于场上・墓地，卡名视为「阿尔白斯之落胤」。",
+            "根据裁定：改变怪兽卡名等永续效果，在怪兽召唤・特殊召唤时以改变后的状态直接出现在场上。",
+            "因此黑衣龙特召到场上时，其卡名已经是「阿尔白斯之落胤」，而非先以原本卡名登场再改名。",
+            "龙引导呼笛的第二段效果从牌组将特召怪兽的同名怪兽特召。由于黑衣龙场上的卡名为「阿尔白斯之落胤」，可从牌组将「阿尔白斯之落胤」作为同名怪兽特殊召唤。",
+            "该处理合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_009_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「龙引导呼笛」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22718&request_locale=ja",
+                "official_id": "cid:22718",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5
+                ],
+                "lookup_query": "龙引导呼笛"
+            },
+            {
+                "id": "src_case_009_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「黑衣龙·阿尔比昂」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16197&request_locale=ja",
+                "official_id": "cid:16197",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "黑衣龙·阿尔比昂"
+            },
+            {
+                "id": "src_case_009_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「阿尔白斯之落胤」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15245&request_locale=ja",
+                "official_id": "cid:15245",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    4,
+                    5
+                ],
+                "lookup_query": "阿尔白斯之落胤"
+            },
+            {
+                "id": "src_case_009_04",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ドラゴン・導きの呼笛」の効果で「黒衣竜アルビオン」を特殊召喚した場合、さらにどのモンスターを特殊召喚できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24304&request_locale=ja",
+                "official_id": "fid:24304",
+                "language": "ja",
+                "source_updated_at": "2026-03-19",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "id": "src_case_009_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「龙之引导唤笛」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22718&request_locale=cn",
+                "official_id": "cid:22718",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_009_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「黑衣龙 阿尔比昂」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16197&request_locale=cn",
+                "official_id": "cid:16197",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_009_07",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「阿尔白斯之落胤」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15245&request_locale=cn",
+                "official_id": "cid:15245",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试改变卡名的永续效果在怪兽特殊召唤时是否即时生效，从而影响'同名怪兽'的判断。核心裁定：改变卡名等永续效果在怪兽登场时即以改变后的状态直接出现。素材来源于B站视频 BV1jCQMB2ERm。"
+}

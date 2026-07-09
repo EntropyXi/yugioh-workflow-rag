@@ -1,0 +1,273 @@
+{
+    "id": "case_012",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方发动速攻魔法「超融合」。我方试图连锁发动已盖放的反击陷阱「魔法干扰阵」来无效该魔法卡的发动。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "超融合",
+                    "operation_type": "activate_card",
+                    "effect_id": "main_effect",
+                    "effect_summary": "丢弃1张手牌发动，双方不能对应这张卡的发动把魔法・陷阱・怪兽效果发动，并使用自己或对方场上的怪兽作为素材进行融合召唤。",
+                    "effect_features": [
+                        "prevent_chain_to_activation"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3,
+                    "declared_cost": [
+                        {
+                            "type": "discard",
+                            "card": "任意手牌"
+                        }
+                    ]
+                }
+            ]
+        },
+        "self_state": {
+            "hand": [
+                "任意手牌"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "魔法干扰阵",
+                            "status": "face_down",
+                            "card_type": "trap",
+                            "trap_type": "counter_trap",
+                            "controller": "self"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "超融合",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "quick_play_spell",
+                            "controller": "opponent",
+                            "current_chain_id": "C1"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "魔法干扰阵",
+        "activation_location": "spell_trap_zone",
+        "activation_zone": "s2",
+        "activation_column_index": 2,
+        "chain_response_to": "C1",
+        "declared_cost": [
+            {
+                "type": "discard",
+                "card": "任意手牌"
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "negate_super_polymerization_activation"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作在规则内不合法。「超融合」的发动不能被任何魔法・陷阱・怪兽效果连锁，因此即使「魔法干扰阵」是反击陷阱，也不能对应「超融合」发动。",
+        "failed_check": "chain_speed",
+        "reasoning_steps": [
+            "当前 C1 为对方发动的速攻魔法「超融合」。",
+            "「超融合」文本包含：双方不能对应这张卡的发动把魔法・陷阱・怪兽效果发动。",
+            "我方试图连锁发动「魔法干扰阵」来无效「超融合」的发动。",
+            "官方Q&A明确：发动「超融合」时，不能连锁发动「魔法干扰阵」「神之宣告」等反击陷阱，也不能连锁任何卡或效果。",
+            "因此，试图以「魔法干扰阵」连锁「超融合」的操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_012_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「超融合」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7445&request_locale=ja",
+                "official_id": "cid:7445",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    4,
+                    5
+                ],
+                "lookup_query": "超融合"
+            },
+            {
+                "id": "src_case_012_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「超融合」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7445&request_locale=cn",
+                "official_id": "cid:7445",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    4,
+                    5
+                ],
+                "lookup_query": "超融合"
+            },
+            {
+                "id": "src_case_012_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「超融合」の発動にチェーンをして、「マジック・ジャマー」等のカウンター罠を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=10824&request_locale=ja",
+                "official_id": "fid:10824",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试不能连锁「超融合」发动任何卡或效果，包括反击陷阱。官方Q&A已直接列举「マジック・ジャマー」等反击陷阱不可发动；本条未伪造「魔法干扰阵」CN卡片文本来源。"
+}

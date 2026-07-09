@@ -1,0 +1,273 @@
+{
+    "id": "case_004",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "上回合对方场上的「命运英雄 毁灭凤凰人」被我方「雷击」破坏。凤凰人效果③在破坏时发动并处理，下个准备阶段从墓地不入连锁特殊召唤1只「命运－英雄」怪兽。我方盖放一张后场后回合结束。现在进入对方回合的准备阶段，凤凰人的效果③延迟适用，凤凰人从墓地不入连锁特殊召唤自身。我方试图发动盖放的「神之通告」，选择无效特殊召唤的效果，来无效该特召。请问该操作是否正确？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "standby_phase",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "神之通告",
+                            "status": "face_down",
+                            "card_type": "trap",
+                            "trap_type": "counter_trap",
+                            "controller": "self"
+                        }
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "雷击"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "命运英雄 毁灭凤凰人"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "神之通告",
+        "activation_location": "spell_trap_zone",
+        "activation_zone": "s4",
+        "activation_column_index": 4,
+        "declared_cost": [
+            {
+                "type": "pay_lp",
+                "amount": 1500
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "negate_special_summon"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作不合法。命运英雄 毁灭凤凰人效果③在破坏时已发动并处理，本次准备阶段的特召是其效果的延迟应用。该特召本身虽不入连锁，但属于'效果产生的特殊召唤'而非怪兽自身的'召唤手续'。神之通告的无效特召效果仅能无效召唤手续类的不入连锁特召（如同调、超量、连接、灵摆召唤及主卡怪兽自身召唤手续），不能无效效果产生的特召。因此神之通告在此场景下无法发动。",
+        "failed_check": "activation_condition",
+        "reasoning_steps": [
+            "当前处于对方回合的准备阶段，命运英雄 毁灭凤凰人的效果③正在适用：其在上回合因雷击破坏后已发动并处理，现在从墓地不入连锁特殊召唤自身。",
+            "神之通告的效果①包含两种可选应用：A) 无效怪兽效果发动并破坏；B) 无效特殊召唤并破坏。本次试图选择应用 B。",
+            "神之通告的应用B可以无效不入连锁的特殊召唤，但仅限于'召唤手续'类特召（如同调召唤、超量召唤、连接召唤、灵摆召唤，以及主卡组怪兽自身的特殊召唤手续）。",
+            "凤凰人效果③在上回合破坏时已经入连锁发动并处理完毕，本次准备阶段的特召是该效果处理时设定的延迟动作的应用。该特召属于'效果产生的特殊召唤'，不是'召唤手续'。",
+            "根据裁定：神之通告不能无效效果产生的特殊召唤，即使该特召本身不入连锁。此原则同样适用于死者苏生（立即处理）和凤凰人（延迟处理）。",
+            "因此，神之通告在此场景下不符合发动条件，发动该卡的操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_004_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「命运英雄 毁灭凤凰人」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16524&request_locale=ja",
+                "official_id": "cid:16524",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ],
+                "lookup_query": "命运英雄 毁灭凤凰人"
+            },
+            {
+                "id": "src_case_004_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神之通告」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12187&request_locale=ja",
+                "official_id": "cid:12187",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "lookup_query": "神之通告"
+            },
+            {
+                "id": "src_case_004_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「D-HERO デストロイフェニックスガイ」の効果によるモンスターの特殊召喚を、「昇天の黒角笛」や「神の宣告」で無効にできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23338&request_locale=ja",
+                "official_id": "fid:23338",
+                "language": "ja",
+                "source_updated_at": "2021-09-08",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "id": "src_case_004_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「命运－英雄 毁灭不死鸟魔侠」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16524&request_locale=cn",
+                "official_id": "cid:16524",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_004_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神之通告」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12187&request_locale=cn",
+                "official_id": "cid:12187",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试效果产生的延迟特殊召唤（不入连锁）能否被神之通告（无效特召侧）无效。核心裁定：神之通告只能无效召唤手续类的不入连锁特召，不能无效效果产生的特召（无论是否入连锁、是否延迟处理）。素材来源于B站视频 BV1RvrUYBEhJ。"
+}

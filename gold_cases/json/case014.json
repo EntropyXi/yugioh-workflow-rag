@@ -1,0 +1,299 @@
+{
+    "id": "case_014",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方发动通常魔法「光之护封剑」。我方连锁发动场上的「星圣 昴星团」效果，以正在发动并会留在场上的「光之护封剑」为对象，试图将其回到手牌。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "光之护封剑",
+                    "operation_type": "activate_card",
+                    "effect_id": "main_effect",
+                    "effect_summary": "发动后留在场上，使对手怪兽变为表侧表示并限制对手攻击。",
+                    "effect_features": [
+                        "target_1_card_on_field"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "星圣 昴星团",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "xyz",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "光之护封剑",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "normal_spell",
+                            "controller": "opponent",
+                            "current_chain_id": "C1"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "星圣 昴星团",
+        "effect_id": "main_effect",
+        "activation_location": "monster_zone",
+        "chain_response_to": "C1",
+        "declared_cost": [],
+        "declared_targets": [
+            {
+                "card": "光之护封剑",
+                "controller": "opponent",
+                "location": "spell_trap_zone",
+                "zone": "s3",
+                "status": "face_up",
+                "card_type": "spell",
+                "spell_type": "normal_spell",
+                "column_index": 3
+            }
+        ],
+        "declared_effect_purpose": "return_activated_swords_of_revealing_light_to_hand"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作在规则内合法。「光之护封剑」是发动后会在场上表侧表示留下的通常魔法，因此可以在同一连锁上成为『将那张卡回到手牌』效果的对象。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "当前 C1 为对方发动通常魔法「光之护封剑」，该卡发动后会在场上表侧表示留下。",
+            "我方「星圣 昴星团」试图连锁发动效果，以场上的1张卡「光之护封剑」为对象将其回到手牌。",
+            "官方Q&A区分了发动后通常会送墓的通常魔法/速攻魔法/通常陷阱，和发动后会在场上表侧表示留下的通常魔法/通常陷阱。",
+            "对于「光之护封剑」这类发动后会留在场上的卡，可以在其发动的同一连锁上以其为对象发动回手/回卡组效果。",
+            "因此，以正在发动的「光之护封剑」为对象发动「星圣 昴星团」效果是合法的。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_014_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「光の護封剣」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4354&request_locale=ja",
+                "official_id": "cid:4354",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "光の護封剣"
+            },
+            {
+                "id": "src_case_014_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「光之护封剑」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4354&request_locale=cn",
+                "official_id": "cid:4354",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "光之护封剑"
+            },
+            {
+                "id": "src_case_014_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「セイクリッド・プレアデス」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=9824&request_locale=ja",
+                "official_id": "cid:9824",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    5
+                ],
+                "lookup_query": "セイクリッド・プレアデス"
+            },
+            {
+                "id": "src_case_014_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「星圣 昴星团」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=9824&request_locale=cn",
+                "official_id": "cid:9824",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    5
+                ],
+                "lookup_query": "星圣 昴星团"
+            },
+            {
+                "id": "src_case_014_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "通常魔法・速攻魔法・儀式魔法・通常罠カードの発動にチェーンして、それを対象に『そのカードを手札に戻す』効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=8129&request_locale=ja",
+                "official_id": "fid:8129",
+                "language": "ja",
+                "source_updated_at": "2026-06-06",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试已发动的魔法/陷阱是否能作为回手效果对象。选用官方Q&A中直接列举的「光の護封剣」正例。"
+}

@@ -1,0 +1,302 @@
+{
+    "id": "case_048",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前「暗之咒缚」在「圣骑士 崔斯坦」保护下的适用状态如何？",
+    "natural_language_context": "己方场上有「圣骑士 崔斯坦」和「圣骑士 高文」（原攻击力1900）。特里斯坦的①效果：「只要自己场上有这张卡以外的圣骑士怪兽存在，对方不能选择这张卡以外的自己场上攻击力1800未满的怪兽为攻击对象，也不能作为效果的对象」。对方对盖文发动了「暗之咒缚」（降低700攻击力→盖文变为1200，已适用中）。之后特里斯坦的特殊召唤使场上同时存在两只圣骑士。现在对方试图用另一张卡取盖文为效果对象：此时盖文攻击力已为1200而特里斯坦保护生效——这个对象选择是否合法？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "暗之咒缚",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "apply_attack_decrease_and_restrictions",
+                        "target": "圣骑士 高文"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "圣骑士 崔斯坦",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "圣骑士 高文",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "某取对象效果"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "暗之咒缚",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "description": "暗之咒缚已适用，盖文攻击力已降至1200"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "select_target",
+        "card": "某取对象效果",
+        "declared_targets": [
+            {
+                "card": "圣骑士 高文",
+                "controller": "self",
+                "location": "monster_zone",
+                "zone": "m3",
+                "status": "face_up",
+                "card_type": "monster"
+            }
+        ]
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不能再以盖文为对象。暗之咒缚已先于特里斯坦适用，不受特里斯坦后来生效的保护影响；但特里斯坦保护生效之后，再试图用新的效果取盖文为对象时不合法，因为此时盖文的当前攻击力（1200）已低于1800，而特里斯坦正在保护。时间顺序上是：暗之咒缚（先适用，不受后续保护影响）→特里斯坦保护生效→此后新效果不能再取此时攻击力不足1800的盖文为对象。",
+        "failed_check": "target_legality",
+        "reasoning_steps": [
+            "圣骑士 崔斯坦的①效果：有别的圣骑士怪兽存在时，保护攻击力不足1800的同伴不被取对象。",
+            "暗之咒缚对这回合先适用：盖文攻击力从1900降到1200，此时特里斯坦尚未在场。",
+            "特里斯坦后来出场，保护生效：此后任何新的效果不能以攻击力不足1800的同伴为对象。",
+            "但暗之咒缚本身的持续适用不因特里斯坦后来出现而被无效——已适用效果在适用时点是合规的。",
+            "因此：暗之咒缚持续给盖文'降700攻'不受特里斯坦干扰。但在此之后，对方不能再以盖文为新的效果对象。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_048_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「聖騎士トリスタン」が存在する状況で、モンスターを対象に取り続ける「闇の呪縛」が発動した場合、どうなりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=13728&request_locale=ja",
+                "official_id": "fid:13728",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_048_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "聖騎士トリスタン",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10813&request_locale=ja",
+                "official_id": "cid:10813",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_048_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "闇の呪縛",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4675&request_locale=ja",
+                "official_id": "cid:4675",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_048_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "圣骑士 崔斯坦（聖騎士トリスタン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/53550467",
+                "official_id": "id:53550467",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_048_05",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "暗之咒缚（闇の呪縛）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/29267084",
+                "official_id": "id:29267084",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_048_06",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "圣骑士 高文（聖騎士ガウェイン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/19680539",
+                "official_id": "id:19680539",                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:13728。截至 2017-03-24 的裁定。中文卡名「圣骑士 崔斯坦」「圣骑士 高文」「暗之咒缚」来自本地 cards.cdb，非 KONAMI 官方简中来源。"
+}

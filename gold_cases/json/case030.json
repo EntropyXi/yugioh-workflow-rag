@@ -1,0 +1,295 @@
+{
+    "id": "case_030",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "「抽牌小丑与封锁鸟」的效果已经适用，本回合双方不能从卡组把卡加入手牌。我方的「秘旋谍－双螺旋」②效果正在处理，确认的对方卡组最上方卡片种类与宣言一致。我方不从卡组加入手牌，而是选择从墓地把1只「秘旋谍」怪兽加入手牌。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "resolving_spyral_double_helix_under_droll_lock_bird",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "秘旋谍－双螺旋",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_2",
+                    "effect_label": "②",
+                    "effect_summary": "宣言卡的种类，确认对方卡组最上方；若正确，从自己卡组或墓地选1只「秘旋谍」怪兽加入手牌或在连接端特殊召唤。",
+                    "effect_features": [
+                        "declare_card_type_and_apply_spyral_search_or_summon"
+                    ],
+                    "activation_start_location": "extra_monster_zone",
+                    "activation_location": "extra_monster_zone",
+                    "activation_zone": "emz_left",
+                    "activation_column_index": null
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "秘旋谍－双螺旋",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "link",
+                            "position": "attack",
+                            "link_rating": 2
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "秘旋谍怪兽"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "抽牌小丑与封锁鸟",
+                "restriction": "players_cannot_add_cards_from_deck_to_hand",
+                "description": "这个回合，双方不能从卡组把卡加入手牌。"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "秘旋谍－双螺旋",
+        "effect_id": "effect_2",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "确认卡种正确后，不从卡组加入手牌，改为从墓地选择1只「秘旋谍」怪兽加入手牌。"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该处理合法。「抽牌小丑与封锁鸟」适用中，仍可以发动并处理「秘旋谍－双螺旋」②效果。若确认的卡种正确，不能选择从卡组加入手牌，但可以选择从墓地加入手牌，或选择特殊召唤到此卡的连接端。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "「抽牌小丑与封锁鸟」适用中，双方不能从卡组把卡加入手牌。",
+            "「秘旋谍－双螺旋」②效果包含确认卡种正确后，从卡组或墓地选择「秘旋谍」怪兽，并加入手牌或特殊召唤的处理。",
+            "官方Q&A确认，在「抽牌小丑与封锁鸟」适用的回合，仍可以发动「秘旋谍－双螺旋」②效果。",
+            "处理时若确认的卡种正确，不能从卡组选择并加入手牌。",
+            "但可以选择从墓地把「秘旋谍」怪兽加入手牌，或选择特殊召唤到连接端；本案选择墓地加入手牌，因此合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_030_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ドロール＆ロックバード」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=9279&request_locale=ja",
+                "official_id": "cid:9279",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4
+                ],
+                "lookup_query": "ドロール＆ロックバード"
+            },
+            {
+                "id": "src_case_030_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「抽牌小丑与封锁鸟」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=9279&request_locale=cn",
+                "official_id": "cid:9279",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4
+                ],
+                "lookup_query": "抽牌小丑与封锁鸟"
+            },
+            {
+                "id": "src_case_030_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「SPYRAL－ザ・ダブルヘリックス」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13371&request_locale=ja",
+                "official_id": "cid:13371",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "SPYRAL－ザ・ダブルヘリックス"
+            },
+            {
+                "id": "src_case_030_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「秘旋谍－双螺旋」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13371&request_locale=cn",
+                "official_id": "cid:13371",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "秘旋谍－双螺旋"
+            },
+            {
+                "id": "src_case_030_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ドロール＆ロックバード」の効果が適用されているターンに「SPYRAL－ザ・ダブルヘリックス」の効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=14784&request_locale=ja",
+                "official_id": "fid:14784",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2024-12-21"
+            }
+        ]
+    },
+    "case_notes": "resolution_history 为空数组：当前判断点前没有需要结构化记录的已处理连锁结果；相关持续限制记录在 known_constraints 中。"
+}

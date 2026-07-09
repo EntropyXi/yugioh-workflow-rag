@@ -1,0 +1,321 @@
+{
+    "id": "case_035",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方「A・O・J 灾难兽」与对方「新空间人 大地鼹鼠」进行战斗。伤害步骤开始时，「A・O・J 灾难兽」的必发效果作为 C1，「新空间人 大地鼹鼠」的可选效果作为 C2。C2 已逆顺处理，双方怪兽已分别返回手牌/额外卡组。现在要继续处理 C1 并破坏「新空间人 大地鼹鼠」。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "after_C2_resolved_before_resolving_C1",
+        "phase": "battle_phase",
+        "step": "damage_step",
+        "damage_step_timing": "start_of_damage_step",
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "A・O・J 灾难兽",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_summary": "和非暗属性怪兽战斗的伤害步骤开始时必定发动，破坏那只怪兽。",
+                    "effect_features": [
+                        "mandatory_damage_step_trigger",
+                        "destroy_target"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m2",
+                    "activation_column_index": 2,
+                    "effect_label": "①",
+                    "declared_targets": [
+                        {
+                            "card": "新空间人 大地鼹鼠",
+                            "controller": "opponent",
+                            "location": "monster_zone",
+                            "zone": "m2",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "monster_type": "effect"
+                        }
+                    ]
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "opponent",
+                    "card": "新空间人 大地鼹鼠",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_summary": "和对方怪兽战斗的伤害步骤开始时可以发动，双方怪兽返回手牌。",
+                    "effect_features": [
+                        "optional_damage_step_trigger",
+                        "return_battling_monsters_to_hand_or_extra_deck"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m2",
+                    "activation_column_index": 2,
+                    "effect_label": "①"
+                }
+            ]
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C2",
+                "card": "新空间人 大地鼹鼠",
+                "effect_id": "effect_1",
+                "effect_label": "①",
+                "result": [
+                    {
+                        "action": "return_to_hand",
+                        "card": "新空间人 大地鼹鼠",
+                        "from": "monster_zone",
+                        "to": "hand"
+                    },
+                    {
+                        "action": "return_to_extra_deck",
+                        "card": "A・O・J 灾难兽",
+                        "from": "monster_zone",
+                        "to": "extra_deck"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "新空间人 大地鼹鼠"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "A・O・J 灾难兽",
+        "effect_id": "effect_1",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "继续破坏原本作为战斗对象的「新空间人 大地鼹鼠」。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。C2 已使双方怪兽离开怪兽区域，C1 处理时不再破坏「新空间人 大地鼹鼠」。",
+        "failed_check": "effect_resolution_rule",
+        "reasoning_steps": [
+            "两个效果都在伤害步骤开始时发动，必发的「A・O・J 灾难兽」先组成 C1，可选的「新空间人 大地鼹鼠」后组成 C2。",
+            "连锁逆顺处理，C2 先让「新空间人 大地鼹鼠」回手牌，并让作为同调怪兽的「A・O・J 灾难兽」返回额外卡组。",
+            "官方 Q&A 明确，在这种处理后 C1 的破坏处理不适用。",
+            "因此不能继续声明由 C1 破坏已经离场的「新空间人 大地鼹鼠」。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_035_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「A・O・J カタストル」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7552&request_locale=ja",
+                "official_id": "cid:7552",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_035_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「A・O・J 灾难兽」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7552&request_locale=cn",
+                "official_id": "cid:7552",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_035_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「N・グラン・モール」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6770&request_locale=ja",
+                "official_id": "cid:6770",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_035_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「新空间人 大地鼹鼠」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6770&request_locale=cn",
+                "official_id": "cid:6770",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_035_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「A・O・J カタストル」と「N・グラン・モール」が戦闘を行う場合、それぞれのモンスター効果の発動と処理はどうなりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=7840&request_locale=ja",
+                "official_id": "fid:7840",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2020-03-09"
+            }
+        ]
+    },
+    "case_notes": "覆盖伤害步骤同一时点诱发组链与逆顺处理后的不适用。"
+}

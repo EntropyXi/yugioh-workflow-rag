@@ -1,0 +1,360 @@
+{
+    "id": "case_008",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个处理是否在规则内合法？",
+    "natural_language_context": "对方场上存在「黯蜜★史拿奇」（额外怪兽区）和「杯糕喵☆黯蜜」。对方特殊召唤了史拿奇，发动其①效果（C1）。我方从手牌发动「调和之天救龙」的①效果，展示手牌的此卡与额外牌组的5只同步怪兽（含「金云兽－马龙」），合计6张（C2）。随后我方连锁发动「禁忌的一滴」（C3），将手牌的「调和之天救龙」作为cost送至墓地，选择史拿奇为对象。C3处理后天救龙已不在手牌。现在C2即将处理，天救龙的效果能否正常处理●4（将马龙送墓）和●6（破坏对方场上的1只怪兽），尽管●2的特召部分因自身不在手牌而无法执行？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "before_resolving_C2",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "黯蜜★史拿奇",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "此卡特殊召唤时，从手牌・牌组将1张'黯蜜'场地魔法卡以表侧表示放在自己场上",
+                    "effect_features": [],
+                    "activation_start_location": "extra_monster_zone",
+                    "activation_location": "extra_monster_zone",
+                    "activation_zone": "emz_left",
+                    "activation_column_index": null
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "self",
+                    "card": "调和之天救龙",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "向对手出示手牌的此卡与额外牌组最多5只同步怪兽。根据出示的数量适用：2只以上将此卡特殊召唤，4只以上将出示的同步怪兽中的1只送至墓地，6只将对手场上的1只怪兽破坏",
+                    "effect_features": [],
+                    "activation_start_location": "hand",
+                    "activation_location": "hand",
+                    "activation_zone": null,
+                    "activation_column_index": null
+                },
+                {
+                    "chain_id": "C3",
+                    "player": "self",
+                    "card": "禁忌的一滴",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "将手牌・场上的卡送至墓地作为cost，依数量挑选对手场上的效果怪兽使其效果无效化且攻击力减半",
+                    "effect_features": [],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 2,
+                    "declared_cost": [
+                        {
+                            "type": "send_to_graveyard",
+                            "from": "hand",
+                            "card": "调和之天救龙"
+                        }
+                    ],
+                    "declared_targets": [
+                        {
+                            "card": "黯蜜★史拿奇",
+                            "controller": "opponent",
+                            "location": "extra_monster_zone",
+                            "zone": "emz_left",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C3",
+                "card": "禁忌的一滴",
+                "result": [
+                    {
+                        "action": "negate_effects_and_halve_atk",
+                        "target": "黯蜜★史拿奇",
+                        "duration": "until_end_of_turn"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "禁忌的一滴",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "quick_play_spell",
+                            "controller": "self",
+                            "current_chain_id": "C3"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "调和之天救龙"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "杯糕喵☆黯蜜",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "黯蜜★史拿奇",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 1,
+                            "controller": "opponent"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "调和之天救龙",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "chain_id_to_resolve": "C2",
+        "activation_location_at_activation": "hand",
+        "current_card_location": "graveyard",
+        "declared_resolution": "apply_4plus_and_6_effects",
+        "declared_effect_purpose": "send_marrong_to_graveyard_and_destroy_opponent_monster"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该处理合法。天救龙的效果由多个●项组成，各项处理互不干涉。尽管●2（将自身特殊召唤）因自身已不在手牌而无法执行，●4（将马龙送墓）和●6（破坏对方怪兽）仍可正常处理。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "天救龙的①效果根据出示数量依次适用多个●项，各项为独立的处理。",
+            "C3禁忌的一滴将天救龙作为cost从手牌送墓，C2处理时天救龙已不在手牌。",
+            "●2'将此卡特殊召唤'因天救龙不在手牌而无法执行，此项不处理。",
+            "●4'将所出示的同步怪兽中的1只送至墓地'不受前项影响，可正常处理。将马龙从额外牌组送墓。",
+            "●6'将对手场上的1只怪兽破坏'不受前项影响，可正常处理。选择对方场上的1只怪兽破坏。",
+            "多项●效果的处理互不干涉，前一项未成功不影响后续项的处理。",
+            "因此天救龙的处理方式合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_008_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「调和之天救龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22533&request_locale=ja",
+                "official_id": "cid:22533",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "lookup_query": "调和之天救龙"
+            },
+            {
+                "id": "src_case_008_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「禁忌的一滴」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15299&request_locale=ja",
+                "official_id": "cid:15299",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "禁忌的一滴"
+            },
+            {
+                "id": "src_case_008_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「調和ノ天救竜」の効果の処理時に、「調和ノ天救竜」が手札に存在しない場合、どうなりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24286&request_locale=ja",
+                "official_id": "fid:24286",
+                "language": "ja",
+                "source_updated_at": "2026-02-05",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ]
+            },
+            {
+                "id": "src_case_008_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「调和之天救龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22533&request_locale=cn",
+                "official_id": "cid:22533",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_008_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「禁忌的一滴」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15299&request_locale=cn",
+                "official_id": "cid:15299",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试多项●效果中某一项因条件不满足无法执行时，后续项是否仍可正常处理。核心裁定：●项之间互不干涉，前一项的不成功不影响后续项。素材来源于B站视频 BV1kL6jBmEhb。"
+}

@@ -1,0 +1,8 @@
+name: YGO_PROJECT
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - "jsonschema[format]>=4.18,<5"

@@ -1,0 +1,384 @@
+{
+    "id": "case_011",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方发动场地魔法「联合机库」，对方没有连锁。我方自己连锁发动「活死人的呼唤」，从墓地特殊召唤「Y－龙首」。在同一连锁处理中，我方试图立刻发动「联合机库」②效果，以刚特殊召唤的「Y－龙首」为对象从牌组装备联合怪兽。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "during_resolving_C1_after_C2_resolved",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "联合机库",
+                    "operation_type": "activate_card",
+                    "effect_id": "card_activation",
+                    "effect_label": "①",
+                    "effect_summary": "作为此卡发动时的效果处理，可从牌组将1只机械族・光属性联合怪兽加入手牌。",
+                    "effect_features": [
+                        "add_from_deck_to_hand"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "field_spell_zone",
+                    "activation_zone": "field_spell_zone",
+                    "activation_column_index": null
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "self",
+                    "card": "活死人的呼唤",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "以自己墓地的1只怪兽为对象发动此卡，将该怪兽以攻击表示特殊召唤。",
+                    "effect_features": [
+                        "special_summon_from_graveyard"
+                    ],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 2,
+                    "declared_targets": [
+                        {
+                            "card": "Y－龙首",
+                            "controller": "self",
+                            "location": "graveyard",
+                            "zone": "graveyard",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "monster_type": "effect"
+                        }
+                    ]
+                }
+            ]
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C2",
+                "card": "活死人的呼唤",
+                "effect_id": "effect_1",
+                "effect_label": "①",
+                "result": [
+                    {
+                        "action": "special_summon",
+                        "card": "Y－龙首",
+                        "from": "self.graveyard",
+                        "to": "self.field.monster_zones.m3"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "Y－龙首",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self",
+                            "attribute": "光",
+                            "race": "机械族"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "活死人的呼唤",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "self",
+                            "current_chain_id": "C2"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": {
+                    "card": {
+                        "name": "联合机库",
+                        "status": "face_up",
+                        "card_type": "spell",
+                        "spell_type": "field_spell",
+                        "controller": "self",
+                        "current_chain_id": "C1"
+                    }
+                },
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "联合机库",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "field_spell_zone",
+        "declared_cost": [],
+        "declared_targets": [
+            {
+                "card": "Y－龙首",
+                "controller": "self",
+                "location": "monster_zone",
+                "zone": "m3",
+                "status": "face_up",
+                "position": "attack",
+                "card_type": "monster",
+                "monster_type": "effect",
+                "column_index": 3
+            }
+        ],
+        "declared_effect_purpose": "equip_union_monster_from_deck_during_same_chain_resolution"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作在规则内不合法。虽然「Y－龙首」已经因同一连锁中的「活死人的呼唤」特殊召唤成功，但此时「联合机库」这张卡的发动处理尚未完成，不能在连锁处理中另行发动「联合机库」②的诱发效果。",
+        "failed_check": "activation_window",
+        "reasoning_steps": [
+            "当前仍处于同一连锁的处理过程中，C2「活死人的呼唤」已经处理并特殊召唤了「Y－龙首」。",
+            "「Y－龙首」是机械族・光属性的联合怪兽，表面上满足「联合机库」②的触发事件。",
+            "但是该特殊召唤发生在「联合机库」这张卡的发动所形成的连锁处理尚未全部完成时。",
+            "官方Q&A明确：若在「联合机库」的卡的发动处理中，因连锁发动的效果特殊召唤了机械族・光属性联合怪兽，由于「联合机库」的卡的发动时处理尚未完成，不能发动其『召唤・特殊召唤的场合』的效果。",
+            "因此，试图在同一连锁处理途中发动「联合机库」②效果的操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_011_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ユニオン格納庫」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12586&request_locale=ja",
+                "official_id": "cid:12586",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "lookup_query": "ユニオン格納庫"
+            },
+            {
+                "id": "src_case_011_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「联合机库」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12586&request_locale=cn",
+                "official_id": "cid:12586",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "lookup_query": "联合机库"
+            },
+            {
+                "id": "src_case_011_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「リビングデッドの呼び声」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4989&request_locale=ja",
+                "official_id": "cid:4989",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1
+                ],
+                "lookup_query": "リビングデッドの呼び声"
+            },
+            {
+                "id": "src_case_011_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「活死人的呼唤」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4989&request_locale=cn",
+                "official_id": "cid:4989",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1
+                ],
+                "lookup_query": "活死人的呼唤"
+            },
+            {
+                "id": "src_case_011_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「Y－ドラゴン・ヘッド」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5552&request_locale=ja",
+                "official_id": "cid:5552",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ],
+                "lookup_query": "Y-ドラゴン・ヘッド"
+            },
+            {
+                "id": "src_case_011_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「Y－龙首」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5552&request_locale=cn",
+                "official_id": "cid:5552",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ],
+                "lookup_query": "Y－龙首"
+            },
+            {
+                "id": "src_case_011_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ユニオン格納庫」のカードの発動にチェーンして、機械族・光属性のユニオンモンスターが特殊召喚された場合、効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=19471&request_locale=ja",
+                "official_id": "fid:19471",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试卡的发动处理尚未完成时，因同一连锁中特殊召唤满足条件的怪兽，是否可以另开诱发效果。官方依据为KONAMI Q&A fid:19471。"
+}

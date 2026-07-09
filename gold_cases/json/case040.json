@@ -1,0 +1,319 @@
+{
+    "id": "case_040",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方场上有「青眼卡通龙」和「完美卡通世界」。对方发动「气旋」以「完美卡通世界」为对象；处理时我方适用「完美卡通世界」③效果把「青眼卡通龙」暂时除外，随后「完美卡通世界」被「气旋」破坏送墓。处理结束后「青眼卡通龙」返回场上。现在要因为刚才「完美卡通世界」已经被破坏，适用「青眼卡通龙」自身效果把它破坏。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "after_toon_dragon_returned_from_temporary_banishment",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "气旋",
+                "effect_id": "card_activation",
+                "effect_label": "发动处理",
+                "result": [
+                    {
+                        "action": "banish",
+                        "card": "青眼卡通龙",
+                        "from": "monster_zone",
+                        "to": "banished"
+                    },
+                    {
+                        "action": "destroy",
+                        "card": "完美卡通世界",
+                        "from": "field_spell_zone",
+                        "to": "graveyard"
+                    },
+                    {
+                        "action": "return_to_field",
+                        "card": "青眼卡通龙",
+                        "from": "banished",
+                        "to": "monster_zone"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "青眼卡通龙",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "toon"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [
+                "完美卡通世界"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "青眼卡通龙",
+        "effect_id": "self_destroy_when_toon_world_destroyed",
+        "effect_label": "卡通世界被破坏时自毁",
+        "activation_location": "monster_zone",
+        "activation_zone": "m2",
+        "declared_effect_purpose": "在暂时除外后返回场上时，追溯适用自身效果破坏「青眼卡通龙」。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。卡通怪兽暂时除外期间「卡通世界」被破坏，怪兽返回后不会因这个已经发生过的事件再被自身效果破坏。",
+        "failed_check": "effect_resolution_rule",
+        "reasoning_steps": [
+            "「完美卡通世界」③让「青眼卡通龙」在处理过程中暂时除外。",
+            "「气旋」破坏「完美卡通世界」这一事件发生时，「青眼卡通龙」不在场上。",
+            "官方 Q&A 明确，除外期间发生的「卡通世界」被破坏事件，在怪兽返回后不会追溯触发或适用自身破坏。",
+            "因此返回后的「青眼卡通龙」不会因刚才的破坏事件被破坏。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_040_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ブルーアイズ・トゥーン・ドラゴン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4773&request_locale=ja",
+                "official_id": "cid:4773",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「青眼卡通龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4773&request_locale=cn",
+                "official_id": "cid:4773",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「完全なる世界 トゥーン・ワールド」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23161&request_locale=ja",
+                "official_id": "cid:23161",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「完美卡通世界」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23161&request_locale=cn",
+                "official_id": "cid:23161",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「サイクロン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4909&request_locale=ja",
+                "official_id": "cid:4909",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「气旋」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4909&request_locale=cn",
+                "official_id": "cid:4909",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_040_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ブルーアイズ・トゥーン・ドラゴン」が存在する時に「完全なる世界 トゥーン・ワールド」を対象に「サイクロン」を発動し、その処理時に③の効果で「ブルーアイズ・トゥーン・ドラゴン」を除外した場合、戻った後に④の効果で破壊されますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24348&request_locale=ja",
+                "official_id": "fid:24348",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2026-06-11"
+            }
+        ]
+    },
+    "case_notes": "覆盖效果处理 / 暂时除外期间事件不追溯。"
+}

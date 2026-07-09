@@ -1,0 +1,246 @@
+{
+    "id": "case_027",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "「魔封之芳香」已经表侧适用中。我方试图从手牌把一张灵摆怪兽作为魔法卡发动到灵摆区域。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": null,
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [
+                "任意灵摆怪兽"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "魔封之芳香",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "controller": "opponent",
+                            "trap_type": "continuous_trap"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "魔封之芳香",
+                "restriction": "spell_cards_must_be_set_before_activation",
+                "description": "双方不能直接从手牌发动魔法卡，魔法卡必须先盖放。"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "任意灵摆怪兽",
+        "activation_location": "hand",
+        "activation_zone": "s1",
+        "activation_column_index": 1,
+        "declared_targets": [],
+        "declared_effect_purpose": "作为魔法卡发动到灵摆区域"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作不合法。「魔封之芳香」已经适用时，不能把灵摆怪兽作为魔法卡发动到灵摆区域。不过，如果两个灵摆区域已经放置了灵摆怪兽，之后「魔封之芳香」才适用，仍可正常进行灵摆召唤。",
+        "failed_check": "activation_condition",
+        "reasoning_steps": [
+            "当前「魔封之芳香」已经表侧适用。",
+            "把灵摆怪兽放置到灵摆区域的动作，是把该灵摆怪兽作为魔法卡发动。",
+            "官方Q&A确认，「魔封之芳香」适用中，不能把灵摆怪兽作为魔法卡发动到灵摆区域。",
+            "若两个灵摆区域已经放置灵摆怪兽，之后「魔封之芳香」才适用，仍可以正常进行灵摆召唤。",
+            "本案尝试的是在限制已经适用后新发动灵摆怪兽，因此不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_027_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「魔封じの芳香」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5008&request_locale=ja",
+                "official_id": "cid:5008",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "魔封じの芳香"
+            },
+            {
+                "id": "src_case_027_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「魔封之芳香」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5008&request_locale=cn",
+                "official_id": "cid:5008",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "魔封之芳香"
+            },
+            {
+                "id": "src_case_027_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「魔封じの芳香」が適用されている場合、ペンデュラムモンスターを魔法カードとして発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=13149&request_locale=ja",
+                "official_id": "fid:13149",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            }
+        ]
+    },
+    "case_notes": "resolution_history 为空数组：当前判断点前没有需要结构化记录的已处理连锁结果；相关持续限制记录在 known_constraints 中。"
+}

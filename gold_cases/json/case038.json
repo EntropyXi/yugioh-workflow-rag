@@ -1,0 +1,276 @@
+{
+    "id": "case_038",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方发动「地中骇界的决战」，并准备适用其使发动后的效果不被无效的处理。对方现在想要连锁发动「神之通告」，无效这张陷阱卡的发动。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "chain_building_response_to_final_battle_activation",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "地中骇界的决战",
+                    "operation_type": "activate_card",
+                    "effect_id": "card_activation",
+                    "effect_summary": "发动陷阱卡并选择使本次发动的效果不会被无效的处理。",
+                    "effect_features": [
+                        "activated_effect_cannot_be_negated"
+                    ],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 2
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "地中骇界的决战",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "controller": "self",
+                            "trap_type": "normal_trap"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "神之通告"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "activate_card",
+        "card": "神之通告",
+        "activation_location": "hand",
+        "chain_response_to": "C1",
+        "declared_effect_purpose": "无效「地中骇界的决战」的发动。"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "合法。“发动的效果不会被无效”只保护发动成功后的效果本身，不保护卡片或效果的发动不被无效。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "「地中骇界的决战」相关处理是使已经发动的效果不被无效。",
+            "官方 Q&A 明确，这类文本不阻止对方无效该卡片或效果的发动本身。",
+            "「神之通告」要处理的是无效发动，而不是在发动已成立后无效效果处理。",
+            "因此可以连锁发动「神之通告」。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_038_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「サブテラーの決戦」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13024&request_locale=ja",
+                "official_id": "cid:13024",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_038_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「地中骇界的决战」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13024&request_locale=cn",
+                "official_id": "cid:13024",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_038_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神の通告」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12187&request_locale=ja",
+                "official_id": "cid:12187",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_038_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神之通告」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12187&request_locale=cn",
+                "official_id": "cid:12187",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_038_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "『発動した効果は無効化されない』効果が適用されている場合、該当する効果の発動自体を無効にできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=21378&request_locale=ja",
+                "official_id": "fid:21378",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2025-09-06"
+            }
+        ]
+    },
+    "case_notes": "覆盖持续/保护语义：效果不被无效与发动不被无效不同。"
+}

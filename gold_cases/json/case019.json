@@ -1,0 +1,299 @@
+{
+    "id": "case_019",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "本回合我方已经发动过「海晶少女 珊瑚海葵」①效果，因此适用『这个效果发动后，直到回合结束时自己不是水属性怪兽不能特殊召唤』。我方场上存在「世海龙 西兰提斯」「海晶少女 珊瑚海葵」以及其他非水属性怪兽。我方试图发动「世海龙 西兰提斯」②效果，将场上的怪兽全部除外，再只把能特殊召唤的水属性怪兽特殊召唤回来，非水属性怪兽保持除外。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": {
+                            "name": "海晶少女 珊瑚海葵",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 2,
+                            "controller": "self",
+                            "attribute": "水"
+                        }
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "任意非水属性怪兽",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self",
+                            "attribute": "光"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "世海龙 西兰提斯",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 4,
+                            "controller": "self",
+                            "attribute": "水"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": [
+                {
+                    "card": "海晶少女 珊瑚海葵",
+                    "effect_id": "effect_1",
+                    "effect_label": "①"
+                }
+            ]
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "summon_restriction",
+                "source_card": "海晶少女 珊瑚海葵",
+                "restriction": "self_can_only_special_summon_water_monsters_until_end_of_turn"
+            }
+        ],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "世海龙 西兰提斯",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "monster_zone",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "banish_all_monsters_then_special_summon_only_water_monsters_back"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作在规则内合法。即使我方当前只能特殊召唤水属性怪兽，也可以发动「世海龙 西兰提斯」②效果；处理时先除外场上全部怪兽，然后只将此时能特殊召唤的怪兽尽可能特殊召唤回来，不能特殊召唤的非水属性怪兽保持除外。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "我方已经适用「海晶少女 珊瑚海葵」①效果后的限制，本回合只能特殊召唤水属性怪兽。",
+            "「世海龙 西兰提斯」②效果的处理包含先将场上的怪兽全部除外，再将以此效果除外的怪兽尽可能特殊召唤回场上。",
+            "官方Q&A明确：在只能特殊召唤特定怪兽的状态下，不论场上怪兽属性如何，「世海龙 西兰提斯」②效果都可以发动。",
+            "处理时先除外全部怪兽；之后只有当前能特殊召唤的水属性怪兽会被特殊召唤回来。",
+            "以此效果除外的非水属性怪兽不能特殊召唤回来，保持除外。因此该操作合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_019_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「世海龍ジーランティス」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17805&request_locale=ja",
+                "official_id": "cid:17805",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    4,
+                    5
+                ],
+                "lookup_query": "世海龍ジーランティス"
+            },
+            {
+                "id": "src_case_019_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「世海龙 西兰提斯」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17805&request_locale=cn",
+                "official_id": "cid:17805",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    4,
+                    5
+                ],
+                "lookup_query": "世海龙 西兰提斯"
+            },
+            {
+                "id": "src_case_019_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「海晶乙女コーラルアネモネ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14489&request_locale=ja",
+                "official_id": "cid:14489",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "海晶乙女コーラルアネモネ"
+            },
+            {
+                "id": "src_case_019_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「海晶少女 珊瑚海葵」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14489&request_locale=cn",
+                "official_id": "cid:14489",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "海晶少女 珊瑚海葵"
+            },
+            {
+                "id": "src_case_019_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "特定のモンスターしか特殊召喚できない状況で、「世海龍ジーランティス」の『②』の効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23819&request_locale=ja",
+                "official_id": "fid:23819",
+                "language": "ja",
+                "source_updated_at": "2022-12-30",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试特殊召唤限制下能否发动包含『尽可能特殊召唤』的效果，以及处理时不能特殊召唤的怪兽是否保持除外。官方依据为 Q&A fid:23819。"
+}

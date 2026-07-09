@@ -1,0 +1,245 @@
+{
+    "id": "case_046",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个灵摆召唤是否可以执行？",
+    "natural_language_context": "对方场上表侧表示的陷阱卡「通道限制」适用②效果：「对方在自身的主要怪兽区域召唤/特殊召唤怪兽的场合，必须从可使用的最左侧区域开始依次使用」。己方额外卡组中有2只表侧表示的灵摆怪兽可以灵摆召唤；己方主要怪兽区域全部空置。己方的主要怪兽区域最左侧是m1（己方视角通道索引1），但左端额外怪兽区域有己方「I：P伪装舞会莱娜」（连接端指向右侧）。灵摆召唤从额外卡组出怪兽时必须出到连接怪兽的连接端。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "I：P伪装舞会莱娜",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 2,
+                            "controller": "self"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "通道限制",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "special_summon",
+        "card": "灵摆怪兽（额外卡组）2只",
+        "declared_effect_purpose": "pendulum_summon_from_extra_deck"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不能灵摆召唤。从额外卡组的灵摆召唤必须将怪兽出到连接怪兽的连接端，但I:P在左端EMZ上、其连接端指向的是右侧的主怪兽区域。通道限制要求从最左侧开始依次使用区域。结果：最左侧可用区域不在任何连接端上，因此从额外卡组一只也出不了——不能进行灵摆召唤。",
+        "failed_check": "zone_availability",
+        "reasoning_steps": [
+            "通道限制②要求：对方在主要怪兽区召唤/特殊召唤怪兽时，必须从最左侧可用区开始依次使用。",
+            "从额外卡组进行的灵摆召唤、还有从额外卡组的连接召唤等，有一个共同规则：必须将怪兽特殊召唤至连接怪兽的连接端上。",
+            "此局面中：I:P在左端EMZ（己方视角），连接箭头指向右、右下——对应的主怪兽区在右侧。",
+            "己方主要怪兽区全空，按通道限制须从m1（通道索引1，即最左侧）开始使用。",
+            "但m1不在任何连接怪兽的连接端上，来自额外卡组的灵摆怪兽不能出到m1。",
+            "由于最左侧可用区无法使用来自额外卡组的灵摆召唤，该次灵摆召唤整体不能被进行（连1只都出不了）。",
+            "官方Q&A情形B的结论即是「1体もペンデュラム召喚できません」——一只也不能灵摆召唤。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_046_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「レーン・リストリクション」適用中にペンデュラム召喚できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24318&request_locale=ja",
+                "official_id": "fid:24318",
+                "language": "ja",
+                "source_updated_at": "2026-04-24",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    7
+                ]
+            },
+            {
+                "id": "src_case_046_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "レーン・リストリクション",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23027&request_locale=ja",
+                "official_id": "cid:23027",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_046_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "I：Pマスカレーナ",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14676&request_locale=ja",
+                "official_id": "cid:14676",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_046_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "I：P伪装舞会莱娜",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14676&request_locale=cn",
+                "official_id": "cid:14676",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:24318 更新日 2026-04-24。本 case 仅选取 Q&A 中情形B（左EMZ有I:P、场上无其他怪兽、额外卡组2只可灵摆召唤→完全不能召唤），不覆盖其他五种情形。"
+}

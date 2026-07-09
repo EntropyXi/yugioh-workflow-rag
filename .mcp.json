@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bilibili-mcp": {
+      "command": "npx",
+      "args": ["-y", "@xzxzzx/bilibili-mcp@latest"]
+    }
+  }
+}

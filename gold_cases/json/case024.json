@@ -1,0 +1,287 @@
+{
+    "id": "case_024",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方场上存在表侧表示的灵摆怪兽卡，手牌有「禁忌的一滴」。我方试图发动「禁忌的一滴」，把场上的这张灵摆怪兽送去墓地作为cost。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": null,
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [
+                "禁忌的一滴"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "任意灵摆怪兽",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "pendulum",
+                            "position": "attack"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "禁忌的一滴",
+        "activation_location": "hand",
+        "declared_cost": [
+            {
+                "type": "send_to_graveyard",
+                "card": "任意灵摆怪兽",
+                "from": "monster_zone"
+            }
+        ],
+        "declared_targets": [
+            {
+                "card": "对方表侧效果怪兽",
+                "controller": "opponent",
+                "location": "monster_zone",
+                "zone": "m3",
+                "status": "face_up",
+                "card_type": "monster",
+                "monster_type": "effect",
+                "position": "attack",
+                "column_index": 3
+            }
+        ],
+        "declared_effect_purpose": "将场上的灵摆怪兽送去墓地作为发动cost"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作不合法。发动「禁忌的一滴」时，手牌中的灵摆怪兽卡可以送去墓地作为cost；但场上的灵摆怪兽卡要去墓地时会表侧加入额外卡组，不能实际送去墓地，因此通常不能作为“送去墓地”的cost。若有「G・B・猎人」等效果使场上的卡可以送去墓地，则属于例外。",
+        "failed_check": "cost_payability",
+        "reasoning_steps": [
+            "「禁忌的一滴」的发动cost要求把卡送去墓地。",
+            "官方Q&A确认，手牌中的灵摆怪兽卡可以作为该cost送去墓地。",
+            "场上存在的灵摆怪兽卡被送去墓地的场合，会改为表侧加入额外卡组。",
+            "因此场上的灵摆怪兽卡通常不能被选择为「禁忌的一滴」的送墓cost。",
+            "若「G・B・猎人」等效果使场上的卡不能返回卡组，从而能实际送去墓地，则可以作为例外处理。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_024_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「禁じられた一滴」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15299&request_locale=ja",
+                "official_id": "cid:15299",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "禁じられた一滴"
+            },
+            {
+                "id": "src_case_024_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「禁忌的一滴」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15299&request_locale=cn",
+                "official_id": "cid:15299",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "禁忌的一滴"
+            },
+            {
+                "id": "src_case_024_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「G・B・ハンター」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8191&request_locale=ja",
+                "official_id": "cid:8191",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    5
+                ],
+                "lookup_query": "G・B・ハンター"
+            },
+            {
+                "id": "src_case_024_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「G・B・猎人」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8191&request_locale=cn",
+                "official_id": "cid:8191",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    5
+                ],
+                "lookup_query": "G・B・猎人"
+            },
+            {
+                "id": "src_case_024_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「禁じられた一滴」を発動する際のコストとして、ペンデュラムモンスターカードを墓地へ送ることはできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24195&request_locale=ja",
+                "official_id": "fid:24195",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2025-07-03"
+            }
+        ]
+    },
+    "case_notes": "用于测试“送去墓地作为cost”与场上灵摆怪兽改去额外卡组的差异。cost 支付前没有已经处理完成的连锁块。"
+}

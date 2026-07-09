@@ -1,0 +1,297 @@
+{
+    "id": "case_007",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "上回合我方回合，我方发动冰剑龙 镜翠幻种的②效果（C1），对方连锁发动日全食之书（C2）。C2将全场怪兽变为里侧守备表示。C1处理时冰剑龙已是里侧状态，除外了对象怪兽并适用了'下个回合此卡不可使用此效果'的限制。结束阶段日全食之书将冰剑龙翻开。现在对方回合的主要阶段，我方试图再次发动冰剑龙的②效果。请问我方的操作是否正确？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "冰剑龙 镜翠幻种",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "self"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "死狱乡的导化 阿尔贝",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "日全食之书"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "once_per_turn_used",
+                "card": "冰剑龙 镜翠幻种",
+                "effect_id": "effect_2",
+                "effect_label": "②",
+                "description": "上回合处理②效果时自身为里侧表示（被日全食之书盖放），'下个回合不可使用此效果'的限制在里侧状态下适用，结束阶段翻开后限制保留至今"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "冰剑龙 镜翠幻种",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "extra_monster_zone",
+        "activation_zone": "emz_left",
+        "declared_cost": [
+            {
+                "type": "send_to_graveyard",
+                "from": "extra_deck",
+                "card": "烙印龙 白界龙"
+            }
+        ],
+        "declared_targets": [
+            {
+                "card": "死狱乡的导化 阿尔贝",
+                "controller": "opponent",
+                "location": "monster_zone",
+                "zone": "m2",
+                "status": "face_up",
+                "card_type": "monster"
+            }
+        ],
+        "declared_effect_purpose": "banish_1_monster_on_field"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "我方的操作不合法。上回合冰剑龙处理②效果时自身已是里侧表示（被日全食之书C2盖放），'下个回合此卡不可使用此效果'的限制在里侧状态下被适用。日全食之书结束阶段翻开（里→表）不丢失已适用的限制信息，因此本回合冰剑龙不可使用②效果。",
+        "failed_check": "once_per_turn",
+        "reasoning_steps": [
+            "上回合我方回合：C1冰剑龙②效果 → C2对方日全食之书。C2将冰剑龙变为里侧守备表示，C1处理时冰剑龙已处于里侧状态。",
+            "冰剑龙处理②效果时，附加限制'下个回合此卡不可使用此效果'在里侧状态下被适用。",
+            "结束阶段：日全食之书将冰剑龙从里侧守备翻开为表侧。根据裁定，里侧→表侧不丢失已适用的效果信息。",
+            "因此本回合冰剑龙仍受'下个回合不可使用此效果'的限制约束。",
+            "本回合试图再次发动②效果，违反该限制，操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_007_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「冰剑龙 镜翠幻种」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17069&request_locale=ja",
+                "official_id": "cid:17069",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "冰剑龙 镜翠幻种"
+            },
+            {
+                "id": "src_case_007_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「日全食之书」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7752&request_locale=ja",
+                "official_id": "cid:7752",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    4
+                ],
+                "lookup_query": "日全食之书"
+            },
+            {
+                "id": "src_case_007_03",
+                "source_type": "official_rulebook",
+                "authority": "KONAMI",
+                "title": "遊戯王OCG オフィシャルルールブック（マスタールール 2020）",
+                "url": "https://www.yugioh-card.com/japan/howto/data/rulebook_masterrule20200401_ver1.0.pdf",
+                "official_id": "rulebook:master_rule_2020_v1.0",
+                "language": "ja",
+                "source_updated_at": "2020-04-01",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "id": "src_case_007_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「冰剑龙 镜翠幻种」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17069&request_locale=cn",
+                "official_id": "cid:17069",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_007_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「日全食之书」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7752&request_locale=cn",
+                "official_id": "cid:7752",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试怪兽在里侧状态下处理自身效果并附加自我限制后，翻开是否保留限制。核心裁定：里→表不丢失信息，限制保留。与表→里（丢失信息）相反。素材来源于B站视频 BV1b7VgzZEXu。"
+}

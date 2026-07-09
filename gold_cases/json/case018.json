@@ -1,0 +1,295 @@
+{
+    "id": "case_018",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个处理是否在规则内合法？",
+    "natural_language_context": "我方额外怪兽区域存在连接召唤的「淘气仙星・颠茄歌后」，且其连接端没有怪兽。对方发动并处理「技能抽取」。我方主张「淘气仙星・颠茄歌后」不受其他卡发动的效果影响，因此不会被「技能抽取」无效。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "before_resolving_C1",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "技能抽取",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "只要这张卡在魔法与陷阱区域存在，场上全部表侧表示怪兽的效果无效化。",
+                    "effect_features": [
+                        "negate_face_up_monster_effects_continuously"
+                    ],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 4
+                }
+            ]
+        },
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "淘气仙星・颠茄歌后",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 4,
+                            "controller": "self"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "技能抽取",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent",
+                            "current_chain_id": "C1"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "resolve_effect",
+        "card": "技能抽取",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "do_not_negate_trickstar_bella_madonna_because_unaffected_by_activated_effects",
+        "declared_effect_purpose": "apply_skill_drain_without_affecting_bella_madonna"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该处理在规则内不合法。「淘气仙星・颠茄歌后」不受的是其他卡发动的效果；而「技能抽取」作为永续陷阱在魔法与陷阱区域持续适用的怪兽效果无效不是发动的效果。因此「淘气仙星・颠茄歌后」仍会受「技能抽取」影响，其怪兽效果会被无效。",
+        "failed_check": "effect_resolution_rule",
+        "reasoning_steps": [
+            "「淘气仙星・颠茄歌后」在额外怪兽区域存在，且连接端没有怪兽，满足其不受其他卡发动的效果影响的条件。",
+            "对方发动「技能抽取」，该卡作为永续陷阱的卡的发动会形成连锁。",
+            "但是「技能抽取」无效场上表侧怪兽效果的处理，是其在魔法与陷阱区域表侧存在期间持续适用的效果，并不是发动的效果。",
+            "官方Q&A明确：即使「淘气仙星・颠茄歌后」不受其他卡发动的效果影响，也会受到「技能抽取」持续效果影响，怪兽效果被无效。",
+            "因此，声明「技能抽取」不影响「淘气仙星・颠茄歌后」的处理不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_018_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「トリックスター・ベラマドンナ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13592&request_locale=ja",
+                "official_id": "cid:13592",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "トリックスター・ベラマドンナ"
+            },
+            {
+                "id": "src_case_018_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「淘气仙星・颠茄歌后」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13592&request_locale=cn",
+                "official_id": "cid:13592",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "淘气仙星・颠茄歌后"
+            },
+            {
+                "id": "src_case_018_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「スキルドレイン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5740&request_locale=ja",
+                "official_id": "cid:5740",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "スキルドレイン"
+            },
+            {
+                "id": "src_case_018_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「技能抽取」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5740&request_locale=cn",
+                "official_id": "cid:5740",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "技能抽取"
+            },
+            {
+                "id": "src_case_018_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "自身のリンク先にモンスターが存在しない場合、「トリックスター・ベラマドンナ」は、相手が発動した「スキルドレイン」の効果を受けますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=21716&request_locale=ja",
+                "official_id": "fid:21716",
+                "language": "ja",
+                "source_updated_at": "2022-12-30",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试『不受发动的效果影响』与永续效果/持续适用效果的区别。官方依据为 Q&A fid:21716。"
+}

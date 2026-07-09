@@ -1,0 +1,294 @@
+{
+    "id": "case_028",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方已经适用「陷阱诡计」并盖放「一色即发」。本回合我方发动那张「一色即发」时，对方发动「盗贼的七道具」把该陷阱卡的发动无效。之后我方试图再发动1张陷阱卡。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "after_trap_activation_was_negated",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [
+                "任意陷阱卡"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "陷阱诡计",
+                "restriction": "only_one_trap_card_activation_after_resolution_until_end_of_turn",
+                "description": "「陷阱诡计」发动后，直到回合结束自己只能再发动1张陷阱卡；此前那张陷阱的发动已被无效。"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "任意陷阱卡",
+        "activation_location": "hand",
+        "declared_targets": [],
+        "declared_effect_purpose": "在「陷阱诡计」适用后，因上一张陷阱的发动被无效而再次发动陷阱"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作合法。「陷阱诡计」适用后，若之后发动的那张陷阱卡的“发动”本身被无效，则可以再发动1张陷阱卡。只有在发动本身成立、只是效果被无效或处理没有适用时，才会因已经发动过陷阱而不能再发动。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "「陷阱诡计」适用后，本回合自己原则上只能再发动1张陷阱卡。",
+            "本案中，之后发动的「一色即发」的卡的发动被「盗贼的七道具」无效。",
+            "官方Q&A确认，若该陷阱卡的发动被无效，则可以在这个回合再发动1张陷阱卡。",
+            "如果只是该陷阱卡的效果被无效，或效果处理结果没有适用，则陷阱卡的发动本身已经成立，不能再发动陷阱。",
+            "因此，在本案“发动被无效”的前提下，再发动1张陷阱卡合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_028_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「トラップトリック」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13965&request_locale=ja",
+                "official_id": "cid:13965",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "トラップトリック"
+            },
+            {
+                "id": "src_case_028_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「陷阱诡计」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13965&request_locale=cn",
+                "official_id": "cid:13965",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "陷阱诡计"
+            },
+            {
+                "id": "src_case_028_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「一色即発」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13966&request_locale=ja",
+                "official_id": "cid:13966",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "一色即発"
+            },
+            {
+                "id": "src_case_028_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「一色即发」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13966&request_locale=cn",
+                "official_id": "cid:13966",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "一色即发"
+            },
+            {
+                "id": "src_case_028_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「盗賊の七つ道具」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4863&request_locale=ja",
+                "official_id": "cid:4863",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "盗賊の七つ道具"
+            },
+            {
+                "id": "src_case_028_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「盗贼的七道具」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4863&request_locale=cn",
+                "official_id": "cid:4863",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2
+                ],
+                "lookup_query": "盗贼的七道具"
+            },
+            {
+                "id": "src_case_028_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「トラップトリック」の効果適用後に発動した罠カードの発動が無効になった場合、自分はこのターンに罠カードを発動できなくなりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=22010&request_locale=ja",
+                "official_id": "fid:22010",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2022-12-30"
+            }
+        ]
+    },
+    "case_notes": "resolution_history 为空数组：当前判断点前没有已经处理完成且需要结构化记录的连锁结果。"
+}

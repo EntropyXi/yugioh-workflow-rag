@@ -1,0 +1,271 @@
+{
+    "id": "case_032",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方发动「枪管上膛龙」的效果作为 C1，该效果文本包含“对方不能对应这个效果的发动把卡的效果发动”。随后我方自己又连锁发动另一张速攻魔法作为 C2。现在对方想要对应 C2 继续连锁发动卡的效果作为 C3。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "chain_building_after_self_chain_to_borreload_effect",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "枪管上膛龙",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_summary": "以场上1只表侧怪兽为对象，使其攻击力/守备力下降；对方不能对应这个发动而发动效果。",
+                    "effect_features": [
+                        "target_1_face_up_card_on_field",
+                        "restrict_direct_chain_response_only"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m3",
+                    "activation_column_index": 3,
+                    "effect_label": "①",
+                    "declared_targets": [
+                        {
+                            "card": "对方怪兽",
+                            "controller": "opponent",
+                            "location": "monster_zone",
+                            "zone": "m3",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "monster_type": "effect"
+                        }
+                    ]
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "self",
+                    "card": "我方速攻魔法",
+                    "operation_type": "activate_card",
+                    "effect_id": "card_activation",
+                    "effect_summary": "我方自己连锁发动另一张速攻魔法。",
+                    "effect_features": [],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 2
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "枪管上膛龙",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "link",
+                            "link_rating": 4
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "activate_card",
+        "card": "对方可连锁的卡",
+        "activation_location": "hand",
+        "chain_response_to": "C2",
+        "declared_effect_purpose": "对应 C2 继续组成连锁。"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "合法。“不能对应这个发动连锁”的限制只阻止对方直接连锁 C1；我方自己发动 C2 后，对方可以对应 C2 继续连锁。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "「枪管上膛龙」相关文本限制的是“对这个发动”不能由对方连锁。",
+            "官方 Q&A 明确，如果发动者自己先连锁别的效果，对方可以再对应那个新的连锁块发动效果。",
+            "当前对方要对应的是 C2，而不是直接对应 C1。",
+            "因此 C3 的发动不被 C1 的连锁限制禁止。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_032_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ヴァレルロード・ドラゴン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13258&request_locale=ja",
+                "official_id": "cid:13258",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_032_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「枪管上膛龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13258&request_locale=cn",
+                "official_id": "cid:13258",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_032_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "『この発動に対して、相手はカードの効果を発動できない』効果の発動にチェーンして、自分が別のカードの効果を発動した時、相手はカードの効果をチェーンして発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=16924&request_locale=ja",
+                "official_id": "fid:16924",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2025-10-09"
+            }
+        ]
+    },
+    "case_notes": "覆盖连锁限制范围：direct-chain lock 不会封锁整条后续连锁。"
+}

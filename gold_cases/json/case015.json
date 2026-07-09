@@ -1,0 +1,322 @@
+{
+    "id": "case_015",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方魔法与陷阱区域表侧存在「技能抽取」，我方魔法与陷阱区域表侧存在「龙骑兵团・阵风」。我方「龙骑兵团骑士－凡界死枪」进行攻击，在伤害步骤开始时到伤害计算前，我方试图发动其效果，从墓地除外1只鸟兽族怪兽。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "damage_step",
+        "damage_step_timing": "start_of_damage_step",
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "龙骑兵团骑士－凡界死枪",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "synchro",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "龙骑兵团・阵风",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "continuous_spell",
+                            "controller": "self"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "任意鸟兽族怪兽"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "技能抽取",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent"
+                        }
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "龙骑兵团・阵风",
+                "restriction": "level_5_or_higher_dragunity_attacker_unaffected_by_opponent_effects_until_end_of_damage_step"
+            }
+        ],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "龙骑兵团骑士－凡界死枪",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "activation_location": "monster_zone",
+        "declared_cost": [
+            {
+                "type": "banish",
+                "card": "任意鸟兽族怪兽",
+                "from": "graveyard"
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "activate_gae_bulg_effect_during_damage_step"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "该操作在规则内合法。虽然「技能抽取」表侧存在，但在「龙骑兵团骑士－凡界死枪」能够发动效果的伤害步骤开始时到伤害计算前，「龙骑兵团・阵风」使其不受对方效果影响，因此「技能抽取」不适用于它，可以发动该怪兽效果。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "当前处于伤害步骤开始时到伤害计算前，这是「龙骑兵团骑士－凡界死枪」效果文本允许发动的时点。",
+            "对方场上表侧存在「技能抽取」，通常会使场上表侧怪兽效果无效。",
+            "我方场上表侧存在「龙骑兵团・阵风」，其效果在原本等级5以上的我方「龙骑兵团」怪兽攻击的情况下，使该怪兽直到伤害步骤结束时不受对方效果影响。",
+            "官方Q&A明确，在该发动时点，「龙骑兵团・阵风」的效果已经适用，因此「技能抽取」的效果不适用于「龙骑兵团骑士－凡界死枪」。",
+            "因此，「龙骑兵团骑士－凡界死枪」可以发动其怪兽效果，该操作合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_015_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ドラグニティナイト－ゲイボルグ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8414&request_locale=ja",
+                "official_id": "cid:8414",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5
+                ],
+                "lookup_query": "ドラグニティナイト－ゲイボルグ"
+            },
+            {
+                "id": "src_case_015_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「龙骑兵团骑士－凡界死枪」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8414&request_locale=cn",
+                "official_id": "cid:8414",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5
+                ],
+                "lookup_query": "龙骑兵团骑士－凡界死枪"
+            },
+            {
+                "id": "src_case_015_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「スキルドレイン」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5740&request_locale=ja",
+                "official_id": "cid:5740",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    4
+                ],
+                "lookup_query": "スキルドレイン"
+            },
+            {
+                "id": "src_case_015_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「技能抽取」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=5740&request_locale=cn",
+                "official_id": "cid:5740",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    4
+                ],
+                "lookup_query": "技能抽取"
+            },
+            {
+                "id": "src_case_015_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「ドラグニティ・ドラフト」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15589&request_locale=ja",
+                "official_id": "cid:15589",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "ドラグニティ・ドラフト"
+            },
+            {
+                "id": "src_case_015_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「龙骑兵团・阵风」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=15589&request_locale=cn",
+                "official_id": "cid:15589",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "lookup_query": "龙骑兵团・阵风"
+            },
+            {
+                "id": "src_case_015_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「スキルドレイン」と「ドラグニティ・ドラフト」が存在する場合、「ドラグニティナイト－ゲイボルグ」は効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23062&request_locale=ja",
+                "official_id": "fid:23062",
+                "language": "ja",
+                "source_updated_at": "2022-12-30",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试伤害步骤中持续适用的不受效果影响与「技能抽取」的关系。官方依据为 Q&A fid:23062。"
+}

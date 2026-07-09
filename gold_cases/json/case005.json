@@ -1,0 +1,317 @@
+{
+    "id": "case_005",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方场上存在「I：P伪装舞会莱娜」。对方在主要阶段发动IP的①效果：'以包含此卡在内的、自己场上的怪兽作为素材进行连接召唤'。此时我方场上存在「赫焉龙 大木偶剧场龙」，我方试图连锁发动赫焉龙的②效果：'有怪兽因对手发动的怪兽的效果被特殊召唤的情况下，将此卡除外可以发动'。请问我方的操作是否正确？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "I：P伪装舞会莱娜",
+                    "operation_type": "activate_effect",
+                    "effect_id": "main_effect",
+                    "effect_summary": "以包含此卡在内的、自己场上的怪兽作为素材进行连接召唤",
+                    "effect_features": [
+                        "perform_link_summon_after_chain_link_resolution",
+                        "includes_special_summon_effect",
+                        "resulting_monster_not_summoned_by_activated_effect"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "extra_monster_zone",
+                    "activation_zone": "emz_left",
+                    "activation_column_index": null
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "赫焉龙 大木偶剧场龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "I：P伪装舞会莱娜",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 2,
+                            "controller": "opponent"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "赫焉龙 大木偶剧场龙",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "monster_zone",
+        "activation_zone": "m3",
+        "activation_column_index": 3,
+        "chain_response_to": "C1",
+        "declared_cost": [
+            {
+                "type": "banish",
+                "card": "赫焉龙 大木偶剧场龙",
+                "from": "monster_zone"
+            }
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "special_summon_dogmatika_or_despia_monster"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作不合法。赫焉龙②的发动条件是'有怪兽因对手发动的怪兽的效果被特殊召唤的情况下'，核心在于怪兽必须是'因效果'（即效果直接导致）被特殊召唤。IP的①效果是'以包含此卡在内的、自己场上的怪兽作为素材进行连接召唤'——它属于'进行连接召唤的效果'，仅赋予玩家通过游戏规则进行连接召唤的机会，实际召唤通过连接召唤手续完成。经由IP效果连接召唤的怪兽不视为'因卡的效果被特殊召唤'，而是'因连接召唤规则被特殊召唤'，因此不满足赫焉龙②的发动条件。",
+        "failed_check": "activation_condition",
+        "reasoning_steps": [
+            "C1：对方发动「I：P伪装舞会莱娜」的①效果（Quick Effect），宣言'以包含此卡在内的、自己场上的怪兽作为素材进行连接召唤'。",
+            "我方试图连锁发动「赫焉龙 大木偶剧场龙」的②效果（将自己除外作为cost），chain_response_to: C1。",
+            "赫焉龙②的发动条件是'有怪兽因对手发动的怪兽的效果被特殊召唤的情况下'——即必须有怪兽'因（对方怪兽）效果'被特殊召唤。",
+            "IP的①效果属于'进行连接召唤的效果'：它赋予玩家进行连接召唤的机会，实际召唤通过游戏规则（连接召唤手续）完成。经由此类效果连接召唤的怪兽，不被视为'因卡的效果被特殊召唤'，而是'因连接召唤规则被特殊召唤'。",
+            "因此IP的效果不是'让怪兽特殊召唤的效果'，而是'进行连接召唤的效果'——这是两个不同的效果类别。",
+            "对方C1不满足赫焉龙②的发动条件，赫焉龙②在此场景下不能连锁发动。",
+            "我方操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_005_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「赫焉龙 大木偶剧场龙」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18178&request_locale=ja",
+                "official_id": "cid:18178",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    6
+                ],
+                "lookup_query": "赫焉龙 大木偶剧场龙"
+            },
+            {
+                "id": "src_case_005_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「I：P伪装舞会莱娜」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14676&request_locale=ja",
+                "official_id": "cid:14676",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "I：P伪装舞会莱娜"
+            },
+            {
+                "id": "src_case_005_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「I：Pマスカレーナ」の効果によってリンク召喚されたモンスターは、『発動したモンスターの効果によって特殊召喚された』ことになりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23173&request_locale=ja",
+                "official_id": "fid:23173",
+                "language": "ja",
+                "source_updated_at": "2025-09-27",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ]
+            },
+            {
+                "id": "src_case_005_04",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "シンクロ召喚・エクシーズ召喚・リンク召喚・ペンデュラム召喚を行う効果は『モンスターを特殊召喚する効果』を含みますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23933&request_locale=ja",
+                "official_id": "fid:23933",
+                "language": "ja",
+                "source_updated_at": "2026-01-25",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ]
+            },
+            {
+                "id": "src_case_005_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「赫焉龙 格兰吉尼奥尔」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18178&request_locale=cn",
+                "official_id": "cid:18178",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_005_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「I：P百变莱娜」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14676&request_locale=cn",
+                "official_id": "cid:14676",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试'进行连接召唤的效果'是否满足'因对手发动的怪兽的效果被特殊召唤'这一发动条件。核心裁定：IP类效果进行的连接/同调/超量召唤的怪兽不视为'因卡的效果被特殊召唤'，因此赫焉龙②等以此为发动条件的卡不能连锁。素材来源于B站视频 BV1Zjcne1EDo。"
+}

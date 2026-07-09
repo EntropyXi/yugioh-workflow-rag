@@ -1,0 +1,264 @@
+{
+    "id": "case_043",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个直接攻击是否可以继续？",
+    "natural_language_context": "己方场上有「卡通世界」和「卡通电子龙」。己方用卡通电子龙宣言直接攻击。对方的战斗步骤中，对方发动「气旋」破坏了我方的「卡通世界」。现在气旋处理完毕，卡通世界已不在场上，卡通电子龙的直接攻击还在进行中。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "battle_step",
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "气旋",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "destroy",
+                        "card": "完美卡通世界",
+                        "from": "self.field_spell_zone",
+                        "to": "self.graveyard"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "卡通电子龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "toon",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "完美卡通世界"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "电子龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "气旋"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "declare_attack",
+        "card": "卡通电子龙",
+        "attack_type": "direct_attack",
+        "card_location": "monster_zone",
+        "card_zone": "m3"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不能继续该直接攻击。战斗步骤中卡通世界被气旋破坏后，卡通电子龙丧失了直接攻击的条件（需要卡通世界在场且对方场上无卡通怪兽），因此发生战斗卷回。须重新选择攻击对象或取消攻击。",
+        "failed_check": "external_restriction",
+        "reasoning_steps": [
+            "卡通电子龙③效果：「自己场上存在'卡通世界'，且对方场上不存在卡通怪兽的场合，这张卡可以直接攻击」。",
+            "攻击宣言时这两个条件均满足（卡通世界在场，对方场上仅有电子龙）。",
+            "在战斗步骤中，对方连锁发动气旋，破坏了卡通世界。",
+            "气旋处理完毕后，卡通电子龙赖以直接攻击的条件之一（卡通世界在场）不再满足。",
+            "按照战斗卷回规则，攻击方怪兽的攻击对象数量发生变化时发生卷回，玩家必须重新选择攻击对象或取消攻击。",
+            "因此卡通电子龙不能继续直接攻击，必须卷回。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_043_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「トゥーン・サイバー・ドラゴン」が自身の効果によって直接攻撃を宣言したバトルステップに、自分フィールドの「トゥーン・ワールド」が破壊された場合、その攻撃はどうなりますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=15529&request_locale=ja",
+                "official_id": "fid:15529",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    4,
+                    5,
+                    6
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_043_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "トゥーン・サイバー・ドラゴン",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11827&request_locale=ja",
+                "official_id": "cid:11827",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_043_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "卡通电子龙",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11827&request_locale=cn",
+                "official_id": "cid:11827",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_043_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "完美卡通世界",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=23161&request_locale=cn",
+                "official_id": "cid:23161",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:15529。截至 2017-03-24 的裁定。原始 Q&A 使用「トゥーン・ワールド」，本 case 使用「完美卡通世界」替代（其卡名视为「卡通世界」），CN 官方页可用。"
+}

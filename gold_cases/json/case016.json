@@ -1,0 +1,290 @@
+{
+    "id": "case_016",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "场上表侧表示存在「神影依・米德拉什」，其效果使双方1回合只能特殊召唤怪兽1次。对方本回合主要阶段已经召唤・特殊召唤过5只以上怪兽。我方手牌有「原始生命态 尼比鲁」，试图发动其①效果，解放场上的表侧表示怪兽后特殊召唤自身，再在对方场上特殊召唤1只原始生命态衍生物。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "self_state": {
+            "hand": [
+                "原始生命态 尼比鲁"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": {
+                            "name": "神影依・米德拉什",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "self"
+                        }
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": {
+                            "name": "任意表侧表示怪兽A",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "任意表侧表示怪兽B",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "summon_restriction",
+                "source_card": "神影依・米德拉什",
+                "restriction": "each_player_can_only_special_summon_once_per_turn"
+            }
+        ],
+        "resolution_history": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "原始生命态 尼比鲁",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "activation_location": "hand",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "tribute_face_up_monsters_special_summon_nibiru_and_token"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该操作在规则内不合法。「神影依・米德拉什」适用中双方1回合只能特殊召唤1次；而「原始生命态 尼比鲁」的效果会特殊召唤自身，并在那之后特殊召唤1只原始生命态衍生物，即进行2次特殊召唤。因此在该限制已经适用的状态下，不能发动「原始生命态 尼比鲁」的效果。",
+        "failed_check": "summon_condition",
+        "reasoning_steps": [
+            "当前「神影依・米德拉什」表侧存在，其永续效果使双方1回合只能特殊召唤怪兽1次。",
+            "「原始生命态 尼比鲁」①效果处理会先尽可能解放双方场上的表侧表示怪兽，并从手牌特殊召唤自身。",
+            "其后还会在对方场上特殊召唤1只原始生命态衍生物，因此该效果包含2次特殊召唤。",
+            "官方Q&A明确：在「神影依・米德拉什」的特殊召唤次数限制适用中，不能发动「原始生命态 尼比鲁」的效果。",
+            "因此，当前试图发动「原始生命态 尼比鲁」①效果不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_016_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「原始生命態ニビル」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14741&request_locale=ja",
+                "official_id": "cid:14741",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    5
+                ],
+                "lookup_query": "原始生命態ニビル"
+            },
+            {
+                "id": "src_case_016_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「原始生命态 尼比鲁」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14741&request_locale=cn",
+                "official_id": "cid:14741",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    5
+                ],
+                "lookup_query": "原始生命态 尼比鲁"
+            },
+            {
+                "id": "src_case_016_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「エルシャドール・ミドラーシュ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11257&request_locale=ja",
+                "official_id": "cid:11257",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "エルシャドール・ミドラーシュ"
+            },
+            {
+                "id": "src_case_016_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神影依・米德拉什」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11257&request_locale=cn",
+                "official_id": "cid:11257",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    4,
+                    5
+                ],
+                "lookup_query": "神影依・米德拉什"
+            },
+            {
+                "id": "src_case_016_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「エルシャドール・ミドラーシュ」や「ヴェルズ・オピオン」が存在する場合、「原始生命態ニビル」の効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=22804&request_locale=ja",
+                "official_id": "fid:22804",
+                "language": "ja",
+                "source_updated_at": "2026-03-14",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试特殊召唤次数限制下，包含多次特殊召唤处理的效果能否发动。原候选「深淵の結界像 / デメット爺さん」因关键卡缺少可访问简中官方详情而替换为 Q&A fid:22804。"
+}

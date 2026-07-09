@@ -1,0 +1,445 @@
+{
+    "id": "case_002",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个处理是否在规则内合法？",
+    "natural_language_context": "现在是对方回合，对方场上有一个阿尔贝，对方从手牌发动烙印之气炎，然后我连锁发动与烙印的气炎同纵列的无限泡影取对象对方场上的阿尔贝，接着对手连锁cost额外卡组的烙印龙白界龙发动一张落胤与圣女，取对象对方场上的烙印之气炎。然后双方不再追加连锁，连锁开始逆序处理，效果结算，烙印之气炎被破坏进墓地，那么此时它的效果不会被同纵列的无限泡影所影响，效果成功处理结算。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "before_resolving_C1",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "opponent",
+                    "card": "烙印之气炎",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "向对手出示手牌的1只怪兽，从额外牌组将1只和该怪兽相同种族、攻击力或守备力为2500的等级8融合怪兽送至墓地。然后，可将所出示的怪兽舍弃，从牌组将1只「阿尔白斯之落胤」或记载有该卡名的怪兽加入手牌。",
+                    "effect_features": [
+                        "reveal_monster_in_hand",
+                        "send_level_8_fusion_monster_from_extra_deck_to_graveyard",
+                        "discard_revealed_monster",
+                        "add_from_deck_to_hand"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s2",
+                    "activation_column_index": 4
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "self",
+                    "card": "无限泡影",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "以对手场上的1只表侧表示效果怪兽为对象发动。将该怪兽的效果直到回合结束时无效。若此卡是盖放后发动且处理时仍在场上，则本回合中将和此卡同纵列的其他魔法・陷阱卡的效果无效。",
+                    "effect_features": [
+                        "target_opponent_face_up_effect_monster",
+                        "negate_target_monster_effects_until_end_of_turn",
+                        "set_before_activation",
+                        "negate_spell_trap_effects_in_same_column_if_resolved_on_field"
+                    ],
+                    "activation_start_location": "spell_trap_zone",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s4",
+                    "activation_column_index": 4,
+                    "declared_targets": [
+                        {
+                            "card": "死狱乡的导化 阿尔贝",
+                            "controller": "opponent",
+                            "location": "monster_zone",
+                            "zone": "m2",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "column_index": 4
+                        }
+                    ]
+                },
+                {
+                    "chain_id": "C3",
+                    "player": "opponent",
+                    "card": "落胤与圣女",
+                    "operation_type": "activate_card",
+                    "effect_id": "effect_1",
+                    "effect_label": "①",
+                    "effect_summary": "从额外牌组将1只记载有「阿尔白斯之落胤」卡名的怪兽送至墓地，以场上的1张表侧表示卡为对象发动。将该卡破坏。",
+                    "effect_features": [
+                        "send_albaz_related_monster_from_extra_deck_to_graveyard_as_cost",
+                        "target_1_face_up_card_on_field",
+                        "destroy_target"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "spell_trap_zone",
+                    "activation_zone": "s1",
+                    "activation_column_index": 5,
+                    "declared_cost": [
+                        {
+                            "type": "send_to_graveyard",
+                            "from": "extra_deck",
+                            "card": "烙印龙 白界龙"
+                        }
+                    ],
+                    "declared_targets": [
+                        {
+                            "card": "烙印之气炎",
+                            "controller": "opponent",
+                            "location": "spell_trap_zone",
+                            "zone": "s2",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "quick_play_spell",
+                            "column_index": 4
+                        }
+                    ]
+                }
+            ]
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C3",
+                "card": "落胤与圣女",
+                "result": [
+                    {
+                        "action": "destroy",
+                        "card": "烙印之气炎",
+                        "from": "opponent.field.spell_trap_zones.s2",
+                        "to": "opponent.graveyard"
+                    }
+                ]
+            },
+            {
+                "resolved_chain_id": "C2",
+                "card": "无限泡影",
+                "result": [
+                    {
+                        "action": "negate_monster_effects_until_end_of_turn",
+                        "target": "死狱乡的导化 阿尔贝"
+                    },
+                    {
+                        "action": "apply_same_column_spell_trap_negation",
+                        "source_card": "无限泡影",
+                        "source_zone": "self.field.spell_trap_zones.s4",
+                        "affected_column_index": 4,
+                        "duration": "until_end_of_turn"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "无限泡影",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "normal_trap",
+                            "controller": "self",
+                            "current_chain_id": "C2"
+                        }
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": {
+                            "name": "死狱乡的导化 阿尔贝",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": {
+                            "name": "落胤与圣女",
+                            "status": "face_up",
+                            "card_type": "spell",
+                            "spell_type": "quick_play_spell",
+                            "controller": "opponent",
+                            "current_chain_id": "C3"
+                        }
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "烙印龙 白界龙",
+                "烙印之气炎"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "same_column_spell_trap_negation",
+                "source_card": "无限泡影",
+                "source_zone": "self.field.spell_trap_zones.s4",
+                "affected_column_index": 4,
+                "duration": "until_end_of_turn"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "resolve_effect",
+        "card": "烙印之气炎",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "chain_id_to_resolve": "C1",
+        "activation_location_at_activation": "spell_trap_zone",
+        "activation_zone_at_activation": "s2",
+        "activation_column_index": 4,
+        "current_card_location": "graveyard",
+        "declared_resolution": "resolve_successfully",
+        "declared_effect_purpose": "apply_branded_in_high_spirits_effect"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "该处理在规则内不合法。「烙印之气炎」是在与盖放发动的「无限泡影」同纵列的魔法与陷阱区域发动的魔法卡效果。即使它在自身效果处理前已经被「落胤与圣女」破坏并送去墓地，其作为同纵列发动的魔法卡效果仍会受到「无限泡影」同纵列魔法/陷阱效果无效的影响。因此，声明「烙印之气炎」效果成功处理是不合法的。",
+        "failed_check": "effect_resolution_rule",
+        "reasoning_steps": [
+            "C1 中，对方从手牌发动「烙印之气炎」，其发动位置在对方魔法与陷阱区域，并且与我方盖放发动的「无限泡影」处于同一纵列。",
+            "C2 中，我方发动盖放的「无限泡影」，以对方场上的「死狱乡的导化 阿尔贝」为对象。",
+            "C3 中，对方发动「落胤与圣女」，将额外卡组的「烙印龙 白界龙」送去墓地作为 cost，并以场上表侧表示的「烙印之气炎」为对象。",
+            "双方不再追加连锁后，连锁按逆顺序处理：先处理 C3，再处理 C2，最后处理 C1。",
+            "C3「落胤与圣女」处理时，作为对象的「烙印之气炎」被破坏并送去墓地。",
+            "C2「无限泡影」处理时，如果成功无效对象怪兽「死狱乡的导化 阿尔贝」的效果，且「无限泡影」是盖放后发动并在处理时仍在场上，则适用同纵列其他魔法/陷阱卡的效果无效。",
+            "同纵列发动的魔法/陷阱效果即使在处理时已经不在场上，也会受到「无限泡影」的同纵列无效影响。",
+            "因此，虽然「烙印之气炎」在 C1 处理时已经位于墓地，但它是在同纵列魔法与陷阱区域发动的魔法卡效果，仍会被「无限泡影」的同纵列无效影响。",
+            "所以「烙印之气炎」效果成功处理这一声明不符合规则；正确处理应为该效果被无效。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_002_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「无限泡影」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13631&request_locale=ja",
+                "official_id": "cid:13631",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "lookup_query": "无限泡影"
+            },
+            {
+                "id": "src_case_002_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「烙印之气炎」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16541&request_locale=ja",
+                "official_id": "cid:16541",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    5,
+                    8,
+                    9
+                ],
+                "lookup_query": "烙印之气炎"
+            },
+            {
+                "id": "src_case_002_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「落胤与圣女」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22089&request_locale=ja",
+                "official_id": "cid:22089",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    3,
+                    5
+                ],
+                "lookup_query": "落胤与圣女"
+            },
+            {
+                "id": "src_case_002_04",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "セットされている「無限泡影」の効果が適用されているターン、同じ縦列に存在する「ワンダー・ワンド」の発動した効果は無効化されますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=21698&request_locale=ja",
+                "official_id": "fid:21698",
+                "language": "ja",
+                "source_updated_at": "2022-12-30",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    6,
+                    7,
+                    8,
+                    9
+                ]
+            },
+            {
+                "id": "src_case_002_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「无限泡影」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=13631&request_locale=cn",
+                "official_id": "cid:13631",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_002_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「烙印之气炎」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=16541&request_locale=cn",
+                "official_id": "cid:16541",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_002_07",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「落胤与圣女」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=22089&request_locale=cn",
+                "official_id": "cid:22089",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试效果结算阶段中「无限泡影」同纵列魔法/陷阱效果无效的适用范围。"
+}

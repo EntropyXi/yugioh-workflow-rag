@@ -1,0 +1,761 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/yugioh/operation-case-v2.1.schema.json",
+  "title": "Yu-Gi-Oh! Operation Legality Case v2.1",
+  "type": "object",
+  "required": [
+    "id",
+    "task_type",
+    "schema_version",
+    "question",
+    "natural_language_context",
+    "rule_context",
+    "pre_state",
+    "attempted_operation",
+    "gold_answer"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^case_[0-9]{3}$" },
+    "task_type": { "enum": ["operation_legality_judgment", "effect_resolution_judgment"] },
+    "schema_version": { "const": "2.1.0" },
+    "question": { "type": "string", "minLength": 1 },
+    "natural_language_context": { "type": "string" },
+    "rule_context": { "$ref": "#/$defs/rule_context" },
+    "pre_state": { "$ref": "#/$defs/pre_state" },
+    "attempted_operation": { "$ref": "#/$defs/attempted_operation" },
+    "gold_answer": { "$ref": "#/$defs/gold_answer" },
+    "case_notes": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "player": { "enum": ["self", "opponent"] },
+    "chain_id": { "type": "string", "pattern": "^C[1-9][0-9]*$" },
+    "location": {
+      "enum": [
+        "hand",
+        "deck",
+        "extra_deck",
+        "monster_zone",
+        "extra_monster_zone",
+        "spell_trap_zone",
+        "field_spell_zone",
+        "graveyard",
+        "banished"
+      ]
+    },
+    "operation_type": {
+      "enum": [
+        "activate_card",
+        "activate_effect",
+        "normal_summon",
+        "special_summon",
+        "set_card",
+        "set_monster",
+        "select_target",
+        "pay_cost",
+        "resolve_effect",
+        "declare_attack"
+      ]
+    },
+    "effect_feature": {
+      "enum": [
+        "add_from_deck_to_hand",
+        "special_summon_from_deck",
+        "special_summon_from_graveyard",
+        "send_from_deck_to_graveyard",
+        "send_level_8_fusion_monster_from_extra_deck_to_graveyard",
+        "send_albaz_related_monster_from_extra_deck_to_graveyard_as_cost",
+        "reveal_monster_in_hand",
+        "discard_revealed_monster",
+        "target_opponent_face_up_effect_monster",
+        "target_1_card_on_field",
+        "target_1_face_up_card_on_field",
+        "target_1_opponent_card_on_field",
+        "negate_target_monster_effects_until_end_of_turn",
+        "negate_face_up_monster_effects_continuously",
+        "negate_spell_trap_effects_in_same_column_if_resolved_on_field",
+        "set_before_activation",
+        "activate_from_hand_if_self_controls_no_cards",
+        "destroy_target",
+        "choose_1_card_on_field_on_resolution",
+        "destroy_chosen_card",
+        "prevent_chain_to_activation",
+        "banish_all_monsters_temporarily",
+        "special_summon_banished_monsters_as_many_as_possible",
+        "perform_link_summon_after_chain_link_resolution",
+        "includes_special_summon_effect",
+        "resulting_monster_not_summoned_by_activated_effect",
+        "ignition_effect",
+        "summon_success_activation_window",
+        "prevent_effect_activation_on_summon_success",
+        "negate_summon_or_special_summon_effect",
+        "send_pendulum_monster_to_graveyard_as_cost",
+        "target_1_monster_in_graveyard",
+        "banish_target_from_graveyard",
+        "move_attack_target_and_perform_damage_calculation",
+        "activate_pendulum_monster_as_spell",
+        "allow_pendulum_summon_with_existing_scales",
+        "set_trap_from_deck",
+        "limit_trap_activations_after_resolution",
+        "self_special_summon_from_graveyard_by_procedure",
+        "prevent_adding_from_deck_to_hand",
+        "declare_card_type_and_apply_spyral_search_or_summon",
+        "trigger_after_chain_resolution",
+        "target_quick_play_spell_in_graveyard",
+        "restrict_direct_chain_response_only",
+        "reveal_card_in_hand_as_cost",
+        "replacement_destroy_instead",
+        "destroy_target_then_special_summon_from_graveyard",
+        "mandatory_damage_step_trigger",
+        "optional_damage_step_trigger",
+        "return_battling_monsters_to_hand_or_extra_deck",
+        "ignore_summoning_conditions",
+        "select_once_per_turn_option",
+        "activated_effect_cannot_be_negated",
+        "replacement_destroy_other_card",
+        "temporarily_banish_until_after_effect_resolution",
+        "self_destroy_when_toons_world_destroyed"
+      ]
+    },
+    "rule_context": {
+      "type": "object",
+      "required": ["game", "format", "language", "rule_version"],
+      "properties": {
+        "game": { "const": "Yu-Gi-Oh!" },
+        "format": { "enum": ["OCG", "TCG", "Master Duel", "unspecified"] },
+        "language": { "enum": ["zh", "ja", "en", "unspecified"] },
+        "rule_version": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "card": {
+      "type": "object",
+      "required": ["name", "status", "card_type", "controller"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["face_up", "face_down"] },
+        "position": { "enum": ["attack", "defense"] },
+        "card_type": { "enum": ["monster", "spell", "trap"] },
+        "monster_type": {
+          "enum": ["normal", "effect", "fusion", "ritual", "synchro", "xyz", "link", "toon", "pendulum"]
+        },
+        "spell_type": {
+          "enum": [
+            "normal_spell",
+            "quick_play_spell",
+            "continuous_spell",
+            "equip_spell",
+            "field_spell",
+            "ritual_spell"
+          ]
+        },
+        "trap_type": { "enum": ["normal_trap", "continuous_trap", "counter_trap"] },
+        "controller": { "$ref": "#/$defs/player" },
+        "link_rating": { "type": "integer", "minimum": 1 },
+        "attribute": { "type": "string", "minLength": 1 },
+        "race": { "type": "string", "minLength": 1 },
+        "current_chain_id": { "$ref": "#/$defs/chain_id" }
+      },
+      "additionalProperties": false
+    },
+    "main_zone_slot": {
+      "type": "object",
+      "required": ["column_index", "card"],
+      "properties": {
+        "column_index": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "card": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/card" }] }
+      },
+      "additionalProperties": false
+    },
+    "extra_zone_slot": {
+      "type": "object",
+      "required": ["column_index", "card"],
+      "properties": {
+        "column_index": { "type": "null" },
+        "card": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/card" }] }
+      },
+      "additionalProperties": false
+    },
+    "five_zones": {
+      "type": "object",
+      "required": ["m1", "m2", "m3", "m4", "m5"],
+      "properties": {
+        "m1": { "$ref": "#/$defs/main_zone_slot" },
+        "m2": { "$ref": "#/$defs/main_zone_slot" },
+        "m3": { "$ref": "#/$defs/main_zone_slot" },
+        "m4": { "$ref": "#/$defs/main_zone_slot" },
+        "m5": { "$ref": "#/$defs/main_zone_slot" }
+      },
+      "additionalProperties": false
+    },
+    "five_spell_trap_zones": {
+      "type": "object",
+      "required": ["s1", "s2", "s3", "s4", "s5"],
+      "properties": {
+        "s1": { "$ref": "#/$defs/main_zone_slot" },
+        "s2": { "$ref": "#/$defs/main_zone_slot" },
+        "s3": { "$ref": "#/$defs/main_zone_slot" },
+        "s4": { "$ref": "#/$defs/main_zone_slot" },
+        "s5": { "$ref": "#/$defs/main_zone_slot" }
+      },
+      "additionalProperties": false
+    },
+    "field": {
+      "type": "object",
+      "required": ["monster_zones", "spell_trap_zones", "field_spell_zone", "extra_monster_zones"],
+      "properties": {
+        "monster_zones": { "$ref": "#/$defs/five_zones" },
+        "spell_trap_zones": { "$ref": "#/$defs/five_spell_trap_zones" },
+        "field_spell_zone": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["card"],
+              "properties": { "card": { "$ref": "#/$defs/card" } },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "extra_monster_zones": {
+          "type": "object",
+          "required": ["emz_left", "emz_right"],
+          "properties": {
+            "emz_left": { "$ref": "#/$defs/extra_zone_slot" },
+            "emz_right": { "$ref": "#/$defs/extra_zone_slot" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "used_effect": {
+      "type": "object",
+      "required": ["card", "effect_id"],
+      "properties": {
+        "card": { "type": "string", "minLength": 1 },
+        "effect_id": { "type": "string", "minLength": 1 },
+        "effect_label": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "player_state": {
+      "type": "object",
+      "required": ["hand", "field", "graveyard", "banished", "used_effects_this_turn"],
+      "properties": {
+        "hand": { "type": "array", "items": { "type": "string" } },
+        "field": { "$ref": "#/$defs/field" },
+        "graveyard": { "type": "array", "items": { "type": "string" } },
+        "banished": { "type": "array", "items": { "type": "string" } },
+        "used_effects_this_turn": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/used_effect" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "required": ["card", "controller", "location", "zone", "status", "card_type"],
+      "properties": {
+        "card": { "type": "string", "minLength": 1 },
+        "controller": { "$ref": "#/$defs/player" },
+        "location": { "$ref": "#/$defs/location" },
+        "zone": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["face_up", "face_down"] },
+        "position": { "enum": ["attack", "defense"] },
+        "card_type": { "enum": ["monster", "spell", "trap"] },
+        "monster_type": { "type": "string", "minLength": 1 },
+        "spell_type": { "type": "string", "minLength": 1 },
+        "trap_type": { "type": "string", "minLength": 1 },
+        "link_rating": { "type": "integer", "minimum": 1 },
+        "column_index": { "type": "integer", "minimum": 1, "maximum": 5 }
+      },
+      "additionalProperties": false
+    },
+    "cost": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "card"],
+          "properties": {
+            "type": { "const": "discard" },
+            "card": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "amount"],
+          "properties": {
+            "type": { "const": "pay_lp" },
+            "amount": { "type": "integer", "exclusiveMinimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "card", "from"],
+          "properties": {
+            "type": { "const": "banish" },
+            "card": { "type": "string", "minLength": 1 },
+            "from": { "$ref": "#/$defs/location" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "card", "from"],
+          "properties": {
+            "type": { "const": "send_to_graveyard" },
+            "card": { "type": "string", "minLength": 1 },
+            "from": { "$ref": "#/$defs/location" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "chain_link": {
+      "type": "object",
+      "required": [
+        "chain_id",
+        "player",
+        "card",
+        "operation_type",
+        "effect_id",
+        "effect_summary",
+        "effect_features",
+        "activation_start_location",
+        "activation_location",
+        "activation_zone",
+        "activation_column_index"
+      ],
+      "properties": {
+        "chain_id": { "$ref": "#/$defs/chain_id" },
+        "player": { "$ref": "#/$defs/player" },
+        "card": { "type": "string", "minLength": 1 },
+        "operation_type": { "$ref": "#/$defs/operation_type" },
+        "effect_id": { "type": "string", "minLength": 1 },
+        "effect_label": { "type": "string", "minLength": 1 },
+        "effect_summary": { "type": "string" },
+        "effect_features": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/effect_feature" }
+        },
+        "activation_start_location": { "$ref": "#/$defs/location" },
+        "activation_location": { "$ref": "#/$defs/location" },
+        "activation_zone": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "minLength": 1 }
+          ]
+        },
+        "activation_column_index": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "integer", "minimum": 1, "maximum": 5 }
+          ]
+        },
+        "declared_cost": { "type": "array", "items": { "$ref": "#/$defs/cost" } },
+        "declared_targets": { "type": "array", "items": { "$ref": "#/$defs/target" } }
+      },
+      "additionalProperties": false
+    },
+    "chain_state": {
+      "type": "object",
+      "required": ["is_chain_building", "is_chain_resolving", "current_chain_links"],
+      "properties": {
+        "is_chain_building": { "type": "boolean" },
+        "is_chain_resolving": { "type": "boolean" },
+        "current_chain_links": { "type": "array", "items": { "$ref": "#/$defs/chain_link" } }
+      },
+      "additionalProperties": false
+    },
+    "resolution_action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["action", "card", "from", "to"],
+          "properties": {
+            "action": {
+              "enum": [
+                "destroy",
+                "banish",
+                "special_summon",
+                "send_to_graveyard",
+                "return_to_hand",
+                "return_to_extra_deck",
+                "return_to_field"
+              ]
+            },
+            "card": { "type": "string", "minLength": 1 },
+            "from": { "type": "string", "minLength": 1 },
+            "to": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action", "target"],
+          "properties": {
+            "action": { "const": "negate_monster_effects_until_end_of_turn" },
+            "target": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action", "target", "duration"],
+          "properties": {
+            "action": { "const": "negate_effects_and_halve_atk" },
+            "target": { "type": "string", "minLength": 1 },
+            "duration": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action", "card"],
+          "properties": {
+            "action": { "const": "change_to_face_down_defense" },
+            "card": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action", "source_card", "source_zone", "affected_column_index", "duration"],
+          "properties": {
+            "action": { "const": "apply_same_column_spell_trap_negation" },
+            "source_card": { "type": "string", "minLength": 1 },
+            "source_zone": { "type": "string", "minLength": 1 },
+            "affected_column_index": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "duration": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action"],
+          "properties": {
+            "action": { "const": "redirect_battle_damage" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["action", "target"],
+          "properties": {
+            "action": { "const": "apply_attack_decrease_and_restrictions" },
+            "target": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "resolution_history_item": {
+      "type": "object",
+      "required": ["resolved_chain_id", "card", "result"],
+      "properties": {
+        "resolved_chain_id": { "$ref": "#/$defs/chain_id" },
+        "card": { "type": "string", "minLength": 1 },
+        "effect_id": { "type": "string", "minLength": 1 },
+        "effect_label": { "type": "string", "minLength": 1 },
+        "result": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/resolution_action" } }
+      },
+      "additionalProperties": false
+    },
+    "constraint": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "source_card", "source_zone", "affected_column_index", "duration"],
+          "properties": {
+            "type": { "const": "same_column_spell_trap_negation" },
+            "source_card": { "type": "string", "minLength": 1 },
+            "source_zone": { "type": "string", "minLength": 1 },
+            "affected_column_index": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "duration": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "restriction", "affected_player", "effect_scope", "duration", "source_card"],
+          "properties": {
+            "type": { "const": "attack_restriction" },
+            "restriction": { "const": "cannot_direct_attack" },
+            "affected_player": { "$ref": "#/$defs/player" },
+            "effect_scope": { "enum": ["monster", "player"] },
+            "duration": { "type": "string", "minLength": 1 },
+            "source_card": { "type": "string", "minLength": 1 },
+            "source_effect": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "card", "effect_id", "description"],
+          "properties": {
+            "type": { "const": "once_per_turn_used" },
+            "card": { "type": "string", "minLength": 1 },
+            "effect_id": { "type": "string", "minLength": 1 },
+            "effect_label": { "type": "string", "minLength": 1 },
+            "description": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type"],
+          "properties": { "type": { "enum": ["activation_restriction", "summon_restriction"] } },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "pre_state": {
+      "type": "object",
+      "required": [
+        "phase",
+        "step",
+        "damage_step_timing",
+        "turn_player",
+        "chain_state",
+        "resolution_history",
+        "self_state",
+        "opponent_state",
+        "known_constraints"
+      ],
+      "properties": {
+        "state_timing": { "type": ["string", "null"] },
+        "phase": {
+          "enum": [
+            "draw_phase",
+            "standby_phase",
+            "main_phase_1",
+            "battle_phase",
+            "main_phase_2",
+            "end_phase",
+            "unknown"
+          ]
+        },
+        "step": { "enum": [null, "start_step", "battle_step", "damage_step", "end_step", "unknown"] },
+        "damage_step_timing": {
+          "enum": [
+            null,
+            "start_of_damage_step",
+            "before_damage_calculation",
+            "during_damage_calculation",
+            "after_damage_calculation",
+            "end_of_damage_step",
+            "unknown"
+          ]
+        },
+        "turn_player": { "$ref": "#/$defs/player" },
+        "chain_state": { "$ref": "#/$defs/chain_state" },
+        "resolution_history": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/resolution_history_item" }
+        },
+        "self_state": { "$ref": "#/$defs/player_state" },
+        "opponent_state": { "$ref": "#/$defs/player_state" },
+        "known_constraints": { "type": "array", "items": { "$ref": "#/$defs/constraint" } }
+      },
+      "additionalProperties": false
+    },
+    "attempted_operation": {
+      "type": "object",
+      "required": ["player", "operation_type", "card"],
+      "properties": {
+        "player": { "$ref": "#/$defs/player" },
+        "operation_type": { "$ref": "#/$defs/operation_type" },
+        "card": { "type": "string", "minLength": 1 },
+        "effect_id": { "type": "string", "minLength": 1 },
+        "effect_label": { "type": "string", "minLength": 1 },
+        "activation_location": { "$ref": "#/$defs/location" },
+        "activation_zone": { "type": "string", "minLength": 1 },
+        "activation_column_index": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "activation_location_at_activation": { "$ref": "#/$defs/location" },
+        "activation_zone_at_activation": { "type": "string", "minLength": 1 },
+        "chain_response_to": { "$ref": "#/$defs/chain_id" },
+        "chain_id_to_resolve": { "$ref": "#/$defs/chain_id" },
+        "current_card_location": { "$ref": "#/$defs/location" },
+        "declared_cost": { "type": "array", "items": { "$ref": "#/$defs/cost" } },
+        "declared_targets": { "type": "array", "items": { "$ref": "#/$defs/target" } },
+        "declared_effect_purpose": { "type": "string", "minLength": 1 },
+        "declared_resolution": { "type": "string", "minLength": 1 },
+        "attack_type": { "enum": ["direct_attack", "attack_monster"] },
+        "card_location": { "$ref": "#/$defs/location" },
+        "card_zone": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "operation_type": { "const": "activate_effect" } }, "required": ["operation_type"] },
+          "then": { "required": ["effect_id", "activation_location"] }
+        },
+        {
+          "if": { "properties": { "operation_type": { "const": "activate_card" } }, "required": ["operation_type"] },
+          "then": { "required": ["activation_location"] }
+        },
+        {
+          "if": { "properties": { "operation_type": { "const": "resolve_effect" } }, "required": ["operation_type"] },
+          "then": { "required": ["effect_id", "chain_id_to_resolve", "declared_resolution"] }
+        },
+        {
+          "if": { "properties": { "operation_type": { "const": "declare_attack" } }, "required": ["operation_type"] },
+          "then": { "required": ["attack_type", "card_location", "card_zone"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "source_type",
+        "authority",
+        "title",
+        "url",
+        "official_id",
+        "language",
+        "accessed_at",
+        "supports_reasoning_steps"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^src_case_[0-9]{3}_[0-9]{2}$" },
+        "source_type": {
+          "enum": ["official_card_text", "official_ruling", "official_rulebook", "secondary_reference"]
+        },
+        "authority": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "official_id": { "type": "string", "minLength": 1 },
+        "language": { "type": "string", "minLength": 1 },
+        "source_updated_at": { "type": "string", "format": "date" },
+        "accessed_at": { "type": "string", "format": "date" },
+        "supports_reasoning_steps": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "integer", "minimum": 1 }
+        },
+        "lookup_query": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "source_type": { "const": "official_card_text" } },
+            "required": ["source_type"]
+          },
+          "then": {
+            "properties": {
+              "authority": { "const": "KONAMI" },
+              "url": {
+                "pattern": "^https://(?:(?:www\\.)?(?:db\\.)?yugioh-card\\.com/|db\\.yugioh-card-cn\\.com/)"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source_type": {
+                "enum": ["official_ruling", "official_rulebook"]
+              }
+            },
+            "required": ["source_type"]
+          },
+          "then": {
+            "properties": {
+              "authority": { "const": "KONAMI" },
+              "url": {
+                "pattern": "^https://(?:www\\.)?(?:db\\.)?yugioh-card\\.com/"
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "source_type": { "const": "official_card_text" } }, "required": ["source_type"] },
+          "then": { "properties": { "official_id": { "pattern": "^cid:[0-9]+$" } } }
+        },
+        {
+          "if": { "properties": { "source_type": { "const": "official_ruling" } }, "required": ["source_type"] },
+          "then": {
+            "properties": {
+              "official_id": { "pattern": "^(?:fid:[0-9]+|cid:[0-9]+#supplement)$" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "source_type": { "const": "official_rulebook" } }, "required": ["source_type"] },
+          "then": { "properties": { "official_id": { "pattern": "^rulebook:.+$" } } }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "gold_answer": {
+      "type": "object",
+      "required": ["label", "conclusion", "failed_check", "reasoning_steps", "missing_info", "required_sources"],
+      "properties": {
+        "label": { "enum": ["legal", "illegal", "depends", "invalid_question"] },
+        "conclusion": { "type": "string", "minLength": 1 },
+        "failed_check": {
+          "enum": [
+            null,
+            "activation_window",
+            "activation_condition",
+            "chain_speed",
+            "cost_payability",
+            "target_legality",
+            "card_location",
+            "once_per_turn",
+            "phase_or_step_restriction",
+            "summon_condition",
+            "material_legality",
+            "zone_availability",
+            "effect_resolution_rule",
+            "external_restriction",
+            "unknown_missing_info"
+          ]
+        },
+        "reasoning_steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "missing_info": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "required_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" },
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": { "source_type": { "const": "official_card_text" } },
+                "required": ["source_type"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": { "source_type": { "enum": ["official_ruling", "official_rulebook"] } },
+                "required": ["source_type"]
+              },
+              "minContains": 1
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "label": { "const": "depends" } }, "required": ["label"] },
+          "then": { "properties": { "missing_info": { "minItems": 1 } } }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

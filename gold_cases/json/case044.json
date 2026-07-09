@@ -1,0 +1,246 @@
+{
+    "id": "case_044",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个效果是否可以发动？",
+    "natural_language_context": "己方在主要阶段2发动了「升天的刚角笛」无效对方的特殊召唤，效果处理中让对方从牌组抽了1张，然后主要阶段2结束进入结束阶段。现在要在结束阶段发动场上「假面－英雄 暗律」的②效果（1回合1次，对方在抽牌阶段以外从牌组将卡加入手牌时发动，随机将1张对方手牌除外）。刚角笛让对方抽卡发生在主要阶段2，现在已是结束阶段。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "end_phase",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "opponent",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "升天的刚角笛",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "destroy",
+                        "card": "对方特殊召唤的怪兽",
+                        "from": "opponent.monster_zone",
+                        "to": "opponent.graveyard"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "假面－英雄 暗律",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [
+                "升天的刚角笛"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "某卡"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "假面－英雄 暗律",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "monster_zone",
+        "activation_zone": "m3",
+        "activation_column_index": 3
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "可以发动。升天的刚角笛在主要阶段2发动并使对方抽了1张牌，到了结束阶段，假面－英雄 暗律的②效果可以在结束阶段发动。触发条件「对方在抽牌阶段以外从牌组将卡加入手牌」已在主要阶段2被满足，效果只要在该事件发生后即可发动。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "假面－英雄 暗律②效果的条件是'1回合1次，对方在抽牌阶段以外从牌组将卡加入手牌的场合可以发动'。",
+            "己方发动的升天刚角笛在主要阶段2处理中使对方从牌组抽了1张牌——这满足'抽牌阶段以外从牌组加手'的条件。",
+            "升天刚角笛的效果处理使对方主要阶段2结束（这是刚角笛的追加效果）。",
+            "现在进入结束阶段，暗律②的触发事件（对方在抽牌阶段外从牌组加手）已经在主要阶段2发生。",
+            "根据官方裁定，该诱发效果可以在后续的战斗阶段或结束阶段发动——即使事件发生在更早的阶段，效果仍可在之后满足发动时点要求时发动。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_044_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "自分の発動した「昇天の剛角笛」の効果で相手がドローした場合、自分の「M・HERO ダーク・ロウ」の効果は発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=16682&request_locale=ja",
+                "official_id": "fid:16682",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_044_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "假面－英雄 暗法",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11313&request_locale=cn",
+                "official_id": "cid:11313",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_044_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「M・HERO ダーク・ロウ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=11313&request_locale=ja",
+                "official_id": "cid:11313",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:16682。截至 2017-03-24 的裁定。"
+}

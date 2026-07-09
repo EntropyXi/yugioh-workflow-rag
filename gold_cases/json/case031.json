@@ -1,0 +1,290 @@
+{
+    "id": "case_031",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方场地区存在「卢恩神碑之泉」。上一条连锁中我方发动的「破坏之神碑」已经处理完毕并送去墓地；现在整条连锁处理完毕后，我方要发动「卢恩神碑之泉」②效果，并把这张刚才作为发动契机、现在已经在墓地的「破坏之神碑」作为对象之一。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "after_previous_chain_fully_resolved",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "破坏之神碑",
+                "effect_id": "card_activation",
+                "effect_label": "发动处理",
+                "result": [
+                    {
+                        "action": "send_to_graveyard",
+                        "card": "破坏之神碑",
+                        "from": "spell_trap_zone",
+                        "to": "graveyard"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": {
+                    "card": {
+                        "name": "卢恩神碑之泉",
+                        "status": "face_up",
+                        "card_type": "spell",
+                        "controller": "self",
+                        "spell_type": "field_spell"
+                    }
+                },
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [
+                "破坏之神碑",
+                "冰冻诅咒之神碑",
+                "神碑之枪尖"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "卢恩神碑之泉",
+        "effect_id": "effect_2",
+        "effect_label": "②",
+        "activation_location": "field_spell_zone",
+        "activation_zone": "field_spell_zone",
+        "declared_targets": [
+            {
+                "card": "破坏之神碑",
+                "controller": "self",
+                "location": "graveyard",
+                "zone": "graveyard",
+                "status": "face_up",
+                "card_type": "spell",
+                "spell_type": "quick_play_spell"
+            }
+        ],
+        "declared_effect_purpose": "选择墓地的「神碑」速攻魔法回卡组并抽卡。"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "合法。该效果不是连锁到「神碑」速攻魔法发动，而是在整条连锁处理完毕后另开时点发动；到该时点，作为发动契机的速攻魔法已经在墓地，可以被选为对象。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "「卢恩神碑之泉」②的发动条件关注的是本回合自己发动过「神碑」速攻魔法。",
+            "官方 Q&A 明确，该效果在包含那张「神碑」速攻魔法的整条连锁处理完毕后发动，而不是直接连锁发动。",
+            "连锁处理完毕时，刚才发动并处理完的「破坏之神碑」已经送去墓地，满足“墓地的「神碑」速攻魔法”这一对象范围。",
+            "因此可以选择这张刚才作为契机、现在已经在墓地的「破坏之神碑」。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_031_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「神碑の泉」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17381&request_locale=ja",
+                "official_id": "cid:17381",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_031_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「卢恩神碑之泉」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17381&request_locale=cn",
+                "official_id": "cid:17381",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_031_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「破壊の神碑」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17375&request_locale=ja",
+                "official_id": "cid:17375",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_031_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「破坏之神碑」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=17375&request_locale=cn",
+                "official_id": "cid:17375",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_031_05",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「神碑の泉」の『②』の効果を発動する際に、その発動のきっかけとなった「神碑」速攻魔法カードを対象に選択できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=23650&request_locale=ja",
+                "official_id": "fid:23650",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2022-12-30"
+            }
+        ]
+    },
+    "case_notes": "覆盖发动窗口 / 连锁处理后另开诱发时点；history 只记录已处理完毕的上一连锁结果。"
+}

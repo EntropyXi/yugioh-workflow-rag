@@ -1,0 +1,254 @@
+{
+    "id": "case_042",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个效果是否可以发动？",
+    "natural_language_context": "本战斗阶段中，我方魔玩具·钩手海怪宣言直接攻击后，对方连锁发动活死人的呼声特殊召唤了饥饿毒融合龙，由此发生战斗卷回，我方选择取消攻击。现在战斗阶段结束时，我方尝试发动钩手海怪的③效果（变为守备表示）。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "end_step",
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C1",
+                "card": "活死人的呼唤",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "special_summon",
+                        "card": "饥饿毒融合龙",
+                        "from": "opponent.graveyard",
+                        "to": "opponent.monster_zone.m3"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "魔玩具·钩手海怪",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "饥饿毒融合龙",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "fusion",
+                            "controller": "opponent"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "活死人的呼唤",
+                            "status": "face_up",
+                            "card_type": "trap",
+                            "trap_type": "continuous_trap",
+                            "controller": "opponent"
+                        }
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "魔玩具·钩手海怪",
+        "effect_id": "effect_3",
+        "effect_label": "③",
+        "activation_location": "monster_zone",
+        "activation_zone": "m3",
+        "activation_column_index": 3
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "魔玩具·钩手海怪③效果不能发动。因战斗卷回发生后取消了攻击，该怪兽不视为“进行了战斗”，不满足③效果的发动条件。",
+        "failed_check": "activation_condition",
+        "reasoning_steps": [
+            "魔玩具·钩手海怪③效果的条件是'这张卡进行过战斗的战斗阶段结束时'。",
+            "本战斗阶段中，钩手海怪宣言了直接攻击，但对方连锁活死人的呼声特殊召唤了饥饿毒融合龙。",
+            "由此触发了战斗卷回，我方选择取消了该次攻击。",
+            "根据官方裁定，战斗卷回导致攻击被取消的场合，该怪兽不视为'进行了战斗'。",
+            "因此钩手海怪③效果的发动条件不满足，不能发动。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_042_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「デストーイ・ハーケン・クラーケン」が攻撃を行った際に、戦闘の巻き戻しが発生し、攻撃を取り止めた場合、バトルフェイズ終了時にモンスター効果を発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=20246&request_locale=ja",
+                "official_id": "fid:20246",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_042_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "デストーイ・ハーケン・クラーケン",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12842&request_locale=ja",
+                "official_id": "cid:12842",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_042_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "魔玩具·钩手海怪",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=12842&request_locale=cn",
+                "official_id": "cid:12842",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:20246。截至 2017-03-24 的裁定。"
+}

@@ -1,0 +1,330 @@
+{
+    "id": "case_033",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "同一连锁上，我方为了发动某个「对击斗魂」效果已经把手牌的「对击斗魂 狂恋博士」展示过。现在我方还想连锁发动另一只「对击斗魂」怪兽的效果，并再次把这张仍在手牌中的「对击斗魂 狂恋博士」展示作为 cost。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "state_timing": "chain_building_after_revealed_hand_card_in_same_chain",
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": true,
+            "is_chain_resolving": false,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "对击斗魂 重型博格",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_summary": "从手牌发动自身效果。",
+                    "effect_features": [
+                        "reveal_card_in_hand_as_cost"
+                    ],
+                    "activation_start_location": "hand",
+                    "activation_location": "hand",
+                    "activation_zone": null,
+                    "activation_column_index": null,
+                    "effect_label": "①"
+                },
+                {
+                    "chain_id": "C2",
+                    "player": "self",
+                    "card": "对击斗魂 神圣苏",
+                    "operation_type": "activate_effect",
+                    "effect_id": "effect_1",
+                    "effect_summary": "发动时已经展示手牌中的「对击斗魂 狂恋博士」作为 cost。",
+                    "effect_features": [
+                        "reveal_card_in_hand_as_cost"
+                    ],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m2",
+                    "activation_column_index": 2,
+                    "effect_label": "①",
+                    "declared_cost": [
+                        {
+                            "type": "discard",
+                            "card": "用于占位的非本案 cost"
+                        }
+                    ]
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [
+                "对击斗魂 狂恋博士",
+                "对击斗魂 重型博格"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": {
+                            "name": "对击斗魂 神圣苏",
+                            "status": "face_up",
+                            "card_type": "monster",
+                            "controller": "self",
+                            "monster_type": "effect"
+                        }
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "card": null,
+                        "column_index": null
+                    },
+                    "emz_right": {
+                        "card": null,
+                        "column_index": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_effect",
+        "card": "对击斗魂 重型博格",
+        "effect_id": "effect_2",
+        "activation_location": "hand",
+        "declared_effect_purpose": "再次展示同一张手牌作为发动 cost。"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "合法。同一连锁上已经因效果发动或 cost 展示过的手牌，只要仍在手牌中，仍可以再次作为展示 cost。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "展示手牌作为 cost 并不会让该卡离开手牌。",
+            "官方 Q&A 明确，同一连锁上已经在手牌发动过效果的卡、或作为 cost 展示过的卡，可以再次作为其他效果发动时的展示 cost。",
+            "当前「对击斗魂 狂恋博士」仍在手牌，没有因前一次展示而失去作为展示 cost 的资格。",
+            "因此再次展示同一张手牌作为 cost 是合法的。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_033_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「VS ホーリー・スー」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=21433&request_locale=ja",
+                "official_id": "cid:21433",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「对击斗魂 神圣苏」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=21433&request_locale=cn",
+                "official_id": "cid:21433",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「VS ヘヴィ・ボーガー」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18729&request_locale=ja",
+                "official_id": "cid:18729",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「对击斗魂 重型博格」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18729&request_locale=cn",
+                "official_id": "cid:18729",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_05",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「VS Dr.マッドラヴ」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18730&request_locale=ja",
+                "official_id": "cid:18730",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_06",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「对击斗魂 狂恋博士」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=18730&request_locale=cn",
+                "official_id": "cid:18730",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_033_07",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "手札で効果を発動したカードやコストとして見せたカードを、同一チェーン上で他のカードの効果を発動する際のコストとして見せることはできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=24176&request_locale=ja",
+                "official_id": "fid:24176",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4
+                ],
+                "source_updated_at": "2026-05-05"
+            }
+        ]
+    },
+    "case_notes": "覆盖 cost / 已展示手牌复用。declared_cost 当前枚举无 reveal 类型，cost 细节用自然语言目的表达，避免伪造 discard。"
+}

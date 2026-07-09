@@ -1,0 +1,260 @@
+{
+    "id": "case_049",
+    "task_type": "effect_resolution_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前「地缚神 Ccapac Apu」的伤害效果是否适用？",
+    "natural_language_context": "「守墓者」的效果适用中（战斗破坏的怪兽不去墓地而返回持有者牌组）。己方「地缚神 Ccapac Apu」战斗破坏了对方一只攻击力1500的怪兽，这张被战斗破坏的怪兽没有送去墓地而是返回了牌组。现在地缚神 Ccapac Apu 的效果处理：'这张卡战斗破坏对方怪兽的场合，给予对方被破坏怪兽攻击力数值的伤害'——这个伤害效果是否仍适用？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "battle_phase",
+        "step": "damage_step",
+        "damage_step_timing": "after_damage_calculation",
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": true,
+            "current_chain_links": [
+                {
+                    "chain_id": "C1",
+                    "player": "self",
+                    "card": "地缚神 Ccapac Apu",
+                    "operation_type": "resolve_effect",
+                    "effect_id": "main_effect",
+                    "effect_summary": "战斗破坏后的伤害效果处理",
+                    "effect_features": [],
+                    "activation_start_location": "monster_zone",
+                    "activation_location": "monster_zone",
+                    "activation_zone": "m3",
+                    "activation_column_index": 3
+                }
+            ]
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": {
+                            "name": "地缚神 Ccapac Apu",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "effect",
+                            "controller": "self"
+                        }
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "description": "守墓者效果适用中：战斗破坏的怪兽不去墓地而返回牌组"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "resolve_effect",
+        "card": "地缚神 Ccapac Apu",
+        "effect_id": "main_effect",
+        "chain_id_to_resolve": "C1",
+        "declared_resolution": "inflict_battle_destruction_damage",
+        "declared_effect_purpose": "apply_Ccapac_Apu_battle_damage"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "伤害效果仍然适用。地缚神 Ccapac Apu 的伤害效果触发条件是'战斗破坏对方怪兽'——这个条件不要求被破坏的怪兽送去墓地。即使守墓者将被破坏怪兽改为返回牌组，'战斗破坏'这个事实本身已成立，效果仍然适用。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "地缚神 Ccapac Apu 的效果触发条件是'这张卡战斗破坏对方怪兽的场合'。",
+            "守墓者的效果是'战斗破坏的怪兽不去墓地，改为返回持有者牌组'。",
+            "两者的交互关键点在于：Ccapac Apu 的触发仅要求'战斗破坏'这一事实，并不要求被破坏的怪兽最终去往何处（墓地/牌组/除外）。",
+            "因此即便守墓者导致被破坏怪兽返回牌组而非送墓，战斗破坏本身已经成立。",
+            "官方裁定明确：被战斗破坏的怪兽不送去墓地而返回牌组时，Ccapac Apu 仍给予对方该怪兽攻击力分值的伤害。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_049_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「地縛神 Ccapac Apu」が戦闘によって破壊したモンスターが、デッキに戻る場合でも相手ライフにダメージを与える事はできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=8320&request_locale=ja",
+                "official_id": "fid:8320",
+                "language": "ja",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    3,
+                    4,
+                    5
+                ],
+                "source_updated_at": "2017-03-24"
+            },
+            {
+                "id": "src_case_049_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "地縛神 Ccapac Apu",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8172&request_locale=ja",
+                "official_id": "cid:8172",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    1
+                ]
+            },
+            {
+                "id": "src_case_049_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "グレイヴ・キーパー",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6039&request_locale=ja",
+                "official_id": "cid:6039",
+                "language": "ja",
+                "accessed_at": "2026-07-08",
+                "supports_reasoning_steps": [
+                    2
+                ]
+            },
+            {
+                "id": "src_case_049_04",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「地缚神 Ccapac Apu」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8172&request_locale=cn",
+                "official_id": "cid:8172",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "来自 KONAMI Q&A fid:8320。截至 2017-03-24 的裁定。"
+}

@@ -1,0 +1,239 @@
+{
+    "id": "case_006",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "我方回合的主要阶段，我方进行了多次召唤・特殊召唤（已累计5次以上），最近一次操作为连接召唤「契印魔镌・镇魂棺」。连接召唤完成后进入自由时点，我方尚未宣言是否发动效果。此时对方从手牌试图发动「原始生命态 尼比鲁」的①效果。请问对方的操作是否正确？",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 1,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 5,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": {
+                            "name": "契印魔镌・镇魂棺",
+                            "status": "face_up",
+                            "position": "attack",
+                            "card_type": "monster",
+                            "monster_type": "link",
+                            "link_rating": 1,
+                            "controller": "self"
+                        }
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [
+                "原始生命态 尼比鲁"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "m2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "m3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "m4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "m5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "spell_trap_zones": {
+                    "s1": {
+                        "column_index": 5,
+                        "card": null
+                    },
+                    "s2": {
+                        "column_index": 4,
+                        "card": null
+                    },
+                    "s3": {
+                        "column_index": 3,
+                        "card": null
+                    },
+                    "s4": {
+                        "column_index": 2,
+                        "card": null
+                    },
+                    "s5": {
+                        "column_index": 1,
+                        "card": null
+                    }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {
+                        "column_index": null,
+                        "card": null
+                    },
+                    "emz_right": {
+                        "column_index": null,
+                        "card": null
+                    }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "activate_effect",
+        "card": "原始生命态 尼比鲁",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "activation_location": "hand",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "tribute_all_face_up_monsters_and_special_summon_nibiru"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "对方的操作不合法。连接召唤不转移优先权，回合玩家在连接召唤完成后仍持有优先权。对方不能在回合玩家尚未放弃优先权或发动效果之前抢先发动效果。",
+        "failed_check": "activation_window",
+        "reasoning_steps": [
+            "当前处于我方回合的主要阶段，我方刚刚完成了连接召唤（契印魔镌・镇魂棺），进入自由时点。",
+            "连接召唤属于不入连锁的操作，不转移优先权。回合玩家（我方）在召唤后仍持有优先权。",
+            "只有两种操作会转移优先权：A) 发动效果时；B) 回合玩家宣言进入下一阶段或放弃优先权。",
+            "当前尚未发生以上任一情况，优先权仍在我方手中。",
+            "对方试图在自由时点C1发动尼比鲁的①效果，但优先权尚未转移给对方，对方没有发动效果的资格。",
+            "对方的正确做法是等待我方放弃优先权，或等我方先发动效果之后再决定是否连锁。",
+            "因此对方的操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_006_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「原始生命态 尼比鲁」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14741&request_locale=ja",
+                "official_id": "cid:14741",
+                "language": "ja",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    1,
+                    3,
+                    4
+                ],
+                "lookup_query": "原始生命态 尼比鲁"
+            },
+            {
+                "id": "src_case_006_02",
+                "source_type": "official_rulebook",
+                "authority": "KONAMI",
+                "title": "遊戯王OCG オフィシャルルールブック（マスタールール 2020）",
+                "url": "https://www.yugioh-card.com/japan/howto/data/rulebook_masterrule20200401_ver1.0.pdf",
+                "official_id": "rulebook:master_rule_2020_v1.0",
+                "language": "ja",
+                "source_updated_at": "2020-04-01",
+                "accessed_at": "2026-07-07",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "id": "src_case_006_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「原始生命态 尼比鲁」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=14741&request_locale=cn",
+                "official_id": "cid:14741",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-09",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    "case_notes": "用于测试连接召唤等不入连锁操作后优先权是否转移。核心裁定：连接召唤不转移优先权，回合玩家保留优先权，非回合玩家不能抢先发动效果。素材来源于B站视频 BV17bPVeKE1X。"
+}
