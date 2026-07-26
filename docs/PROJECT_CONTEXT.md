@@ -1,6 +1,6 @@
 # Yu-Gi-Oh! Ruling Workflow + RAG Project Context
 
-最后同步日期：2026-07-09  
+最后同步日期：2026-07-26  
 当前 Schema：v2.1.0  
 当前正式数据：50 条人工 gold cases  
 当前运行环境：Conda `YGO_PROJECT`
@@ -51,9 +51,11 @@
 | 格式化镜像 | `gold_cases/json/case001.json` 至 `case050.json` |
 | 输出标签 | `legal` / `illegal` / `depends` / `invalid_question` |
 | 证据状态 | 每条 case 均有官方卡片文本及官方 Q&A 或规则书 |
-| 自动校验 | Schema 校验、项目业务规则、镜像一致性、13 个负例自测 |
+| 自动校验 | Schema 校验、项目业务规则、镜像一致性、16 个负例自测 |
 | 环境 | `YGO_PROJECT`，Python 3.13.14，jsonschema 4.26.0 |
-| 阶段目标 | 50 条基线已达成；下一阶段为证据复核、质量硬化、CI 与 RAG 评测集 |
+| RAG 评测集 | `eval/rag_eval_set.jsonl`，135 条（easy 50 / medium 51 / hard 34），覆盖全部 50 条 case |
+| CI | GitHub Actions（`.github/workflows/ci.yml`）在 push / PR 时自动运行 `check_jsonlschema.py --self-test` |
+| 阶段目标 | 50 条基线、CI 与 RAG 评测集已达成；下一阶段为证据复核与 RAG 评测 runner |
 
 ---
 
@@ -69,12 +71,17 @@ yugioh-workflow-rag/
 │   └── json/
 │       ├── case001.json                  # 格式化的人读镜像
 │       └── ... case050.json
+├── eval/
+│   └── rag_eval_set.jsonl                # RAG 检索评测集（三级难度，见 docs/rag_eval_plan.md）
+├── .github/
+│   └── workflows/ci.yml                  # CI：自动运行 check_jsonlschema.py --self-test
 ├── docs/
 │   ├── PROJECT_CONTEXT.md                # 本文档，项目交接入口
 │   ├── task_scope.md                     # 任务边界与判断流程
 │   ├── schema.md                         # v2 字段说明与枚举文档
 │   ├── operation_case.schema.json        # 可执行 Draft 2020-12 Schema
 │   ├── cases_json_template.md             # case 编写模板
+│   ├── rag_eval_plan.md                  # RAG 评测集三级难度标准与生成计划
 │   └── environment_setup.md              # 环境创建与使用说明
 ├── log/
 │   └── ygo_json_case_changelog.md        # Schema 历史和日常变更日志
@@ -481,7 +488,7 @@ Python 模块也可以直接调用类接口，不需要捕获终端输出。
 conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 ```
 
-当前期望输出：正式数据通过 Schema 和业务校验，13 个内存负例全部被拒绝。校验器返回
+当前期望输出：正式数据通过 Schema 和业务校验，16 个内存负例全部被拒绝。校验器返回
 非零退出码时，不得合并数据变更。
 
 ---
@@ -541,7 +548,6 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 
 ### 主要风险
 
-- Git 尚未配置为有效仓库：根目录 `.git` 为空，由用户稍后自行处理。
 - 官方 Q&A 或卡片文本会更新，当前证据日期不代表永久有效。
 - `effect_features` 自由扩张会造成 workflow 匹配不稳定。
 - 忽略 `resolution_history` 会使复杂连锁处理失真。
@@ -553,8 +559,8 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 
 - 持续复核 50 条 gold case 的官方 Q&A 更新日期和裁定有效性。
 - 为新增场景扩充枚举时建立更系统的回归负例。
-- 建立 CI，设计 RAG 检索评测集。
-- 评估是否在 CI 中自动执行 `check_jsonlschema.py --self-test`。
+- 为 `eval/rag_eval_set.jsonl` 建立评测 runner（recall@1/3/5、MRR，按 difficulty 分组报告）。
+- 评估是否将 eval 集的结构校验纳入校验器或 CI。
 
 ### 下一步
 
