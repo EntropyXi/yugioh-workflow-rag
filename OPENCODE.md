@@ -5,7 +5,7 @@
 ## 一、项目核心认知
 
 - 项目是"游戏王 OCG 操作合法性裁定数据集"，不是 RAG 引擎或规则引擎。
-- 当前核心资产：`gold_cases/` 下的 40 条 gold cases + JSON Schema + 双层校验器。
+- 当前核心资产：`gold_cases/` 下的 50 条 gold cases + JSON Schema + 双层校验器 + `eval/` 下的 RAG 检索评测集。
 - 权威性顺序：`docs/operation_case.schema.json` > `check_jsonlschema.py` > `docs/schema.md` > `docs/PROJECT_CONTEXT.md`。
 - 环境：Conda `YGO_PROJECT`，标准命令 `conda run -n YGO_PROJECT python check_jsonlschema.py --self-test`。
 
@@ -45,7 +45,7 @@
    ```powershell
    conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
    ```
-2. 验收标准：40 条 case 全部通过 Schema + 业务规则 + 镜像一致性校验，所有负例被拒绝，退出码 0。
+2. 验收标准：50 条 case 全部通过 Schema + 业务规则 + 镜像一致性校验，所有负例被拒绝，退出码 0。
 3. 校验不通过不得进入下一步。
 
 ## 七、Changelog 规范

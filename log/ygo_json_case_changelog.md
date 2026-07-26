@@ -11,11 +11,43 @@
 
 当前校验状态：
 
-- `check_jsonlschema.py --self-test` 覆盖 Schema、业务规则、镜像一致性与 13 个内存负例；
+- `check_jsonlschema.py --self-test` 覆盖 Schema、业务规则、镜像一致性与 16 个内存负例；
 - 正式数据规则已强化为：每条 case 原则上必须同时包含日文与简中官方卡片文本来源；
 - `official_ruling` 必须填写 `source_updated_at`；
 - `case_048` 因关键卡暂未定位有效简中官方正文，作为显式待复核来源例外保留，不伪造来源；
-- `.git` 尚未配置为有效仓库，由用户稍后自行处理。
+- git 仓库已建立（main / feature 分支，远端 origin），GitHub Actions CI 在 push / PR 时自动运行 `check_jsonlschema.py --self-test`；
+- RAG 检索评测集 `eval/rag_eval_set.jsonl` 共 135 条（easy 50 / medium 51 / hard 34），覆盖全部 50 条 case，每条 case 至少 1 easy + 1 medium。
+
+---
+
+# 2026-07-26 - 文档快照同步与 RAG 评测集 hard 条目补充
+
+## Summary
+
+本轮不新增 case、不修改任何裁定结论、不改动 Schema 与校验器。为 10 个此前没有 hard 条目的 case 各补 1 条 hard 评测题（评测集 125 → 135 条，hard 占比 19.2% → 25.2%，达到 `docs/rag_eval_plan.md` 的 ~25% 配比目标）；同步 3 处过期文档快照。
+
+## Added
+
+- `eval/rag_eval_set.jsonl`：新增 10 条 hard 条目
+  `eval_003d` / `eval_004c` / `eval_006c` / `eval_020c` / `eval_022c` / `eval_024c` / `eval_037c` / `eval_043c` / `eval_045c` / `eval_048c`。
+  全部按 H 标准构造（无卡名原理化提问或跨 case 歧义），并为姐妹 case 补齐区分题：
+  case_021/022（召唤成功窗口）、case_004/023（无效特召，结论相反）、case_028/037（被无效后的次数计算，结论相反）、
+  case_040/042/043（卡通世界与卷回）、case_013/024（送墓 cost 替代去向）、case_020/025/048（对象合法性时点）。
+
+## Changed
+
+- `docs/PROJECT_CONTEXT.md`：同步日期 2026-07-26；负例数 13 → 16；快照表新增 RAG 评测集与 CI 行；
+  仓库结构树补充 `eval/`、`.github/workflows/ci.yml`、`docs/rag_eval_plan.md`；
+  删除已过期的“Git 尚未配置为有效仓库”风险项；Pending 更新为评测 runner 与 eval 集校验纳入 CI。
+- `OPENCODE.md`：核心资产与验收标准 40 条 → 50 条，核心资产补充 RAG 评测集。
+- 本文件 Current Snapshot：负例数 13 → 16；git 仓库与 CI 现状；新增评测集状态行。
+
+## Validation
+
+- 脚本校验 `eval/rag_eval_set.jsonl`：135 条、eval_id 无重复、gold_case_id 全部有效、
+  每条 case ≥1 easy + ≥1 medium、单 case hard ≤2、难度分布 easy 50 / medium 51 / hard 34。
+- 新增 10 条 hard 题目已逐条与对应 case 的 `natural_language_context` 与 `gold_answer` 核对，无事实性矛盾。
+- gold 主数据、Schema、校验器本轮未改动，`--self-test` 结果不受影响（建议例行运行确认）。
 
 ---
 

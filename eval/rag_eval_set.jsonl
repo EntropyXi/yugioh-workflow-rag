@@ -7,14 +7,17 @@
 {"eval_id": "eval_003a", "gold_case_id": "case_003", "question": "我的电子界到临者@火灵天星不受其他卡效果影响，但S:P小夜骑士发过效果说'自己怪兽不能直接攻击'。到临者能不能无视这个限制直接打脸？", "difficulty": "medium", "question_style": "forum_casual"}
 {"eval_id": "eval_003b", "gold_case_id": "case_003", "question": "自己场上有到临者，小夜的效果适用了'自己怪兽不能直接攻击'的限制。到临者免疫效果，是不是可以直击？还是说这个算对玩家的限制？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_003c", "gold_case_id": "case_003", "question": "有大佬解释一下吗，全抗怪能不能无视小夜的不能直接攻击的限制？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_003d", "gold_case_id": "case_003", "question": "一个'自己的怪兽不能直接攻击'的限制正在适用中，我方有一只'不受其他卡效果影响'的怪兽。这种限制到底是施加给怪兽的还是施加给玩家的？全抗体质在什么情况下能绕过限制、什么情况下绕不过？", "difficulty": "hard", "question_style": "rules_precise", "notes": "不点名S:P/到临者的泛化版本；与 case_018/case_039 的'不受效果影响'边界题易混淆"}
 {"eval_id": "eval_004a", "gold_case_id": "case_004", "question": "命运英雄毁灭凤凰人上回合被炸了，这回合准备阶段自己从墓地跳回来。我有盖着的神之通告，能在它跳回来的时候发动无效那个特召吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_004b", "gold_case_id": "case_004", "question": "凤凰人③效果：被破坏的场合，下个准备阶段从墓地特召一只DH。这算效果产生的特召还是召唤手续？神之通告的'无效特殊召唤'能对应吗？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_004c", "gold_case_id": "case_004", "question": "之前发动并处理完的效果，到了延迟时点才执行的不入连锁特殊召唤——这算'效果产生的特召'还是'召唤手续'？'无效特殊召唤'类的反击陷阱能对应它吗？和发动时内藏特召处理的卡被'无效发动'相比，区别在哪里？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_023（神之警告对应魔术礼帽=legal）为结论相反的姐妹题；神之通告同为 case_038 涉及卡"}
 {"eval_id": "eval_005a", "gold_case_id": "case_005", "question": "对面用IP莱娜的效果进行连接召唤，我场上有赫焉龙大木偶剧场龙——'有怪兽因对手发动的怪兽的效果被特殊召唤的情况下'可以除外发动。IP连接出来的怪算'因效果被特殊召唤'吗？赫焉龙能连锁吗？", "difficulty": "hard", "question_style": "forum_casual"}
 {"eval_id": "eval_005b", "gold_case_id": "case_005", "question": "IP莱娜的效果写的是'以包含此卡在内的自己场上怪兽作为素材进行连接召唤'。这是'进行连接召唤的效果'还是'把怪兽特殊召唤的效果'？有没有人能解释一下区别？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_005c", "gold_case_id": "case_005", "question": "对方用IP的效果做link，我赫焉龙能不能发动②效果对应？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_005d", "gold_case_id": "case_005", "question": "对方发动IP莱娜的效果后，IP效果连接召唤出的怪兽属于'被效果特殊召唤'还是'通过连接召唤规则特殊召唤'？赫焉龙的发动条件要求前者，为什么IP不满足？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_006a", "gold_case_id": "case_006", "question": "我连接召唤做完，刚把怪放到场上，对面就马上扔陨石。我还没说要不要发动效果呢，他能抢先吗？", "difficulty": "easy", "question_style": "forum_casual", "notes": "原始生命态 尼比鲁同时为 case_016 核心卡，评测集扩展到 case_016 后需重新评估此条目的卡名唯一性"}
 {"eval_id": "eval_006b", "gold_case_id": "case_006", "question": "连接召唤成功后不转移优先权，回合玩家在连接召唤完成时点是否持有优先权？对方能否在我放弃优先权之前抢先发动尼比鲁？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_006c", "gold_case_id": "case_006", "question": "召唤·特殊召唤完成后进入自由时点、回合玩家还没表态要不要发动效果——对方能不能直接先动手牌的诱发即时效果？'召唤成功不转移优先权'具体指什么？'召唤成功时点的发动窗口'和'之后的自由时点'是两回事吗？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_021/case_022 的召唤成功窗口题易混淆；尼比鲁同为 case_016 核心卡"}
 {"eval_id": "eval_007a", "gold_case_id": "case_007", "question": "上回合冰剑龙发效果被日全食之书盖了，结束阶段日全食又翻开。这回合冰剑龙还能再发效果吗？是不是里侧过后限制就重置了？", "difficulty": "medium", "question_style": "forum_casual"}
 {"eval_id": "eval_007b", "gold_case_id": "case_007", "question": "冰剑龙②效果文本：'此卡名的此效果1回合仅可使用1次'。处理时冰剑龙已变成里侧。里侧状态下适用的'下回合不可使用'限制，在结束阶段被翻开后是否仍有效？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_007c", "gold_case_id": "case_007", "question": "上回合冰剑龙发效果，被对面的日全食之书连锁盖了。这回合日全食又把它翻开了。冰剑龙还能不能再发一次效果？", "difficulty": "easy", "question_style": "forum_casual"}
@@ -54,14 +57,17 @@
 {"eval_id": "eval_019c", "gold_case_id": "case_019", "question": "'不是X属性不能特殊召唤'的自肃适用中，全场除外后只选择性地特召X属性怪兽——这个操作算不算'特召了X属性以外的怪兽'？自肃限制的是'特召行为'还是'特召结果'？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_020a", "gold_case_id": "case_020", "question": "我发动大搜捕取对象对面一只表侧怪，对面连锁月之书把它盖了。大搜捕还能抢过来吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_020b", "gold_case_id": "case_020", "question": "永续陷阱取对象发动后，对象在效果处理前变成里侧——取对象的合法性还在吗？大搜捕的控制权转移效果还能适用吗？处理后那只里侧怪兽被翻开还能不能攻击和发效？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_020c", "gold_case_id": "case_020", "question": "取对象的效果发动后，对象在同一连锁中被变成了里侧守备表示。发动时参照的表侧信息已经不成立了，处理会不会落空？还是说'对象没有离开那个区域'处理就继续、附带的限制也照常适用？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_025（对象离墓=illegal）、case_048（保护时间差）的对象合法性题易混淆，结论方向相反"}
 {"eval_id": "eval_021a", "gold_case_id": "case_021", "question": "我通常召唤了一只怪，想在那个召唤成功时点先发它的起动效果。在这之前对面能先发动激流葬吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_021b", "gold_case_id": "case_021", "question": "怪兽召唤成功时点，回合玩家是否有优先权先发动起动效果？2速的激流葬能不能抢在1速起动效果之前发动？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_022a", "gold_case_id": "case_022", "question": "我上级召唤欧贝利斯克的巨神兵成功，对面能在召唤成功时点发动奈落的落穴吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_022b", "gold_case_id": "case_022", "question": "巨神兵召唤成功时有'不能发动魔法·陷阱·怪兽效果'的适用——这个适用是在什么时候生效的？覆盖召唤成功时点吗？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_022c", "gold_case_id": "case_022", "question": "某些怪兽'召唤成功的时点双方不能发动魔法·陷阱·怪兽效果'——这个封锁为什么在召唤成功时点就已经生效？它和普通怪兽召唤成功时对方可以发动陷阱的窗口有什么区别？这个封锁会不会延续到之后的时点？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_021（召唤成功时点优先权）为姐妹区分题"}
 {"eval_id": "eval_023a", "gold_case_id": "case_023", "question": "对面发动魔术礼帽，我能连锁发动神之警告无效它吗？魔术礼帽是不是包含'把怪兽特殊召唤'的处理？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_023b", "gold_case_id": "case_023", "question": "魔术礼帽的发动包含把卡作为怪兽特殊召唤的处理——这能不能被神之警告的'无效包含怪兽特殊召唤的效果的发动'所覆盖？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_024a", "gold_case_id": "case_024", "question": "我场上有一只表侧的灵摆怪兽，想发动禁忌的一滴把它送去墓地当cost，可以吗？", "difficulty": "easy", "question_style": "forum_casual", "notes": "禁忌的一滴同时为 case_008 提及卡片"}
 {"eval_id": "eval_024b", "gold_case_id": "case_024", "question": "灵摆怪兽从场上要送去墓地的场合不去墓地而是表侧加入额外卡组——那它能不能被用来支付'送去墓地'的cost？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_024c", "gold_case_id": "case_024", "question": "需要'把场上的卡送去墓地'作为cost的效果，但那张卡按规则去墓地时会改去别的地方（比如表侧加入额外卡组）——这个cost还算可以支付吗？cost可支付性判定看的是'执行送墓动作'还是'实际能到达墓地'？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_013（宏观宇宙下舍弃cost=illegal）为同原理姐妹题；禁忌的一滴同为 case_008 提及卡"}
 {"eval_id": "eval_025a", "gold_case_id": "case_025", "question": "对方发动幽鬼兔效果送墓，我连锁墓穴指名者除外它。对方又连锁战线复归把幽鬼兔苏生了。墓穴指名者还能除外并适用同名效果无效吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_025b", "gold_case_id": "case_025", "question": "墓穴指名者取对象的怪兽在连锁处理中被特召离墓——墓穴指名者的'除外并无效同名卡效果'还能正常处理吗？处理时对象已不在墓地是否影响？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_025c", "gold_case_id": "case_025", "question": "墓穴指名者取对象墓地的怪兽，处理前该怪兽被苏生离墓。墓穴指名者的'把那只怪兽除外'和'同名卡效果无效'是两段独立处理还是一次性效果？对象的移动如何影响不同阶段？", "difficulty": "hard", "question_style": "rules_precise"}
@@ -92,6 +98,7 @@
 {"eval_id": "eval_036c", "gold_case_id": "case_036", "question": "'无视召唤条件'具体能无视哪些条件？苏生限制、素材要求、等级限制各自能不能被无视？从墓地特召没有正规出场过的怪兽属于哪一类？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_037a", "gold_case_id": "case_037", "question": "我发了音服和弦和音选了某个●项，被对面无效了。同一回合能再发一次选同一个●项吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_037b", "gold_case_id": "case_037", "question": "有多个●项的效果，发动或发动后的效果被无效的场合，一回合一次限制是否仍算已使用？同回合再次发动时还能选同一个●项吗？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_037c", "gold_case_id": "case_037", "question": "'以下效果各1回合只能选择1次'的●项效果，发动被无效了——被无效的那次算不算'已经选择过'那个●项？同回合再发动还能选同一项吗？'被无效就不算用过'这个直觉在什么场合成立、什么场合不成立？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_028（陷阱诡计发动被无效后仍能再发=legal）为结论方向相反的姐妹题"}
 {"eval_id": "eval_038a", "gold_case_id": "case_038", "question": "我发动地中骇界的决战（准备适用让发动后的效果不被无效的处理）。对方能连锁发动神之通告无效这张陷阱卡的发动吗？", "difficulty": "easy", "question_style": "forum_casual", "notes": "神之通告同时为 case_004 核心卡"}
 {"eval_id": "eval_038b", "gold_case_id": "case_038", "question": "一张陷阱卡的效果文本说'发动的效果不会被无效'——这张卡本身的发动能不能被神之通告无效？'发动的效果不被无效'和'发动被无效'是两个不同概念吗？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_038c", "gold_case_id": "case_038", "question": "地中骇界的决战效果文本说'发动后的效果不被无效'——这和'发动本身不被无效'是两回事吗？神之通告能不能在发动时点把整个卡的发动无效掉？", "difficulty": "medium", "question_style": "rules_precise", "notes": "神之通告同时为 case_004 核心卡"}
@@ -106,11 +113,13 @@
 {"eval_id": "eval_042b", "gold_case_id": "case_042", "question": "战斗卷回后放弃攻击的场合，那只怪兽还算'进行过攻击宣言'吗？战斗阶段结束时相关的效果还能不能发动？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_043a", "gold_case_id": "case_043", "question": "我卡通电子龙宣言直接攻击。战斗步骤中对方发气旋炸了我的卡通世界。卡通世界不在了，卡通电子龙的直接攻击还能继续吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_043b", "gold_case_id": "case_043", "question": "攻击宣言时满足条件的攻击，在战斗步骤中途因前置条件被破坏——攻击是否仍有效？卡通怪兽在卡通世界消失后还能完成这次已经宣言的直接攻击吗？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_043c", "gold_case_id": "case_043", "question": "攻击宣言时点合法成立的攻击，其前提条件在战斗步骤进行中途消失了——这次攻击是照常继续，还是发生卷回？'以宣言时点判定'的原则是否适用于攻击进行中的持续前提条件？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_040（卡通世界破坏不追溯）、case_042（卷回后取消攻击）场景易混淆"}
 {"eval_id": "eval_044a", "gold_case_id": "case_044", "question": "我主要阶段2发动升天的刚角笛让对方抽了1张。结束阶段暗律的效果能不能对应这次抽卡发动？虽然抽卡发生在主要阶段2但暗律的发动条件说的是'抽牌阶段以外'。", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_044b", "gold_case_id": "case_044", "question": "暗律②效果：'对方在抽牌阶段以外从牌组把卡加入手牌时发动'——升天刚角笛让对方在主要阶段2抽卡后，到了结束阶段暗律还能对应吗？触发条件的时间窗口是立即还是持续到结束阶段？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_044c", "gold_case_id": "case_044", "question": "'抽牌阶段以外从牌组把卡加入手牌时'触发的诱发效果，其触发时间窗口是立即触发还是持续到该回合结束阶段？中间经过了多个阶段，这个'时'的窗口是否关闭？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_045a", "gold_case_id": "case_045", "question": "白龙忍者保护自己的魔陷不被效果破坏。光之护封剑到了3回合后要自毁——白龙忍者能阻止光封自毁吗？", "difficulty": "easy", "question_style": "forum_casual", "notes": "光之护封剑同时为 case_014 涉及卡片"}
 {"eval_id": "eval_045b", "gold_case_id": "case_045", "question": "卡自身的维持/自毁处理算不算'被效果破坏'？白龙忍者的保护魔法陷阱不被效果破坏的效果，能不能阻止光之护封剑的自毁？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_045c", "gold_case_id": "case_045", "question": "卡片文本自带的'经过X回合后破坏这张卡'的维持自毁处理，规则上算不算'被效果破坏'？'魔法·陷阱不会被效果破坏'的保护效果、以及'被效果破坏时'触发的诱发条件，会不会把这种自毁计算在内？", "difficulty": "hard", "question_style": "rules_precise", "notes": "光之护封剑同为 case_014 涉及卡片"}
 {"eval_id": "eval_046a", "gold_case_id": "case_046", "question": "对面开了通道限制（必须从最左边开始用怪兽区）。我有IP莱娜在左端额外怪兽区（连接端向右）。灵摆召唤从额外出的怪必须出在连接端，但通道限制要求从最左边用——两个规则冲突了怎么办？", "difficulty": "easy", "question_style": "forum_casual", "notes": "IP莱娜同时为 case_005 核心卡"}
 {"eval_id": "eval_046b", "gold_case_id": "case_046", "question": "通道限制的'必须从最左侧区域开始使用'和'额外卡组灵摆召唤必须出在连接端'两个规则冲突时，哪个优先？这个冲突本身是否导致灵摆召唤无法进行？", "difficulty": "hard", "question_style": "rules_precise"}
 {"eval_id": "eval_046c", "gold_case_id": "case_046", "question": "通道限制要求从最左侧怪兽区开始使用，但额外卡组灵摆召唤又必须出在连接端——两个都是强制规则，OCG处理规则冲突的一般原则是什么？这个场景下有没有'无法满足则不能进行'的结论？", "difficulty": "medium", "question_style": "rules_precise", "notes": "IP莱娜同时为 case_005 核心卡"}
@@ -118,6 +127,7 @@
 {"eval_id": "eval_047b", "gold_case_id": "case_047", "question": "次元壁的效果是把'对自己的战斗伤害'转为'对对方的战斗伤害'——这个转嫁后的伤害在规则上还算不算'因战斗给予的战斗伤害'？二进制女巫的发动条件是否满足？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_048a", "gold_case_id": "case_048", "question": "崔斯坦保护攻击力1800以下的圣骑士怪不被取对象。高文被暗之咒缚降了攻变成1200，后来崔斯坦出场了——这时对方还能取高文为对象吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_048b", "gold_case_id": "case_048", "question": "圣骑士崔斯坦的①效果是'只要自己场上有这张卡以外的圣骑士怪兽存在，对方不能选择攻击力1800未满的怪兽为对象'——高文被降攻后攻击力因持续性效果变为1200，这时候崔斯坦的保护是否覆盖高文？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_048c", "gold_case_id": "case_048", "question": "'不能选择攻击力X未满的怪兽为对象'这类保护，判定用的是怪兽的当前数值还是原本数值？如果攻击力是被对方更早适用的持续效果降低才跌进保护线的、保护效果出现得比降攻更晚，之后的新效果还能不能取它为对象？", "difficulty": "hard", "question_style": "rules_precise", "notes": "与 case_020/case_025 的对象合法性时点题相区分；已适用的旧效果不受影响、新取对象被禁止的时间差是本题核心"}
 {"eval_id": "eval_049a", "gold_case_id": "case_049", "question": "守墓者适用中，战斗破坏的怪兽不去墓地返回牌组。地缚神的效果'战斗破坏怪兽的场合给予攻击力数值的伤害'——怪没去墓地去了牌组，伤害还给吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_049b", "gold_case_id": "case_049", "question": "'战斗破坏的场合'触发的效果——只要战斗破坏的事实成立，处理的后续（破坏后送去哪里）是否影响这个触发？战斗破坏和送去墓地是同一个事件还是两个事件？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_050a", "gold_case_id": "case_050", "question": "雷王在场上'不能用抽卡以外的方法从卡组加手牌'。阿卡纳解读的效果是投硬币，表的话从卡组检索一张投硬币效果的卡——能发动吗？", "difficulty": "easy", "question_style": "forum_casual"}
