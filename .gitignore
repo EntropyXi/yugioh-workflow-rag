@@ -14,6 +14,8 @@ __pycache__/
 Thumbs.db
 
 .tmp_*
+_*.py
+_*.txt
 .obsidian/
 .ipynb_checkpoints/
 .conda/
