@@ -1,4 +1,4 @@
-# Yu-Gi-Oh! Operation Legality Judgment Dataset
+# YGO Ruling Evaluation Workflow&RAG
 
 > An open-source, non-commercial dataset and RAG research project for source-grounded Yu-Gi-Oh! ruling evaluation.
 
