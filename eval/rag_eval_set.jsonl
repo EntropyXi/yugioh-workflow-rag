@@ -133,3 +133,19 @@
 {"eval_id": "eval_050a", "gold_case_id": "case_050", "question": "雷王在场上'不能用抽卡以外的方法从卡组加手牌'。阿卡纳解读的效果是投硬币，表的话从卡组检索一张投硬币效果的卡——能发动吗？", "difficulty": "easy", "question_style": "forum_casual"}
 {"eval_id": "eval_050b", "gold_case_id": "case_050", "question": "包含不确定检索的效果（投硬币决定是否检索），在雷王的封锁下能否发动？发动时不知道会不会执行检索动作，是按发动前的可预见性还是实际处理结果来判断？", "difficulty": "medium", "question_style": "rules_precise"}
 {"eval_id": "eval_050c", "gold_case_id": "case_050", "question": "效果处理结果不确定的检索效果（如投硬币），在'不能从卡组加手牌'的封锁下能否发动？发动合法性是按'有可能检索'来禁止，还是按'实际未检索'来允许？", "difficulty": "hard", "question_style": "rules_precise"}
+{"eval_id": "eval_051a", "gold_case_id": "case_051", "question": "元素英雄 天空侠的通常召唤刚被神之宣告无效并破坏。这回合到了主要阶段2，我还能通常召唤手牌的元素英雄 次新宇侠吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_051b", "gold_case_id": "case_051", "question": "通常召唤被无效时，这次尝试是否会消耗每回合一次的通常召唤次数？同一回合之后还能否再进行通常召唤？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_052a", "gold_case_id": "case_052", "question": "对方场上有暗黑神鸟 斯摩夫，效果写着对方不能把卡盖放。我可以把手牌的旋风盖放到魔法与陷阱区域吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_052b", "gold_case_id": "case_052", "question": "“对方不能把卡盖放”这一限制是否包含把魔法或陷阱卡从手牌盖放到魔法与陷阱区域？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_053a", "gold_case_id": "case_053", "question": "暗黑神鸟 斯摩夫在场时，我能把三眼怪以里侧守备表示通常召唤吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_053b", "gold_case_id": "case_053", "question": "规则文本禁止“把卡盖放”时，怪兽的里侧守备表示通常召唤是否也属于被禁止的盖放行为？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_054a", "gold_case_id": "case_054", "question": "我手牌只剩双龙卷，想发动它并舍弃1张手牌作为cost。能把正在发动的双龙卷自己舍弃吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_054b", "gold_case_id": "case_054", "question": "需要从手牌舍弃卡作为发动cost的卡，在手牌中没有其他卡时，能否把该张正在发动的卡本身用于支付cost？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_055a", "gold_case_id": "case_055", "question": "电子化天使 韦驮天被解放送去墓地后，对方在同一连锁用D.D.乌鸦把它除外。连锁结束后，它还能在墓地发动被解放时的检索效果吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_055b", "gold_case_id": "case_055", "question": "诱发效果满足条件后、另开连锁发动前，卡片已经离开其应当发动的场所时，该诱发效果还能否发动？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_056a", "gold_case_id": "case_056", "question": "禁止令宣言了元素英雄 天空侠后，我还能发动融合，把天空侠和水泡侠作为素材融合召唤元素英雄 绝对零度侠吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_056b", "gold_case_id": "case_056", "question": "被“禁止令”宣言而不能作为融合素材的怪兽，能否仍被计入融合素材组合；如果去掉它就不满足融合怪兽的素材条件，发动融合是否合法？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_057a", "gold_case_id": "case_057", "question": "对方有两张内容未知的盖卡时，我在主要阶段发动雷击破坏怪兽。这个发动是否合法，效果会不会被无效能直接确定吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_057b", "gold_case_id": "case_057", "question": "局面没有禁止通常魔法发动，但对方的未知盖卡可能响应并无效发动或效果。判断“当前操作是否合法”与判断“效果能否成功”分别还缺少什么信息？", "difficulty": "medium", "question_style": "rules_precise"}
+{"eval_id": "eval_058a", "gold_case_id": "case_058", "question": "对方想从手牌发动增殖的G，但局面没有记录它本回合是否已经发动过同名效果。这次发动能直接判定合法吗？", "difficulty": "easy", "question_style": "forum_casual"}
+{"eval_id": "eval_058b", "gold_case_id": "case_058", "question": "带有“此卡名的效果1回合只能使用1次”的手牌效果，若局面缺少本回合已使用次数，规则结论应判为合法、非法，还是取决于缺失信息？", "difficulty": "medium", "question_style": "rules_precise"}
