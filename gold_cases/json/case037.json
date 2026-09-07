@@ -232,8 +232,21 @@
                 ],
                 "source_updated_at": "2026-05-31",
                 "lookup_query": "fid:23977 同样适用列表中的「ドレミコード・ハルモニア」"
+            },
+            {
+                "id": "src_case_037_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "音服和弦・和音（ドレミコード・ハルモニア）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/75312321",
+                "official_id": "id:75312321",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    1
+                ]
             }
         ]
     },
-    "case_notes": "覆盖一次限制 / 项目选择计数。原候选「ヴォルカニック・リムファイア」缺有效简中正文，按官方同样适用列表改用 cid:16094。"
+    "case_notes": "覆盖一次限制 / 项目选择计数。原候选「ヴォルカニック・リムファイア」缺有效简中正文，按官方同样适用列表改用 cid:16094。已通过 KONAMI 官方简中 DB（cid:16094）+ local CDB 备源完成简中卡文覆盖。"
 }

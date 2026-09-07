@@ -1,0 +1,191 @@
+{
+    "id": "case_051",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "本回合我方主要阶段1试图通常召唤「元素英雄 天空侠」，但被对方的「神之宣告」无效。现在进入主要阶段2，我方试图通常召唤手牌的「元素英雄 次新宇侠」。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_2",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [
+            {
+                "resolved_chain_id": "C2",
+                "card": "神之宣告",
+                "effect_id": "card_activation",
+                "result": [
+                    {
+                        "action": "destroy",
+                        "card": "元素英雄 天空侠",
+                        "from": "hand",
+                        "to": "graveyard"
+                    }
+                ]
+            }
+        ],
+        "self_state": {
+            "hand": [
+                "元素英雄 次新宇侠"
+            ],
+            "field": {
+                "monster_zones": {
+                    "m1": { "column_index": 1, "card": null },
+                    "m2": { "column_index": 2, "card": null },
+                    "m3": { "column_index": 3, "card": null },
+                    "m4": { "column_index": 4, "card": null },
+                    "m5": { "column_index": 5, "card": null }
+                },
+                "spell_trap_zones": {
+                    "s1": { "column_index": 1, "card": null },
+                    "s2": { "column_index": 2, "card": null },
+                    "s3": { "column_index": 3, "card": null },
+                    "s4": { "column_index": 4, "card": null },
+                    "s5": { "column_index": 5, "card": null }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": { "column_index": null, "card": null },
+                    "emz_right": { "column_index": null, "card": null }
+                }
+            },
+            "graveyard": [
+                "元素英雄 天空侠"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": { "column_index": 5, "card": null },
+                    "m2": { "column_index": 4, "card": null },
+                    "m3": { "column_index": 3, "card": null },
+                    "m4": { "column_index": 2, "card": null },
+                    "m5": { "column_index": 1, "card": null }
+                },
+                "spell_trap_zones": {
+                    "s1": { "column_index": 5, "card": null },
+                    "s2": { "column_index": 4, "card": null },
+                    "s3": { "column_index": 3, "card": null },
+                    "s4": { "column_index": 2, "card": null },
+                    "s5": { "column_index": 1, "card": null }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": { "column_index": null, "card": null },
+                    "emz_right": { "column_index": null, "card": null }
+                }
+            },
+            "graveyard": [
+                "神之宣告"
+            ],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "normal_summon",
+        "card": "元素英雄 次新宇侠",
+        "activation_location": "hand",
+        "declared_effect_purpose": "在主要阶段2进行通常召唤（本回合主要阶段1的通常召唤被无效，按2020年4月规则不计入次数）"
+    },
+    "gold_answer": {
+        "label": "legal",
+        "conclusion": "合法。2020年4月1日起生效的大师规则修订规定：被无效的通常召唤不计入每回合1次的通常召唤次数。因此本回合主要阶段2可以再次进行通常召唤。",
+        "failed_check": null,
+        "reasoning_steps": [
+            "每回合可以且只能进行1次通常召唤。",
+            "2020年4月1日规则修订：如果通常召唤被「神之宣告」等卡的效果无效，则该次通常召唤不视为已进行，不计入本回合的通常召唤次数。",
+            "本回合主要阶段1的「元素英雄 天空侠」通常召唤被「神之宣告」无效。",
+            "当前为主要阶段2，回合玩家的通常召唤次数尚未消耗。",
+            "手牌有「元素英雄 次新宇侠」，场上主怪兽区域有空位，可以通常召唤。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_051_01",
+                "source_type": "official_rulebook",
+                "authority": "KONAMI",
+                "title": "Master Rule (April 1, 2020 Revision) — Summon negation counting",
+                "url": "https://www.yugioh-card.com/asia/zh/play/ocg-rulebook/",
+                "official_id": "rulebook:master_rule_2020_v1.0",
+                "language": "ja",
+                "source_updated_at": "2020-04-01",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "id": "src_case_051_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「E・HERO アナザー・ネオス」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7961&request_locale=ja",
+                "official_id": "cid:7961",
+                "language": "ja",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    5
+                ]
+            },
+            {
+                "id": "src_case_051_03",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「元素英雄 次新宇侠」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7961&request_locale=cn",
+                "official_id": "cid:7961",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    5
+                ]
+            },
+            {
+                "id": "src_case_051_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "元素英雄 次新宇侠（E・HERO アナザー・ネオス）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/16246560",
+                "official_id": "id:16246560",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    5
+                ]
+            },
+            {
+                "id": "src_case_051_05",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "元素英雄 天空侠（E・HERO エアーマン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/21844576",
+                "official_id": "id:21844576",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    3
+                ]
+            }
+        ]
+    },
+    "case_notes": "覆盖通常召唤被无效后的次数重置（2020年4月大师规则修订）。用于补齐 operation_type: normal_summon。"
+}

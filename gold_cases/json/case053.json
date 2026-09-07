@@ -1,0 +1,161 @@
+{
+    "id": "case_053",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方场上表侧表示存在「暗黑神鸟 斯摩夫」，其效果使「对方不能把卡盖放」。我方主要阶段1，试图将手牌的「三眼怪」里侧守备表示通常召唤（即盖放）。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": ["三眼怪"],
+            "field": {
+                "monster_zones": {
+                    "m1": { "column_index": 1, "card": null },
+                    "m2": { "column_index": 2, "card": null },
+                    "m3": { "column_index": 3, "card": null },
+                    "m4": { "column_index": 4, "card": null },
+                    "m5": { "column_index": 5, "card": null }
+                },
+                "spell_trap_zones": {
+                    "s1": { "column_index": 1, "card": null },
+                    "s2": { "column_index": 2, "card": null },
+                    "s3": { "column_index": 3, "card": null },
+                    "s4": { "column_index": 4, "card": null },
+                    "s5": { "column_index": 5, "card": null }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": { "column_index": null, "card": null },
+                    "emz_right": { "column_index": null, "card": null }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": { "column_index": 5, "card": null },
+                    "m2": { "column_index": 4, "card": {
+                        "name": "暗黑神鸟 斯摩夫",
+                        "status": "face_up",
+                        "position": "attack",
+                        "card_type": "monster",
+                        "monster_type": "effect",
+                        "controller": "opponent"
+                    }},
+                    "m3": { "column_index": 3, "card": null },
+                    "m4": { "column_index": 2, "card": null },
+                    "m5": { "column_index": 1, "card": null }
+                },
+                "spell_trap_zones": {
+                    "s1": { "column_index": 5, "card": null },
+                    "s2": { "column_index": 4, "card": null },
+                    "s3": { "column_index": 3, "card": null },
+                    "s4": { "column_index": 2, "card": null },
+                    "s5": { "column_index": 1, "card": null }
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": { "column_index": null, "card": null },
+                    "emz_right": { "column_index": null, "card": null }
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "暗黑神鸟 斯摩夫",
+                "restriction": "opponent_cannot_set_cards",
+                "description": "暗黑神鸟的效果：对方不能把卡盖放。包含怪兽的里侧通常召唤（盖放）。"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "set_monster",
+        "card": "三眼怪",
+        "activation_location": "hand",
+        "declared_effect_purpose": "将手牌的「三眼怪」里侧守备表示通常召唤（盖放）到主怪兽区域。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。怪兽的盖放（里侧守备表示通常召唤）属于「把卡盖放」的行为。「暗黑神鸟 斯摩夫」的永续效果禁止对方进行任何形式的卡片盖放。",
+        "failed_check": "external_restriction",
+        "reasoning_steps": [
+            "对方场上「暗黑神鸟 斯摩夫」表侧存在，其永续效果使对方不能把卡盖放。",
+            "「把卡盖放」包括把怪兽里侧表示通常召唤（盖放）。",
+            "将「三眼怪」里侧守备表示通常召唤属于盖放行为。",
+            "因此当前盖放操作不合法。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_053_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「ダーク・シムルグ」の「相手はフィールド上にカードをセットする事ができない」効果適用中に、カードをセットする事はできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=7549&request_locale=ja",
+                "official_id": "fid:7549",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1, 2, 4]
+            },
+            {
+                "id": "src_case_053_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「クリッター」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=6257&request_locale=ja",
+                "official_id": "cid:6257",
+                "language": "ja",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [3]
+            },
+            {
+                "id": "src_case_053_03",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "暗黑神鸟 斯摩夫（ダーク・シムルグ）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/66719324",
+                "official_id": "id:66719324",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_053_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "三眼怪（クリッター）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/26202165",
+                "official_id": "id:26202165",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [3]
+            }
+        ]
+    },
+    "case_notes": "覆盖暗黑神鸟「不能盖放」限制下的怪兽盖放操作。用于补齐 operation_type: set_monster。与 case_052 同为暗黑神鸟相关，但操作类型不同。"
+}

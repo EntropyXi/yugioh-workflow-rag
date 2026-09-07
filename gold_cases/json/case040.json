@@ -312,8 +312,49 @@
                     4
                 ],
                 "source_updated_at": "2026-06-11"
+            },
+            {
+                "id": "src_case_040_08",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "青眼卡通龙（ブルーアイズ・トゥーン・ドラゴン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/53183600",
+                "official_id": "id:53183600",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_040_09",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "完美卡通世界（完全なる世界 トゥーン・ワールド）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/48724678",
+                "official_id": "id:48724678",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "id": "src_case_040_10",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "气旋（サイクロン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/5318639",
+                "official_id": "id:5318639",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    1
+                ]
             }
         ]
     },
-    "case_notes": "覆盖效果处理 / 暂时除外期间事件不追溯。"
+    "case_notes": "覆盖效果处理 / 暂时除外期间事件不追溯。已通过 KONAMI 官方简中 DB（cid:4773、cid:23161、cid:4909）+ local CDB 备源完成简中卡文覆盖。"
 }

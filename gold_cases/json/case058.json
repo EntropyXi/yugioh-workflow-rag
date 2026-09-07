@@ -1,0 +1,157 @@
+{
+    "id": "case_058",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方场上表侧表示存在「增殖的G」。现在是我方主要阶段，对方试图从手牌发动「增殖的G」的①效果（将自身从手牌送去墓地，这回合每次我方特殊召唤怪兽成功时对方抽1张卡）。但pre_state中没有记录对方是否在本回合已经使用过「增殖的G」的①效果（此卡名的效果1回合仅可使用1次）。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 1, "card": null},
+                    "m2": {"column_index": 2, "card": null},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 4, "card": null},
+                    "m5": {"column_index": 5, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 1, "card": null},
+                    "s2": {"column_index": 2, "card": null},
+                    "s3": {"column_index": 3, "card": null},
+                    "s4": {"column_index": 4, "card": null},
+                    "s5": {"column_index": 5, "card": null}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": ["增殖的G"],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 5, "card": null},
+                    "m2": {"column_index": 4, "card": null},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 2, "card": null},
+                    "m5": {"column_index": 1, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 5, "card": null},
+                    "s2": {"column_index": 4, "card": null},
+                    "s3": {"column_index": 3, "card": null},
+                    "s4": {"column_index": 2, "card": null},
+                    "s5": {"column_index": 1, "card": null}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "opponent",
+        "operation_type": "activate_effect",
+        "card": "增殖的G",
+        "effect_id": "effect_1",
+        "effect_label": "①",
+        "activation_location": "hand",
+        "declared_cost": [
+            {"type": "send_to_graveyard", "card": "增殖的G", "from": "hand"}
+        ],
+        "declared_targets": [],
+        "declared_effect_purpose": "将「增殖的G」从手牌送去墓地发动其①效果。"
+    },
+    "gold_answer": {
+        "label": "depends",
+        "conclusion": "无法确定。「增殖的G」的效果文本规定「此卡名的效果1回合仅可使用1次」。pre_state中没有记录本回合对方是否已经使用过该效果。如果对方本回合尚未使用过，发动合法；如果已经使用过，发动不合法（违反 once_per_turn）。",
+        "failed_check": "unknown_missing_info",
+        "reasoning_steps": [
+            "「增殖的G」的①效果有硬限制：'此卡名的效果1回合仅可使用1次'。",
+            "当前pre_state中对方的「used_effects_this_turn」为空数组，没有记录对方是否使用过该效果。",
+            "如果对方本回合尚未使用过增殖的G效果，发动合法。",
+            "如果对方已经使用过，发动不合法（once_per_turn）。",
+            "由于缺少是否已使用的信息，无法确定结论。"
+        ],
+        "missing_info": [
+            "对方本回合是否已经发动过「增殖的G」的①效果（此卡名的效果1回合仅可使用1次）",
+            "如果已使用，则本次发动违反 once_per_turn 限制"
+        ],
+        "required_sources": [
+            {
+                "id": "src_case_058_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「増殖するG」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10212&request_locale=ja",
+                "official_id": "cid:10212",
+                "language": "ja",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_058_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「增殖的G」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=10212&request_locale=cn",
+                "official_id": "cid:10212",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_058_03",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「増殖するG」の効果は同一ターンに複数回発動できますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=10212&request_locale=ja",
+                "official_id": "fid:10212",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1, 3, 4]
+            },
+            {
+                "id": "src_case_058_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "增殖的G（増殖するG）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/23434538",
+                "official_id": "id:23434538",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            }
+        ]
+    },
+    "case_notes": "示范 depends 场景：缺少对方是否已使用「增殖的G」的 once_per_turn 信息时无法判断。用于补齐 label: depends + failed_check: unknown_missing_info。"
+}

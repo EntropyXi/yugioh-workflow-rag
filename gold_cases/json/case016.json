@@ -283,8 +283,36 @@
                     4,
                     5
                 ]
+            },
+            {
+                "id": "src_case_016_06",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "原始生命态 尼比鲁（原始生命態ニビル）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/27204311",
+                "official_id": "id:27204311",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    2,
+                    3
+                ]
+            },
+            {
+                "id": "src_case_016_07",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "神影依・米德拉什（エルシャドール・ミドラーシュ）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/94977269",
+                "official_id": "id:94977269",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [
+                    1,
+                    4
+                ]
             }
         ]
     },
-    "case_notes": "用于测试特殊召唤次数限制下，包含多次特殊召唤处理的效果能否发动。原候选「深淵の結界像 / デメット爺さん」因关键卡缺少可访问简中官方详情而替换为 Q&A fid:22804。"
+    "case_notes": "用于测试特殊召唤次数限制下，包含多次特殊召唤处理的效果能否发动。原候选「深淵の結界像 / デメット爺さん」因关键卡缺少可访问简中官方详情而替换为 Q&A fid:22804。已通过 KONAMI 官方简中 DB（cid:14741、cid:11257）+ local CDB 备源完成简中卡文覆盖。"
 }

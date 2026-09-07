@@ -1,12 +1,12 @@
 # Current Snapshot
 
 项目当前使用 `schema_version: "2.1.0"`，正式数据入口为
-`gold_cases/operation_legality_cases.jsonl`，共 50 条 gold cases；
-格式化镜像位于 `gold_cases/json/case001.json` 至 `case050.json`。
+`gold_cases/operation_legality_cases.jsonl`，共 58 条 gold cases；
+格式化镜像位于 `gold_cases/json/case001.json` 至 `case058.json`。
 
 当前 `task_type` 分布：
 
-- `operation_legality_judgment`：37 条；
+- `operation_legality_judgment`：45 条；
 - `effect_resolution_judgment`：13 条。
 
 当前校验状态：
@@ -15,8 +15,87 @@
 - 正式数据规则已强化为：每条 case 原则上必须同时包含日文与简中官方卡片文本来源；
 - `official_ruling` 必须填写 `source_updated_at`；
 - `case_048` 因关键卡暂未定位有效简中官方正文，作为显式待复核来源例外保留，不伪造来源；
+- case_016/037/040/048 已通过 local CDB 备源（`secondary_reference`）补齐简中卡文覆盖；
 - git 仓库已建立（main / feature 分支，远端 origin），GitHub Actions CI 在 push / PR 时自动运行 `check_jsonlschema.py --self-test`；
-- RAG 检索评测集 `eval/rag_eval_set.jsonl` 共 135 条（easy 50 / medium 51 / hard 34），覆盖全部 50 条 case，每条 case 至少 1 easy + 1 medium。
+- RAG 检索评测集 `eval/rag_eval_set.jsonl` 共 151 条（easy 58 / medium 59 / hard 34），覆盖全部 58 条 case，每条 case 至少 1 easy + 1 medium。
+
+---
+
+# 2026-07-28 — case_051–case_058 评测覆盖与项目快照同步
+
+## Summary
+
+本轮不修改 gold case、Schema 或裁定结论。为 case_051–case_058 各新增 1 条 easy 和 1 条 medium RAG 检索题，并将当前态文档从 50 条同步到 58 条。
+
+## Changed
+
+- `eval/rag_eval_set.jsonl`：新增 `eval_051a`–`eval_058b` 共 16 条，评测集从 135 条增至 151 条；所有 58 条 case 均至少有 1 条 easy 与 1 条 medium。
+- `docs/PROJECT_CONTEXT.md`、`docs/task_scope.md`、`docs/rag_eval_plan.md`、`OPENCODE.md`：同步 case 数、task_type 分布、镜像范围、评测覆盖与后续维护规则。
+- 本文件 Current Snapshot：同步镜像范围与评测集统计。
+
+## Validation
+
+- `check_jsonlschema.py --self-test`：58 条正式 case 通过 Schema、业务规则与镜像一致性校验，16 个负例均被拒绝。
+- 评测集检查：151 条、`eval_id` 无重复、所有 `gold_case_id` 存在；58 条 case 均具备 easy 和 medium 覆盖。
+
+---
+
+# 2026-07-28 — 补齐 6 种 operation_type / failed_check 覆盖
+
+## Summary
+
+本轮新增 6 条 gold case（case_051 ~ case_056），补齐
+4 种未覆盖的 `operation_type` 和 2 种未使用的 `failed_check`。
+不修改已有 case 的裁定结论。
+
+## Added
+
+| case | operation_type | failed_check | 场景 |
+|---|---|---|---|
+| case_051 | normal_summon | — | 被神宣无效的通常召唤不计入次数（2020规则） |
+| case_052 | set_card | external_restriction | 暗黑神鸟限制下不能盖放魔陷（fid:7549） |
+| case_053 | set_monster | external_restriction | 暗黑神鸟限制下不能盖放怪兽（fid:7549） |
+| case_054 | pay_cost | cost_payability | 手牌只有发动卡自身时不能支付cost |
+| case_055 | activate_effect | card_location | 诱发效果发动前被D.D.乌鸦除外→不能发动（2020规则） |
+| case_056 | activate_card | material_legality | 禁止令宣言的怪兽不能用作融合素材（fid:6688） |
+
+- `gold_cases/json/case051.json` ~ `case056.json`：新增 6 个格式化镜像
+- `gold_cases/operation_legality_cases.jsonl`：50 → 56 行
+
+## Coverage
+
+- `operation_type`：6/10 → 10/10 ✅
+- `failed_check`：12/15 → 14/15（剩余 `unknown_missing_info` 待 depends case）
+- `task_type` 分布：`operation_legality_judgment` 43 条 / `effect_resolution_judgment` 13 条
+
+## Validation
+
+- 已通过 `check_jsonlschema.py --self-test`：56 条 case 全部通过，16 个负例全部拒绝
+
+---
+
+# 2026-07-28 — 新增 depends 示范 case
+
+## Summary
+
+新增 2 条 depends 示范 case（case_057 ~ case_058），补齐 `label: depends` 和 `failed_check: unknown_missing_info` 覆盖。
+
+## Added
+
+| case | label | failed_check | 场景 |
+|---|---|---|---|
+| case_057 | depends | unknown_missing_info | 对方盖卡内容未知，发动雷击本身合法但效果不确定 |
+| case_058 | depends | unknown_missing_info | 缺少对方是否已使用增殖的G的once_per_turn信息 |
+
+## Coverage
+
+- `label`：legal 21 / illegal 35 / depends 2 ✅
+- `failed_check`：15/15 ✅（all registered values now used）
+- 总 case 数：58 条
+
+## Validation
+
+- 已通过 `check_jsonlschema.py --self-test`：58 条 case 全部通过，16 个负例全部拒绝
 
 ---
 
@@ -79,7 +158,35 @@
   50 条正式 case 通过 Schema、业务规则、镜像一致性校验，16 个负例均被拒绝
 
 ---
-# 2026-07-09 - 项目卫生与来源覆盖质量硬化
+
+# 2026-07-28 — 补齐 case_016/037/040 简中卡文备源
+
+## Summary
+
+为 case_016、case_037、case_040 的涉及卡片添加 `secondary_reference` + `local-cdb://` 备源，
+确保所有 50 条 case 的简中卡文覆盖完成（参照 case_048 已在 07-09 完成的模式）。
+不修改裁定结论、pre_state、attempted_operation 或 gold_answer 内容。
+
+## Changed
+
+| case | 新增备源卡片 |
+|---|---|
+| case_016 | 原始生命态 尼比鲁、神影依・米德拉什 |
+| case_037 | 音服和弦・和音 |
+| case_040 | 青眼卡通龙、完美卡通世界、气旋 |
+
+- `gold_cases/json/case016.json`：新增 src_case_016_06、src_case_016_07（secondary_reference + local_cdb）
+- `gold_cases/json/case037.json`：新增 src_case_037_04
+- `gold_cases/json/case040.json`：新增 src_case_040_08 ~ src_case_040_10
+- `gold_cases/operation_legality_cases.jsonl`：通过 `sync_gold_jsonl.py` 同步
+- case_notes 标注"已通过 KONAMI 官方简中 DB + local CDB 备源完成简中卡文覆盖"
+
+## Validation
+
+- 已通过 `check_jsonlschema.py --self-test`：50 条 case 全部通过 Schema、业务规则、镜像一致性校验，16 个负例全部拒绝
+
+---
+
 
 ## Summary
 

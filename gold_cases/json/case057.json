@@ -1,0 +1,154 @@
+{
+    "id": "case_057",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方场上有2张盖放的魔法&陷阱卡（不知道具体内容）。对方还有1张表侧攻击表示的怪兽。我方主要阶段，试图用手牌的「雷击」发动，破坏对方场上的怪兽。但对方盖卡的内容未知——可能是反击陷阱（如「神之宣告」能无效魔法卡），可能是「星光大道」能无效破坏效果，也可能是无关卡。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": ["雷击"],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 1, "card": null},
+                    "m2": {"column_index": 2, "card": null},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 4, "card": null},
+                    "m5": {"column_index": 5, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 1, "card": null},
+                    "s2": {"column_index": 2, "card": null},
+                    "s3": {"column_index": 3, "card": null},
+                    "s4": {"column_index": 4, "card": null},
+                    "s5": {"column_index": 5, "card": null}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 5, "card": null},
+                    "m2": {"column_index": 4, "card": {"name": "任意怪兽", "status": "face_up", "position": "attack", "card_type": "monster", "monster_type": "effect", "controller": "opponent"}},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 2, "card": null},
+                    "m5": {"column_index": 1, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 5, "card": null},
+                    "s2": {"column_index": 4, "card": null},
+                    "s3": {"column_index": 3, "card": {"name": "盖卡（内容未知）", "status": "face_down", "card_type": "trap", "controller": "opponent"}},
+                    "s4": {"column_index": 2, "card": null},
+                    "s5": {"column_index": 1, "card": {"name": "盖卡（内容未知）", "status": "face_down", "card_type": "trap", "controller": "opponent"}}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": []
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "雷击",
+        "effect_id": "card_activation",
+        "activation_location": "hand",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "发动「雷击」破坏对方场上所有怪兽。"
+    },
+    "gold_answer": {
+        "label": "depends",
+        "conclusion": "无法确定。发动「雷击」本身在规则上是合法的操作——主要阶段可以发动通常魔法，没有其他限制阻止。但对方盖卡的内容未知：如果是「神之宣告」等能无效魔法发动的卡，雷击会被无效；如果是「星光大道」等能无效破坏效果的卡，效果会被无效。这些都不影响「发动是否合法」本身——发动本身合法，但效果能否成功取决于对方是否有响应。",
+        "failed_check": "unknown_missing_info",
+        "reasoning_steps": [
+            "「雷击」是通常魔法，可以在主要阶段发动。",
+            "当前pre_state中没有阻止通常魔法发动的限制。",
+            "但对方盖放了2张未知内容的卡——无法确定它们是否能响应雷击。",
+            "由于盖卡内容未知，无法完整判断雷击的效果是否能正常适用。",
+            "然而操作合法性判断的是「能否发动」，而非「效果能否成功」——发动本身合法。"
+        ],
+        "missing_info": [
+            "对方盖放卡片的具体内容（卡名、种类、效果文本）",
+            "如果盖卡是无效类反击陷阱，则雷击的效果会被无效；如果是无关卡，则雷击正常处理"
+        ],
+        "required_sources": [
+            {
+                "id": "src_case_057_01",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「サンダー・ボルト」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4696&request_locale=ja",
+                "official_id": "cid:4696",
+                "language": "ja",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_057_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「雷击」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4696&request_locale=cn",
+                "official_id": "cid:4696",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_057_03",
+                "source_type": "official_rulebook",
+                "authority": "KONAMI",
+                "title": "Official Rulebook — Activation vs Resolution",
+                "url": "https://www.yugioh-card.com/asia/zh/play/ocg-rulebook/",
+                "official_id": "rulebook:master_rule_2020_v1.0",
+                "language": "ja",
+                "source_updated_at": "2020-04-01",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [5]
+            },
+            {
+                "id": "src_case_057_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "雷击（サンダー・ボルト）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/12580477",
+                "official_id": "id:12580477",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            }
+        ]
+    },
+    "case_notes": "示范 depends 场景：pre_state中对方盖卡内容未知时，只能判断发动操作本身合法，但无法确定效果能否成功。用于补齐 label: depends。"
+}

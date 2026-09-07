@@ -1,0 +1,159 @@
+{
+    "id": "case_056",
+    "task_type": "operation_legality_judgment",
+    "schema_version": "2.1.0",
+    "question": "当前这个操作是否在规则内合法？",
+    "natural_language_context": "对方发动了「禁止令」，宣言了「元素英雄 天空侠」。我方主要阶段1，手牌有「融合」，场上表侧表示存在「元素英雄 天空侠」和「元素英雄 水泡侠」。我方试图发动「融合」，使用天空侠和水泡侠作为融合素材，融合召唤「元素英雄 绝对零度侠」。",
+    "rule_context": {
+        "game": "Yu-Gi-Oh!",
+        "format": "OCG",
+        "language": "zh",
+        "rule_version": "unspecified"
+    },
+    "pre_state": {
+        "phase": "main_phase_1",
+        "step": null,
+        "damage_step_timing": null,
+        "turn_player": "self",
+        "chain_state": {
+            "is_chain_building": false,
+            "is_chain_resolving": false,
+            "current_chain_links": []
+        },
+        "resolution_history": [],
+        "self_state": {
+            "hand": ["融合"],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 1, "card": {"name": "元素英雄 天空侠", "status": "face_up", "position": "attack", "card_type": "monster", "monster_type": "effect", "controller": "self"}},
+                    "m2": {"column_index": 2, "card": {"name": "元素英雄 水泡侠", "status": "face_up", "position": "attack", "card_type": "monster", "monster_type": "effect", "controller": "self"}},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 4, "card": null},
+                    "m5": {"column_index": 5, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 1, "card": null},
+                    "s2": {"column_index": 2, "card": null},
+                    "s3": {"column_index": 3, "card": null},
+                    "s4": {"column_index": 4, "card": null},
+                    "s5": {"column_index": 5, "card": null}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "opponent_state": {
+            "hand": [],
+            "field": {
+                "monster_zones": {
+                    "m1": {"column_index": 5, "card": null},
+                    "m2": {"column_index": 4, "card": null},
+                    "m3": {"column_index": 3, "card": null},
+                    "m4": {"column_index": 2, "card": null},
+                    "m5": {"column_index": 1, "card": null}
+                },
+                "spell_trap_zones": {
+                    "s1": {"column_index": 5, "card": null},
+                    "s2": {"column_index": 4, "card": null},
+                    "s3": {"column_index": 3, "card": {"name": "禁止令", "status": "face_up", "card_type": "spell", "spell_type": "continuous_spell", "controller": "opponent"}},
+                    "s4": {"column_index": 2, "card": null},
+                    "s5": {"column_index": 1, "card": null}
+                },
+                "field_spell_zone": null,
+                "extra_monster_zones": {
+                    "emz_left": {"column_index": null, "card": null},
+                    "emz_right": {"column_index": null, "card": null}
+                }
+            },
+            "graveyard": [],
+            "banished": [],
+            "used_effects_this_turn": []
+        },
+        "known_constraints": [
+            {
+                "type": "activation_restriction",
+                "source_card": "禁止令",
+                "restriction": "declared_card_cannot_be_used",
+                "declared_name": "元素英雄 天空侠",
+                "description": "禁止令宣言「元素英雄 天空侠」：该卡不能使用（包含不能作为融合素材）。"
+            }
+        ]
+    },
+    "attempted_operation": {
+        "player": "self",
+        "operation_type": "activate_card",
+        "card": "融合",
+        "effect_id": "card_activation",
+        "activation_location": "hand",
+        "declared_cost": [],
+        "declared_targets": [],
+        "declared_effect_purpose": "使用天空侠和水泡侠作为融合素材，融合召唤「元素英雄 绝对零度侠」（HERO+水属性），但天空侠被禁止令限制无法使用。"
+    },
+    "gold_answer": {
+        "label": "illegal",
+        "conclusion": "不合法。「禁止令」宣言了「元素英雄 天空侠」，该卡不能作为融合素材使用。即使融合素材中还有另一张合法怪兽，但缺少了天空侠就无法满足绝对零度侠「HERO+水属性」的素材条件。",
+        "failed_check": "material_legality",
+        "reasoning_steps": [
+            "「禁止令」宣言了「元素英雄 天空侠」：宣言的卡不能使用。",
+            "官方裁定明确：如果融合素材怪兽被「禁止令」宣言，该怪兽不能作为融合素材使用。",
+            "「元素英雄 绝对零度侠」的融合素材要求「HERO怪兽+水属性怪兽」。",
+            "天空侠被禁止令限制，不能用作融合素材。仅水泡侠无法满足素材要求。",
+            "因此不能使用天空侠作为融合素材进行融合召唤。"
+        ],
+        "missing_info": [],
+        "required_sources": [
+            {
+                "id": "src_case_056_01",
+                "source_type": "official_ruling",
+                "authority": "KONAMI",
+                "title": "「禁止令」で宣言されたモンスターを融合素材にできますか？",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/faq_search.action?ope=5&fid=6688&request_locale=ja",
+                "official_id": "fid:6688",
+                "language": "ja",
+                "source_updated_at": "2017-03-24",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [2, 5]
+            },
+            {
+                "id": "src_case_056_02",
+                "source_type": "official_card_text",
+                "authority": "KONAMI",
+                "title": "「禁止令」官方卡片详情",
+                "url": "https://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=4890&request_locale=ja",
+                "official_id": "cid:4890",
+                "language": "ja",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_056_03",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "禁止令（禁止令）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/43711255",
+                "official_id": "id:43711255",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [1]
+            },
+            {
+                "id": "src_case_056_04",
+                "source_type": "secondary_reference",
+                "authority": "local_cards_cdb",
+                "title": "元素英雄 天空侠（E・HERO エアーマン）本地中文卡名",
+                "url": "local-cdb://cards.cdb/texts/21844576",
+                "official_id": "id:21844576",
+                "language": "zh-CN",
+                "accessed_at": "2026-07-28",
+                "supports_reasoning_steps": [2]
+            }
+        ]
+    },
+    "case_notes": "覆盖禁止令限制下融合素材的合法性判断。用于补齐 failed_check: material_legality。来自 KONAMI Q&A fid:6688。"
+}
