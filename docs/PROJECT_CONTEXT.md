@@ -1,8 +1,8 @@
 # Yu-Gi-Oh! Ruling Workflow + RAG Project Context
 
-最后同步日期：2026-07-26  
+最后同步日期：2026-07-28  
 当前 Schema：v2.1.0  
-当前正式数据：50 条人工 gold cases  
+当前正式数据：58 条人工 gold cases  
 当前运行环境：Conda `YGO_PROJECT`
 
 本文档是新维护者、Codex 或其他开发代理中途加入项目时的总入口。它说明项目目的、
@@ -44,18 +44,18 @@
 
 | 项目 | 当前状态 |
 |---|---|
-| task type | `operation_legality_judgment` (37) / `effect_resolution_judgment` (13) |
+| task type | `operation_legality_judgment` (45) / `effect_resolution_judgment` (13) |
 | Schema 版本 | `2.1.0` |
 | Schema 标准 | JSON Schema Draft 2020-12 |
-| 主数据 | `gold_cases/operation_legality_cases.jsonl`，50 行、每行一个对象 |
-| 格式化镜像 | `gold_cases/json/case001.json` 至 `case050.json` |
+| 主数据 | `gold_cases/operation_legality_cases.jsonl`，58 行、每行一个对象 |
+| 格式化镜像 | `gold_cases/json/case001.json` 至 `case058.json` |
 | 输出标签 | `legal` / `illegal` / `depends` / `invalid_question` |
 | 证据状态 | 每条 case 均有官方卡片文本及官方 Q&A 或规则书 |
 | 自动校验 | Schema 校验、项目业务规则、镜像一致性、16 个负例自测 |
 | 环境 | `YGO_PROJECT`，Python 3.13.14，jsonschema 4.26.0 |
-| RAG 评测集 | `eval/rag_eval_set.jsonl`，135 条（easy 50 / medium 51 / hard 34），覆盖全部 50 条 case |
+| RAG 评测集 | `eval/rag_eval_set.jsonl`，151 条（easy 58 / medium 59 / hard 34），覆盖全部 58 条 case；每条至少 1 easy + 1 medium |
 | CI | GitHub Actions（`.github/workflows/ci.yml`）在 push / PR 时自动运行 `check_jsonlschema.py --self-test` |
-| 阶段目标 | 50 条基线、CI 与 RAG 评测集已达成；下一阶段为证据复核与 RAG 评测 runner |
+| 阶段目标 | 58 条基线、CI 与 RAG 评测集覆盖已达成；下一阶段为证据复核与 RAG 评测 runner |
 
 ---
 
@@ -70,7 +70,7 @@ yugioh-workflow-rag/
 │   ├── operation_legality_cases.jsonl    # 正式主数据，每行一个 case
 │   └── json/
 │       ├── case001.json                  # 格式化的人读镜像
-│       └── ... case050.json
+│       └── ... case058.json
 ├── eval/
 │   └── rag_eval_set.jsonl                # RAG 检索评测集（三级难度，见 docs/rag_eval_plan.md）
 ├── .github/
@@ -80,9 +80,10 @@ yugioh-workflow-rag/
 │   ├── task_scope.md                     # 任务边界与判断流程
 │   ├── schema.md                         # v2 字段说明与枚举文档
 │   ├── operation_case.schema.json        # 可执行 Draft 2020-12 Schema
-│   ├── cases_json_template.md             # case 编写模板
+│   ├── cases_json_template.md            # case 编写模板
 │   ├── rag_eval_plan.md                  # RAG 评测集三级难度标准与生成计划
-│   └── environment_setup.md              # 环境创建与使用说明
+│   ├── environment_setup.md              # 环境创建与使用说明
+│   └── llmstudy/                         # LLM 领域学习知识库（19 篇）
 ├── log/
 │   └── ygo_json_case_changelog.md        # Schema 历史和日常变更日志
 ├── notes/                                # 裁定研究笔记，不是正式 gold 数据
@@ -386,7 +387,7 @@ v2 feature 必须同时存在、又不能合并成单一布尔值的原因。
 
 ---
 
-## 10. 当前 50 条 gold cases
+## 10. 当前 58 条 gold cases
 
 | ID | 场景 | 操作 | 结论 | task_type |
 |---|---|---|---|---|
@@ -440,8 +441,16 @@ v2 feature 必须同时存在、又不能合并成单一布尔值的原因。
 | `case_048` | 暗之咒缚降攻后特里斯坦保护时间差 | `select_target` | `illegal / target_legality` | `operation_legality_judgment` |
 | `case_049` | 战斗破坏替送去牌组仍给予伤害 | `resolve_effect` | `legal` | `effect_resolution_judgment` |
 | `case_050` | 阿卡纳解读两项处理均不可用 | `activate_card` | `illegal / activation_condition` | `operation_legality_judgment` |
+| `case_051` | 通常召唤被无效后不计入本回合次数 | `normal_summon` | `legal` | `operation_legality_judgment` |
+| `case_052` | 暗黑神鸟限制下不能盖放魔法与陷阱卡 | `set_card` | `illegal / external_restriction` | `operation_legality_judgment` |
+| `case_053` | 暗黑神鸟限制下不能盖放怪兽 | `set_monster` | `illegal / external_restriction` | `operation_legality_judgment` |
+| `case_054` | 仅有发动卡自身时不能支付舍弃 cost | `pay_cost` | `illegal / cost_payability` | `operation_legality_judgment` |
+| `case_055` | 诱发效果发动前离开墓地 | `activate_effect` | `illegal / card_location` | `operation_legality_judgment` |
+| `case_056` | 禁止令宣言的怪兽不能作为融合素材 | `activate_card` | `illegal / material_legality` | `operation_legality_judgment` |
+| `case_057` | 未知盖卡下雷击的发动与结果 | `activate_card` | `depends / unknown_missing_info` | `operation_legality_judgment` |
+| `case_058` | 增殖的G的一回合一次使用信息缺失 | `activate_effect` | `depends / unknown_missing_info` | `operation_legality_judgment` |
 
-这些 case 是 seed 集合，不代表已经覆盖完整规则空间。官方数据库更新后仍需复核其
+这些 case 是当前基线集合，不代表已经覆盖完整规则空间。官方数据库更新后仍需复核其
 `source_updated_at`、卡片文本和裁定有效性。
 
 ---
@@ -475,7 +484,7 @@ v2 feature 必须同时存在、又不能合并成单一布尔值的原因。
 - `official_ruling` 必须填写 `source_updated_at`。
 - 双方 `column_index` 映射正确。
 - `case_003` 和 `case_005` 的关键语义及结论不回退。
-- 50 个格式化 gold JSON 与主 JSONL 完全一致。
+- 58 个格式化 gold JSON 与主 JSONL 完全一致。
 
 校验器采用面向对象结构：`CaseDatasetValidator` 持有预编译的 Schema validator、
 项目路径和业务规则注册表；`ValidationIssue` 表示单项错误；`ValidationResult` 汇总
@@ -539,7 +548,7 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 - `movement_correct` / `movement_incorrect` 不再是输出标签。
 - 数字 `chain_link: 1` 不再使用，统一为字符串 `chain_id: "C1"`。
 
-新增字段或枚举会影响现有 50 条数据、JSON Schema、校验器、自测和下游 workflow。
+新增字段或枚举会影响现有 58 条数据、JSON Schema、校验器、自测和下游 workflow。
 任何此类修改都必须先评估是否升级 minor/major 版本。
 
 ---
@@ -557,17 +566,18 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 
 ### Pending
 
-- 持续复核 50 条 gold case 的官方 Q&A 更新日期和裁定有效性。
+- 持续复核 58 条 gold case 的官方 Q&A 更新日期和裁定有效性。
 - 为新增场景扩充枚举时建立更系统的回归负例。
 - 为 `eval/rag_eval_set.jsonl` 建立评测 runner（recall@1/3/5、MRR，按 difficulty 分组报告）。
 - 评估是否将 eval 集的结构校验纳入校验器或 CI。
 
 ### 下一步
 
-1. 对现有 50 条 case 做逐条人工 dry-run 和官方证据复核。
-2. 建立新增 case 的候选与待复核集合，证据齐全后再进入主 JSONL。
-3. 按规则类型平衡扩充数据，而不是只围绕少数卡片堆叠相似问题。
-4. 后续扩充前先完成 50 条基线的证据复核与质量硬化。
+1. 对现有 58 条 case 做逐条人工 dry-run 和官方证据复核。
+2. 建立 RAG 评测 runner（recall@k、MRR），参考 `savinoo/rag-eval-harness` 的最小实现。
+3. 评测集无需推翻重建——151 条基线已覆盖全部 case，后续可按 Ragas 方式扩展 query 多样性（单跳/多跳、具体/抽象、多视角），gold case 本身不需要 chunk，`natural_language_context` 字段即 KG 节点的 page_content。
+4. 按规则类型平衡扩充数据，而不是只围绕少数卡片堆叠相似问题。
+5. 后续扩充前先完成 58 条基线的证据复核与质量硬化。
 
 ---
 
@@ -588,5 +598,5 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 3. `docs/operation_case.schema.json`
 4. `log/ygo_json_case_changelog.md` 中最新日期条目和底部 Open Items
 
-若三条校验命令通过、`gold_cases` 内主 JSONL 为 50 行且 `gold_cases/json/` 内格式化镜像为 50 个文件，
+若三条校验命令通过、`gold_cases` 内主 JSONL 为 58 行且 `gold_cases/json/` 内格式化镜像为 58 个文件，
 则当前基线完整。

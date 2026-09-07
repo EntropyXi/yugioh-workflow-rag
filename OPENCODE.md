@@ -5,7 +5,7 @@
 ## 一、项目核心认知
 
 - 项目是"游戏王 OCG 操作合法性裁定数据集"，不是 RAG 引擎或规则引擎。
-- 当前核心资产：`gold_cases/` 下的 50 条 gold cases + JSON Schema + 双层校验器 + `eval/` 下的 RAG 检索评测集。
+- 当前核心资产：`gold_cases/` 下的 58 条 gold cases + JSON Schema + 双层校验器 + `eval/` 下的 RAG 检索评测集。
 - 权威性顺序：`docs/operation_case.schema.json` > `check_jsonlschema.py` > `docs/schema.md` > `docs/PROJECT_CONTEXT.md`。
 - 环境：Conda `YGO_PROJECT`，标准命令 `conda run -n YGO_PROJECT python check_jsonlschema.py --self-test`。
 
@@ -21,7 +21,7 @@
 1. 每条正式 gold case 至少包含一项 `official_card_text` + 一项 `official_ruling` 或 `official_rulebook`。
 2. 卡片效果文本必须能追溯到 KONAMI 官方卡片数据库（日文 `db.yugioh-card.com`，简中 `db.yugioh-card-cn.com`）。
 3. 裁定依据必须是 `fid` 或 `cid#supplement`，不能拿搜索词冒充证据。
-4. 如果某张关键卡的 CN 官方详情页不可访问，必须替换候选，**禁止伪造来源**。
+4. 如果某张关键卡的 CN 官方详情页不可访问，可使用本地 `cards.cdb`/`cards.db` 的 `secondary_reference` 提供中文卡文覆盖，**禁止伪造官方来源**。
 5. 二手材料（B站视频等）只能作为 `secondary_reference`，不得成为唯一裁定依据。
 
 ## 四、Plan-Then-Execute 工作流
@@ -45,7 +45,7 @@
    ```powershell
    conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
    ```
-2. 验收标准：50 条 case 全部通过 Schema + 业务规则 + 镜像一致性校验，所有负例被拒绝，退出码 0。
+2. 验收标准：58 条 case 全部通过 Schema + 业务规则 + 镜像一致性校验，所有负例被拒绝，退出码 0。
 3. 校验不通过不得进入下一步。
 
 ## 七、Changelog 规范

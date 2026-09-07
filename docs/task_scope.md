@@ -11,9 +11,9 @@
 - `operation_legality_judgment`：判断发动、召唤、攻击宣言、选择对象等“操作”是否合法。`pre_state` 通常处于开放状态、连锁构建状态，或尚未进入当前效果处理。
 - `effect_resolution_judgment`：判断效果处理是否能按声明方式适用。`pre_state` 通常处于连锁处理中，依赖 `state_timing` 与已经实际处理完成的 `resolution_history`。
 
-当前 50 条 gold cases 的分布为：
+当前 58 条 gold cases 的分布为：
 
-- `operation_legality_judgment`：37 条；
+- `operation_legality_judgment`：45 条；
 - `effect_resolution_judgment`：13 条。
 
 ## 2. 第一阶段覆盖范围
@@ -85,13 +85,13 @@
 
 ## 6. 第一阶段状态与下一阶段目标
 
-第一阶段“提供 50 条手工 gold cases”的成功标准已经达成。
+第一阶段“提供 50 条手工 gold cases”的成功标准已经达成；当前基线已扩展至 58 条。
 
 下一阶段质量目标是：
 
-- 对现有 50 条 case 做逐条官方证据复核；
+- 对现有 58 条 case 做逐条官方证据复核；
 - 硬化 `official_ruling.source_updated_at`、日文/简中官方卡片文本覆盖、镜像一致性等机器校验；
 - 当关键卡无 KONAMI 简中官方正文时，以本地 `cards.cdb`/`cards.db` 的 `secondary_reference` 提供中文卡文覆盖（`authority: local_cards_cdb`），不得伪装为 `official_card_text`；
-- 建立候选集合、待复核集合和 RAG 检索评测集；
-- 在合适时引入 CI，自动运行 `python check_jsonlschema.py --self-test`；
-- 后续扩充新 case 前，优先保证 50 条基线数据的稳定性和可追溯性。
+- 维护候选集合、待复核集合和 RAG 检索评测集；
+- 维护 CI，自动运行 `python check_jsonlschema.py --self-test`；
+- 后续扩充新 case 前，优先保证 58 条基线数据的稳定性和可追溯性。
