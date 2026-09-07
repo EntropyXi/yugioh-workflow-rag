@@ -9,6 +9,10 @@ __pycache__/
 .agents/
 .claude/
 .codex/
+.omo/
+
+# Local reference PDFs, not for redistribution (see README Disclaimer)
+docs/sources/
 
 .DS_Store
 Thumbs.db
