@@ -766,7 +766,7 @@ python check_jsonlschema.py -s docs/operation_case.schema.json gold_cases/operat
 
 不传参数时默认使用正式 schema 与主 JSONL。`--self-test` 额外执行内存负例，
 并检查 `gold_cases/json/` 下的格式化 JSON 镜像与主 JSONL 逐对象一致。
-当前负例自测共 13 个，确认以下错误会被拒绝：
+当前负例自测共 16 个，确认以下错误会被拒绝：
 
 - 非法标签；
 - 空 `depends.missing_info`；
@@ -776,10 +776,11 @@ python check_jsonlschema.py -s docs/operation_case.schema.json gold_cases/operat
 - 错误连锁引用；
 - 缺失 `resolution_history`、错误 `resolution_history` 引用、错误处理顺序、空 `result`；
 - `task_type` 与 `operation_type` 不一致；
-- 正式数据缺少 `official_card_text` 的 `ja` 或 `zh-CN` 来源；
+- 正式数据缺少日文 `official_card_text`，或缺少简中卡文覆盖（官方 `zh-CN` 卡片正文或经批准的本地 `secondary_reference`）；
+- 将 `local-cdb://` 来源伪装为 `official_card_text`，或本地二手来源未使用 `local-cdb://` URI；
 - `official_ruling` 缺少 `source_updated_at`。
 
-正式 gold case 原则上必须同时包含日文 KONAMI 卡片文本与简中官方卡片文本；若确实无法定位有效简中官方正文，不得伪造来源，必须在 `case_notes` 与项目上下文中显式列为待复核例外。
+正式 gold case 必须包含日文 KONAMI 卡片文本；简中卡文优先使用官方正文。若确实无法定位有效简中官方正文，可使用 `authority: local_cards_cdb` 的 `secondary_reference` 补充中文卡文，并在 `case_notes` 与项目上下文中标明待复核，不得伪造官方来源。
 
 ---
 

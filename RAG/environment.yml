@@ -1,0 +1,9 @@
+name: YGO_RAG
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - PyYAML==6.0.3
+      - tiktoken==0.13.0

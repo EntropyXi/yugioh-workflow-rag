@@ -1,6 +1,7 @@
 # Yu-Gi-Oh! Ruling Workflow + RAG Project Context
 
-最后同步日期：2026-07-28  
+最后同步日期：2026-10-05
+
 当前 Schema：v2.1.0  
 当前正式数据：58 条人工 gold cases  
 当前运行环境：Conda `YGO_PROJECT`
@@ -54,6 +55,7 @@
 | 自动校验 | Schema 校验、项目业务规则、镜像一致性、16 个负例自测 |
 | 环境 | `YGO_PROJECT`，Python 3.13.14，jsonschema 4.26.0 |
 | RAG 评测集 | `eval/rag_eval_set.jsonl`，151 条（easy 58 / medium 59 / hard 34），覆盖全部 58 条 case；每条至少 1 easy + 1 medium |
+| RAG 学习资料 | `RAG/docs/llmstudy_ygo_knowledge_db/` 20 篇带元数据文档、`RAG/docs/ocg_rulebook_2020_zh_cn_2.3_ch3.md` 社区规则书摘录；21 份文档确定性切分为 699 块，DeepSeek 上下文化已完成 699/699 块；尚无索引或检索管道 |
 | CI | GitHub Actions（`.github/workflows/ci.yml`）在 push / PR 时自动运行 `check_jsonlschema.py --self-test` |
 | 阶段目标 | 58 条基线、CI 与 RAG 评测集覆盖已达成；下一阶段为证据复核与 RAG 评测 runner |
 
@@ -83,7 +85,17 @@ yugioh-workflow-rag/
 │   ├── cases_json_template.md            # case 编写模板
 │   ├── rag_eval_plan.md                  # RAG 评测集三级难度标准与生成计划
 │   ├── environment_setup.md              # 环境创建与使用说明
-│   └── llmstudy/                         # LLM 领域学习知识库（19 篇）
+│   ├── llmstudy_domain_kb.md             # 20 篇领域文档的合并版
+│   └── llmstudy/                         # LLM 领域学习知识库（20 篇）
+├── RAG/
+│   ├── agent.py                          # chunk / contextualize CLI；尚无检索接口
+│   ├── chunking.py                       # Markdown 确定性切分和来源追踪
+│   ├── contextualize.py                  # 可缓存的 DeepSeek 块上下文生成
+│   ├── environment.yml                   # YGO_RAG 环境定义
+│   ├── README.md                         # 用法、产物与限制
+│   └── docs/
+│       ├── llmstudy_ygo_knowledge_db/   # 20 篇带元数据的 RAG 文档
+│       └── ocg_rulebook_2020_zh_cn_2.3_ch3.md  # 社区规则书摘录
 ├── log/
 │   └── ygo_json_case_changelog.md        # Schema 历史和日常变更日志
 ├── notes/                                # 裁定研究笔记，不是正式 gold 数据
@@ -508,14 +520,14 @@ conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 2. 检索官方卡片文本、官方 Q&A 或官方规则书；记录访问日期和官方 ID。
 3. 先编辑对应的格式化 `gold_cases/json/caseNNN.json`。
 4. 只使用 Schema 已登记字段和枚举；需要新枚举时先走 Schema 版本变更。
-5. 将同一对象压成单行，同步到 `gold_cases/operation_legality_cases.jsonl` 的正确位置。
+5. 运行 `python tools/sync_gold_jsonl.py`，由格式化镜像重建主 JSONL。
 6. 确认 ID 连续、来源 ID 全局唯一、推理步骤与证据覆盖对应。
 7. 运行 `python check_jsonlschema.py --self-test`。
 8. 人工 dry-run 判断链，重点检查时点、cost、对象、一次限制与持续约束。
 9. 更新 `log/ygo_json_case_changelog.md`；若改变结构，同时更新 Schema 和相关文档。
 
 十条 seed case 的 v2 迁移已经完成，一次性迁移脚本不再保留。后续数据变更必须通过
-人工编辑、主 JSONL 同步和镜像一致性校验完成。
+人工编辑格式化镜像、运行同步脚本和镜像一致性校验完成。
 
 ---
 

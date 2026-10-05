@@ -1,165 +1,107 @@
-# AGENTS.md — AI 代理工作指南
+# AGENTS.md — YGO Ruling Evaluation Workflow & RAG
 
-本文件是任何 AI 代理（Codex / opencode / Claude 等）中途加入本项目时的行为准则入口。
-项目全貌与人用入口见 `docs/PROJECT_CONTEXT.md`；从 Codex 协作史提炼的行事标准见
-`OPENCODE.md`；当前状态快照与坑位记录见根目录 `MEMORY.md`。
+本文件是 Codex、Claude、opencode 等编码代理进入仓库后的项目级行为准则。项目现状见 docs/PROJECT_CONTEXT.md，字段规范见 docs/schema.md 与 docs/operation_case.schema.json，可执行验证及其边界见 VALIDATION.md，当前记忆见 MEMORY.md。
 
----
+## 1. 项目目标与当前阶段
 
-## 1. 项目是什么
+- 本项目是游戏王 OCG 裁定评测 workflow / RAG 研究项目，核心资产是有来源依据的 gold cases、RAG 查询评测集和知识文档。
+- 目标 workflow 将来根据输入场面与候选操作检索相关裁定案例和规则证据，生成受证据支持、可复核的判断。
+- 已实现：58 条正式 gold cases、JSON Schema 与业务校验器、151 条 RAG 检索评测查询、领域知识文档、GitHub Actions 数据校验。
+- 尚未实现：官方资料 ingestion 管道、可运行的索引/检索服务、agent 编排、RAG 评测 runner。不得将数据、原型脚本、评测集或设计文档描述成已运行的 RAG 产品。
+- 项目不做最优操作、胜率、卡组构筑、完整对局模拟或泛化策略建议。越界问题标 invalid_question；信息不足但仍属裁定问题时标 depends。
 
-- 游戏王 OCG「操作合法性裁定」数据集项目：给定 `pre_state` 与 `attempted_operation`，
-  判断该操作或效果处理是否规则合法，并输出可追溯的判断链。
-- **不是** RAG 引擎、规则引擎或对局模拟器。官方知识库、检索管道、评测 runner 均未实现。
-- 明确不做：最优操作、胜率、卡组构筑、完整对局模拟、泛化策略建议。
-- 越界问题标 `invalid_question`；属于裁定任务但信息不足的标 `depends`。
+## 2. 项目地图与边界
 
-## 2. 环境与校验（先跑通再干活）
+- gold_cases/operation_legality_cases.jsonl 是正式 case 批处理入口；gold_cases/json/caseNNN.json 是人读镜像。
+- docs/operation_case.schema.json 是 case 的机器约束；check_jsonlschema.py 实施 Schema 以外的业务规则、跨文件一致性和内存负例自测。
+- eval/rag_eval_set.jsonl 是检索查询 gold set，不是模型答案分数，也不代表已有检索器。
+- docs/llmstudy/ 是领域知识编辑源；RAG/docs/llmstudy_ygo_knowledge_db/ 是供未来 RAG 摄取的整理副本。改动时沿用对应生成流程，避免副本漂移。
+- RAG/ 是 RAG 研究工作区。不得假设其中已有可运行的检索或 agent 服务。
+- 修改前运行 git status --short。不得覆盖、还原或顺手整理已有用户改动；只触碰当前任务必要文件。
 
-```powershell
-conda run -n YGO_PROJECT python --version
-conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
-```
+## 3. 权威来源与接手阅读顺序
 
-- 环境：Conda `YGO_PROJECT`（Python 3.13，`jsonschema[format]>=4.18,<5`），
-  定义见 `environment.yml`，说明见 `docs/environment_setup.md`。
-- 验收标准：58 条 case 通过 Schema + 业务规则 + 镜像一致性校验，
-  16 个内存负例全部被拒绝，退出码 0。
-- **每次数据或 Schema 变更后必须运行**；不通过不得进入下一步、不得提交。
-- CI（`.github/workflows/ci.yml`）在 push(main,feature) / PR(main) 自动运行同一命令。
+冲突时按以下顺序裁决：
 
-## 3. 必读文档与权威性顺序
+1. docs/operation_case.schema.json：case 机器结构与枚举。
+2. check_jsonlschema.py：跨字段、跨 case、镜像一致性和回归规则。
+3. docs/schema.md：字段语义与枚举解释。
+4. docs/task_scope.md：裁定任务边界及判断流程。
+5. docs/PROJECT_CONTEXT.md：实现内容与状态快照。
+6. AGENTS.md、VALIDATION.md、MEMORY.md 与最新 changelog：协作、验证、记忆和变更历史。
 
-新接手的阅读顺序：`README.md` → `docs/PROJECT_CONTEXT.md` → `docs/task_scope.md` →
-`docs/schema.md` → changelog 最新条目。
+新任务先读 README.md、docs/PROJECT_CONTEXT.md、docs/task_scope.md、docs/schema.md，再读相关实现与 changelog。说明文档和可执行 Schema 冲突时，暂停数据扩展并先解决冲突，不得绕过校验器。
 
-修改数据时的冲突裁决顺序（高 → 低）：
+## 4. 计划与执行
 
-1. `docs/operation_case.schema.json` — 机器约束唯一权威
-2. `check_jsonlschema.py` — Schema 无法表达的跨对象/跨文件规则
-3. `docs/schema.md` — 字段语义与完整枚举
-4. `docs/task_scope.md` — 任务边界与判断流程
-5. `docs/PROJECT_CONTEXT.md` — 当前状态快照
+- 多文件或多步骤变更先提交含 Summary、Implementation Changes、Test Plan、Assumptions 的计划，获用户批准后按计划顺序执行。
+- 只修改批准计划列出的文件。步骤验证失败时停止排查，不得跳过。
+- 不主动 commit、创建 PR 或修改 git config。
+- 完成阶段性工作时用简洁 todo 汇报；结束时列明改动、验证结果和未验证项。
 
-文档与可执行 Schema 冲突时，先停止新增数据，确认是否需要升级 Schema；
-禁止通过绕开校验器来"兼容"新字段。
+## 5. 开始前与验证纪律
 
-## 4. 数据修改标准流程
+按 VALIDATION.md 选择匹配改动范围的验证级别。涉及 case、Schema 或校验器时，先确认环境：
 
-1. 只编辑格式化镜像 `gold_cases/json/caseNNN.json`。
-2. 运行 `python tools/sync_gold_jsonl.py` 重建主 JSONL
-   （双写结构：主 JSONL 是批处理入口，镜像必须与主 JSONL 逐对象一致）。
-3. 运行 `--self-test`。
-4. 人工 dry-run 判断链：时点、cost、对象、一次限制、持续约束。
-5. 在 `log/ygo_json_case_changelog.md` 顶部追加记录。
+    conda run -n YGO_PROJECT python --version
+    conda run -n YGO_PROJECT python check_jsonlschema.py --self-test
 
-新增 case 额外要求：
+基线为 58 条正式 case 通过 Schema、业务规则、镜像一致性校验，16 个内存负例全部被拒绝。基线失败时，暂停数据或 Schema 修改并定位原因。
 
-- ID 从现有末尾连续编号（当前到 `case_058`，下一个是 `case_059`）。
-- source ID 全局唯一，格式 `src_case_NNN_NN`。
-- 同步补充 `eval/rag_eval_set.jsonl` 评测题：每条新 case 至少 1 条 easy + 1 条 medium，
-  难度标准与卡名唯一性前瞻规则见 `docs/rag_eval_plan.md`。
-- 扩 case 前先查 `docs/llmstudy/17-case-coverage-map.md`，按规则类型补缺口，
-  不要围绕少数卡片堆相似问题。
+- 优先运行确定性、离线、范围最小的检查；外部模型、网络、向量库和大语料不是普通单元验证的前置条件。
+- 验证报告区分命令执行成功、指标达标与功能端到端验证；跳过或未运行不算通过。
+- 只有相应实现和评测实际可运行时，才报告 RAG、agent、索引、检索、引用或生成行为已验证。报告需说明模型/语料/配置、测试集、指标、结果和限制。
+- 调参集不得用来宣称泛化能力。开发/校准集和冻结留出集应分开；异常结果应先复核评测器、gold 标注和指标定义。
+- 不把隐含网络访问、付费 API、模型下载或外部服务设为默认验证依赖；需要时说明前置条件和离线替代方案。
 
-## 5. Schema-First 铁律
+## 6. Case 数据修改流程
 
-1. 新增任何枚举值（`operation_type`、`effect_features`、`cost.type`、`action`、
-   `failed_check`、`known_constraints.type` 等）必须**先改**
-   `docs/operation_case.schema.json`。
-2. 再同步 `docs/schema.md` 枚举表，以及受影响的校验器/自测负例。
-3. 最后才能进入 case 数据；禁止在数据中使用未登记枚举值。
-4. 评估是否需要升级 Schema minor/major 版本，并在 changelog Part 1 记录
-   Added/Changed、裁定依据、迁移方式与兼容性影响。
+正式数据只编辑 gold_cases/json/caseNNN.json，然后按序：
 
-## 6. 证据契约（不可妥协）
+1. 运行 python tools/sync_gold_jsonl.py 重建主 JSONL。
+2. 运行 conda run -n YGO_PROJECT python check_jsonlschema.py --self-test。
+3. 人工核对判断链：时点、cost、对象、一次限制、持续约束和证据。
+4. 按 changelog 规范记录变更。
 
-- 每条正式 case 至少包含：一项 `official_card_text`（原则上同时覆盖 ja 与 zh-CN），
-  以及一项 `official_ruling` 或 `official_rulebook`。
-- 官方来源要求：`authority: "KONAMI"`；URL 必须指向 `db.yugioh-card.com` 或
-  `yugioh-card.com`；卡片文本用 `cid:<数字>`，Q&A 用 `fid:<数字>`，规则书用
-  `rulebook:<标识>`；`official_ruling` 必须填 `source_updated_at`；
-  `accessed_at` 用 `YYYY-MM-DD`。
-- 关键卡无有效 KONAMI 简中官方正文时，用本地 `cards.cdb`/`cards.db` 的
-  `secondary_reference` 补中文卡文（`authority: local_cards_cdb`，URL 用
-  `local-cdb://` 前缀）。**禁止**把 local 来源伪装成 `official_card_text`，
-  **禁止**伪造 URL、标题、cid 或 fid。
-- 二手材料（B站视频、文章等）只能作 `secondary_reference`，不得成为唯一裁定依据。
-- `supports_reasoning_steps` 用从 1 开始的推理步骤编号，不得越过
-  `reasoning_steps` 长度。
-- 找不到足够官方证据的样例留在待复核集合，不得进入正式主数据。
+新增 case 前先查 docs/llmstudy/17-case-coverage-map.md，按规则类型补缺口；ID 按末尾连续编号（目前下一个为 case_059），source ID 使用全局唯一格式 src_case_NNN_NN。每条新 case 同步在 eval/rag_eval_set.jsonl 增加至少一条 easy 和一条 medium 查询。难度与覆盖规则见 docs/rag_eval_plan.md。
 
-## 7. 回归红线（校验器与人工都必须守住）
+## 7. Schema 与证据契约
 
-- `case_003` 必须保持 `legal`，且攻击限制为 `effect_scope: "monster"`：
-  怪兽抗性可以绕过作用于怪兽的限制，不能绕过作用于玩家的限制。
-- `case_005` 必须保持 `illegal / activation_condition`，I:P 语义用三个 feature 并存表达
-  （`perform_link_summon_after_chain_link_resolution` +
-  `includes_special_summon_effect` +
-  `resulting_monster_not_summoned_by_activated_effect`），
-  不得合并为单一布尔值或回退到废弃值。
-- 不改动任何 case 的 `gold_answer.label` / `failed_check`，除非 plan 明确要求。
-- `depends` 必须配合非空 `missing_info`（Schema `minItems: 1`）。
-- 废弃值不得复活：`grant_link_summon_opportunity`、`direct_attack_restriction`
-  （改用结构化 `attack_restriction`）、`official_card_ruling`、`rulebook`、
-  数字 `chain_link`、`movement_correct` / `movement_incorrect`。
+- 新增或更改枚举时，先更新 docs/operation_case.schema.json，再同步 docs/schema.md、校验器/负例和受影响文档，最后才能更新数据。评估 Schema 版本与兼容性并记录 changelog。
+- 正式 case 至少有一项 official_card_text（原则上含 ja 与 zh-CN）及一项 official_ruling 或 official_rulebook。
+- 官方来源 authority 必须为 KONAMI；URL 指向 db.yugioh-card.com 或 yugioh-card.com；卡文 ID 为 cid:<数字>，Q&A ID 为 fid:<数字>，规则书为 rulebook:<标识>。official_ruling 必须有 source_updated_at；accessed_at 格式为 YYYY-MM-DD。
+- 本地 cards.cdb / cards.db 仅可作 secondary_reference，authority 为 local_cards_cdb，URI 使用 local-cdb://；禁止伪装 KONAMI 来源或编造 URL、标题、cid、fid。
+- B 站视频及其他二手资料只能作为 secondary_reference，不能是唯一裁定依据。证据不足的样例留在待复核集合。
+- supports_reasoning_steps 从 1 编号，不得超过 reasoning_steps 长度。
 
-## 8. Plan-Then-Execute
+## 8. RAG 与 agent workflow 设计要求
 
-1. 涉及多文件、多步骤的改动，**先写 plan** 给用户审核；plan 必须包含
-   Summary、Implementation Changes、Test Plan、Assumptions。
-2. 用户批准后再执行；执行时严格按 plan 步骤顺序，不做计划外的事。
-3. 改动的文件严格限制在 plan 列出的清单内。
-4. 步骤间校验失败须立即停止排查，不得跳过校验。
+当工作确实涉及检索或 agent 组件时：
 
-## 9. Changelog 规范
+- 保留查询、检索结果、分块到来源文档的稳定 ID 和 provenance；每个结论可追到实际使用的 case 或证据。
+- 区分数据校验、检索质量、答案 groundedness 和 agent 工具/workflow 行为。单个阶段通过不代表其他阶段通过。
+- 检索评测目标为 eval/rag_eval_set.jsonl 中的 gold_case_id；runner 建成后报告 Recall@1/3/5、MRR，并按 difficulty 分组。runner 未实现前不得编造或手工模拟指标。
+- 扩充 case 后复查 easy 查询依赖的卡名唯一性；姐妹 case 和语义混淆查询遵循评测计划。
+- agent 对工具响应做结构校验、边界检查与充分性判断；证据不足时输出 depends 或停止确定性裁定，不补造来源。
+- 工具权限、外部写操作和网络范围保持最小。测试使用隔离临时目录、临时向量库或 mock，不污染用户数据和正式索引。
 
-- `log/ygo_json_case_changelog.md` 分两部分：Part 1 Schema 版本历史；
-  Part 2 日常日志（按日期倒序，含 Summary / Changed / Validation / Decision 等小节）。
-- 历史条目不重写，只在顶部追加；Current Snapshot、Pending、Next Actions 可随项目刷新。
-- 数据、Schema、校验器、文档联动时，日志必须列出影响文件。
-- 裁定结论变化必须记录旧结论、新结论、证据和受影响 case。
-- 只更新环境或工具时也要记录实际版本和验证命令。
+## 9. 必须守住的回归项
 
-## 10. 代码与文档风格
+- case_003 保持 legal，攻击限制为 effect_scope: "monster"；怪兽抗性不绕过作用于玩家的限制。
+- case_005 保持 illegal / activation_condition，三个 feature 同时存在：perform_link_summon_after_chain_link_resolution、includes_special_summon_effect、resulting_monster_not_summoned_by_activated_effect。
+- 不改任何 case 的 gold_answer.label / failed_check，除非批准计划明确包含此项。
+- depends 必须配非空 missing_info。
+- 不复活废弃值：grant_link_summon_opportunity、direct_attack_restriction、official_card_ruling、rulebook、数字 chain_link、movement_correct、movement_incorrect。
+- 连锁编号使用 C1 / C2 / C3；被引用的 ID 必须真实存在。column_index 统一以我方视角；resolution_history 只记当前判断点前已处理的连锁块；effect_features 仅用机器枚举，自然语言写在 effect_summary。
 
-- 校验器保持面向对象：`CaseDatasetValidator` 持有规则与预编译 Schema validator，
-  `main()` 只做 CLI 编排；保持 CLI 参数、输出格式、退出码语义不变。
-- 不添加注释（除非沿用项目已有注释风格）；遵循现有 2 空格缩进与命名约定。
-- 修改数据结构或枚举后，同步更新 `docs/schema.md`、`docs/PROJECT_CONTEXT.md`、
-  `docs/cases_json_template.md` 及 changelog；文档快照（case 数量、task_type 分布、
-  Schema 版本、负例数、评测集统计）必须与实际数据一致。
+## 10. 文档、日志和记忆维护
 
-## 11. 与用户协作
+- Schema 或 case 字段语义变化时同步 docs/schema.md、docs/PROJECT_CONTEXT.md、docs/cases_json_template.md 和 changelog，并更新受影响快照。
+- log/ygo_json_case_changelog.md 历史条目只追加、不重写；数据、Schema、校验器及联动文档变更应列明影响文件。
+- 有新文件产出或基线状态改变的任务完成后更新根目录 MEMORY.md；状态数字以当日实测为准。纯只读问答无需更新。
 
-- 简洁直接地回复，最小化输出 token。
-- 需要决策时使用提问工具，提供明确选项。
-- 完成阶段性工作后，以 todo 列表报告进度。
-- 不主动 commit、不主动创建 PR、不修改 git config。
+## 11. 文件与风格
 
-## 12. 常见陷阱速查
-
-- 连锁编号一律字符串 `C1` / `C2` / `C3`；`chain_response_to` 与
-  `chain_id_to_resolve` 必须引用 `pre_state.chain_state.current_chain_links`
-  中真实存在的 ID。
-- `column_index` 全局以我方视角：self 1..5，opponent 5..1；同纵列判断只比较
-  索引值，不要在 workflow 里再做镜像换算。
-- `resolution_history` 是每条 case 必填状态词条：只记录当前判断点之前已按连锁
-  逆顺处理完成的块（高编号先处理，如先 C3 后 C2）；空数组 `[]` 是合法显式状态；
-  持续限制写 `known_constraints`，不要混入 history。
-- 场地格子统一 `{ "column_index": ..., "card": ... }` 包装，空位写 `"card": null`；
-  `field_spell_zone` 不使用 `column_index`。
-- 发动类 case 通常 `is_chain_building: true`；效果处理类通常 `is_chain_resolving: true`
-  且必填 `state_timing` 与 `resolution_history`；`operation_type: resolve_effect`
-  强制 `task_type: effect_resolution_judgment`（双向校验）。
-- 阶段、步骤、伤害步骤时点必须用 Schema 枚举；未知值用 `unknown`，
-  不用空字符串或临时中文值。
-- `effect_features` 只放机器枚举，自然语言解释写 `effect_summary`。
-
-## 13. 任务后记忆更新（必做）
-
-- **每次做完一项新任务就要更新根目录 `MEMORY.md`**：把新产出/变更的文件与资产、
-  基线数字变化、新决策与坑位同步进去；状态类数字以当日实测为准，先跑校验再写。
-- 纯只读的调研、问答可不更新；凡是产出了文件或改变了基线状态的任务必须更新，
-  更新完成后再向用户汇报结果。
-- `effect_features` 只放机器枚举，自然语言解释写 `effect_summary`。
+- 保留现有数据格式和校验器 CLI / 输出 / 退出码契约；CaseDatasetValidator 持有规则与预编译 Schema validator，main() 只做 CLI 编排。
+- 遵循所在文件风格；不添加非必要注释，不用临时自然语言值代替 Schema 枚举。
+- 不将官方 PDF、整库抓取数据、API key、模型权重、向量缓存或机器专属产物加入版本控制。许可范围不确定时保留原件并标记待核实。

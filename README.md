@@ -10,7 +10,8 @@ This project defines structured cases for judging whether a proposed operation o
 - An executable JSON Schema (`docs/operation_case.schema.json`, v2.1.0, Draft 2020-12) and a two-layer validator (`check_jsonlschema.py`) covering schema rules, project business rules, mirror consistency, and 16 negative self-tests.
 - A RAG retrieval evaluation set (`eval/rag_eval_set.jsonl`, 151 queries across easy/medium/hard levels) covering all 58 cases, with at least one easy and one medium query per case.
 - CI via GitHub Actions (`.github/workflows/ci.yml`) that runs the validator on push and pull request.
-- A 19-article domain learning knowledge base in `docs/llmstudy/` for LLM onboarding.
+- A 20-article domain learning knowledge base in `docs/llmstudy/` for LLM onboarding.
+- A deterministic Markdown chunker for the 21 documents in `RAG/docs/`, with source offsets, stable IDs, metadata, and a resumable optional DeepSeek contextualization step (`RAG/README.md`). These documents are secondary references.
 
 ## Planned Retrieval Knowledge Base
 
@@ -22,7 +23,7 @@ Large-scale collection has not been implemented. The project is seeking guidance
 
 ## Not Implemented Yet
 
-- An official knowledge base: bulk collection, parsing, chunking, and embedding of KONAMI Q&A / rule documents.
+- An official knowledge base: bulk collection, parsing, chunking, and embedding of KONAMI Q&A / rule documents. The current chunker covers only local secondary material.
 - A retrieval pipeline, knowledge graph, and an evaluation runner (recall@k, MRR) for the eval set.
 
 ## Disclaimer

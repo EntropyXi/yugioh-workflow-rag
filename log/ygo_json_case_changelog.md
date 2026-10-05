@@ -9,6 +9,8 @@
 - `operation_legality_judgment`：45 条；
 - `effect_resolution_judgment`：13 条。
 
+当前标签分布：`legal` 22 / `illegal` 34 / `depends` 2 / `invalid_question` 0。
+
 当前校验状态：
 
 - `check_jsonlschema.py --self-test` 覆盖 Schema、业务规则、镜像一致性与 16 个内存负例；
@@ -18,6 +20,57 @@
 - case_016/037/040/048 已通过 local CDB 备源（`secondary_reference`）补齐简中卡文覆盖；
 - git 仓库已建立（main / feature 分支，远端 origin），GitHub Actions CI 在 push / PR 时自动运行 `check_jsonlschema.py --self-test`；
 - RAG 检索评测集 `eval/rag_eval_set.jsonl` 共 151 条（easy 58 / medium 59 / hard 34），覆盖全部 58 条 case，每条 case 至少 1 easy + 1 medium。
+- `docs/llmstudy/` 与 `RAG/docs/llmstudy_ygo_knowledge_db/` 各有 20 篇领域文档；社区规则书摘录位于 `RAG/docs/`，合并版位于 `docs/llmstudy_domain_kb.md`。`RAG/docs/` 21 份资料已生成 699 块并完成 DeepSeek 块上下文化；索引、检索管道与评测 runner 尚未实现。
+
+---
+
+# 2026-10-05 — RAG 文档切分与块上下文化
+
+## Summary
+
+将 `RAG/docs/` 的 21 份本地二手资料构建为可追溯的 Markdown chunk，并按父范围为每块生成检索上下文。本轮不修改 gold case、Schema、裁定结论或评测集。
+
+## Changed
+
+- `RAG/agent.py`、`RAG/chunking.py`：实现确定性切分 CLI，保留来源 hash、偏移、标题路径、父范围与稳定 ID；生成 699 块，非空白正文覆盖检查通过。
+- `RAG/contextualize.py`、`RAG/prompts/context_v1.txt`：使用 `deepseek-flash` 对每块及完整父范围生成上下文，缓存可续跑，按返回 usage 累计峰时价格估算并在请求前预留预算。
+- `RAG/tests/test_chunking.py`、`RAG/tests/test_contextualize.py`：增加 4 个离线单元测试；`RAG/environment.yml` 固定 PyYAML 与 tiktoken 版本。
+- `.gitignore` 忽略 `RAG/artifacts/`；`RAG/README.md`、`README.md`、`docs/PROJECT_CONTEXT.md`、`VALIDATION.md`、`MEMORY.md` 同步能力、限制与实测结果。
+
+## Validation
+
+- `conda run -n YGO_PROJECT python -m unittest discover -s RAG/tests -v`：4/4 通过。
+- `conda run -n YGO_PROJECT python -m RAG.agent chunk`：两次均为 21 份来源、699 块、SHA-256 `2454948fd274d1ef3918f76b8f93b12818c9693aa843c8bb6dff6b63992ada1b`。
+- `conda run -n YGO_PROJECT python -m RAG.agent contextualize --max-cost-usd 1`：699/699 完成；两轮抽样与全量续跑合计 702 次真实调用，峰时标价估算累计 $0.4762173（上限 $1）；空上下文 0，ID、拼接与 manifest 一致。上下文长度 70–145 本地 token，其中 335/699 在 50–100 目标区间；人工抽查来源和章节表述。
+- `conda run -n YGO_PROJECT python check_jsonlschema.py --self-test`：58 条 case 通过、16 个负例全拒。
+
+## Decision
+
+- 现阶段仅构建本地二手语料的切分与上下文，不将其作为 KONAMI 官方证据；embedding、BM25、检索、rerank 与 Recall@k/MRR runner 尚待实现。费用按公开峰时单价估算，不代表实际账单。
+
+---
+
+# 2026-10-05 — 修正当前态文档漂移
+
+## Summary
+
+本轮只修正文档快照与维护指引，不修改 gold case、Schema、校验器或评测数据。
+
+## Changed
+
+- `README.md`、`docs/PROJECT_CONTEXT.md`、`MEMORY.md`：将 `docs/llmstudy/` 数量更正为 20 篇，核对 RAG 资料的实际路径与当前阶段。
+- `docs/PROJECT_CONTEXT.md`：明确由 `tools/sync_gold_jsonl.py` 从格式化镜像重建主 JSONL。
+- `docs/schema.md`：负例数更正为 16，并说明简中卡文可由官方正文或经批准的本地 `secondary_reference` 覆盖。
+- 本文件 Current Snapshot 与 Open Items：刷新当前标签分布、RAG 资产和待办。2026-07-28 的 depends 历史条目写有 `legal 21 / illegal 35`，当日数据实测及当前基线均为 `legal 22 / illegal 34`；保留原条目，在此勘误。
+
+## Validation
+
+- `conda run -n YGO_PROJECT python check_jsonlschema.py --self-test`：58 条正式 case 通过 Schema、业务规则与镜像一致性校验，16 个内存负例全部被拒绝。
+- 评测集为 151 条（easy 58 / medium 59 / hard 34），覆盖全部 58 条 case；`docs/llmstudy/` 与 RAG 化副本各 20 篇。
+
+## Decision
+
+- 历史 changelog 与已执行计划保持原样；仅更新可刷新的当前状态区，并以本条记录纠正历史笔误。
 
 ---
 
@@ -1609,14 +1662,15 @@ schema.md
 - 已建立并验证项目专用 Conda 环境 `YGO_PROJECT`。
 - 已完整同步 `PROJECT_CONTEXT.md`，覆盖当前结构、数据契约、证据、校验与接手流程。
 - 已将 `effect_resolution_judgment` 拆分为独立 task_type。
-- 已建立 50 条 gold cases 基线（含 case_041–case_050）。
+- 已建立 58 条 gold cases 基线（`case_001`–`case_058`）。
 - 已硬化来源覆盖校验：日文/简中官方卡片文本、`source_updated_at`、16 个负例自测。
 - 已完成 case_047/048 中文卡名修正、本地 `cards.cdb` 中文卡文补源及 `secondary_reference` 本地来源规则。
+- 已接入 GitHub Actions CI，并建立覆盖全部 58 条 case 的 151 条 RAG 检索评测集。
 
 ## Pending
-- 对 50 条 case 做逐条官方证据与裁定有效性复核。
-- 评估将 `python check_jsonlschema.py --self-test` 接入 CI。
-- 设计 RAG 检索评测集。
+- 对 58 条 case 做逐条官方证据与裁定有效性复核。
+- 建立检索评测 runner（recall@1/3/5、MRR，按 difficulty 分组）。
+- 评估将评测集结构校验纳入校验器或 CI。
 
 ## Risks
 - `effect_features` 如果继续自由命名，会导致 workflow 难以稳定匹配。
@@ -1628,6 +1682,6 @@ schema.md
 
 ## Next Actions
 1. 在每次数据变更后通过 `YGO_PROJECT` 运行 `python check_jsonlschema.py --self-test`。
-2. 对 10 条 seed cases 持续做官方来源复核与人工 dry-run。
-3. 建立候选/待复核集合，仅将官方证据齐全的 case 纳入主 JSONL。
-4. 扩展到 50 条人工核验 gold cases。
+2. 对现有 58 条 case 逐条做官方证据复核与人工 dry-run。
+3. 为 151 条评测题建立检索 runner，并评估自动结构校验。
+4. 后续扩充 case 时先查规则覆盖图，并保证官方证据、评测题覆盖和既有 easy 题卡名唯一性。
